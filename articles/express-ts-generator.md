@@ -19,9 +19,17 @@ express-ts-generatorです。
 
 ## 使い方
 ### まずはインストール
+
+```sh
 $ npm install dtsgenerator express-ts-generator --save-dev
+```
+
 openapi.ymlを指定してファイル生成
+
+```sh
 $ npx dtsgen openapi/openapi.yaml -o ./src/@types/openapi.d.ts && npx apigen -s ./src/@types/openapi.d.ts -d ./src/@types/api.ts
+```
+
 実行すると以下のファイルのようにexpressのController側のTypeScriptファイルが生成されます。
 
 ```js
