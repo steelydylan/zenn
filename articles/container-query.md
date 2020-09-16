@@ -3,12 +3,12 @@ title: Container Queriesという考え方の紹介
 emoji: "📌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: []
-published: true
+published: false
 ---
 
 
-従来のmedia queryの問題点
-------------------
+## 従来のmedia queryの問題点
+
 
 CSSでWindow幅に応じて適応するスタイルを変えるために`media query`という考え方がある。スマートフォンやタブレットの普及によって、レスポンシブ対応が必須になった現代においてはmedia queryは非常に便利な機能の一つである。  
 ただ、このmedia queryだけでは、限界がでてくる。それは使っているブラウザのwindow幅でしかCSSの切り替えが行えないということである。時にそれは実装者にとって非常に厄介な問題となりうる。
@@ -30,38 +30,38 @@ window幅が1024pxの際にはメインカラムとサブカラムが横並び�
 ここで上の条件で従来のmedia queryを使ってCSSを書いてみよう
 
 ```css
-    .container {
-      display:flex;
-      flex-wrap:wrap;
-    }
-    .container .item {
-      width:50%;
-    }
-    @media screen and (min-width:480px) {
-      .container .item {
-        width:33.333333%;
-      }
-    }
-    @media screen and (min-width:768px) {
-      .container .item {
-        width:25%;
-      }
-    }
-    @media screen and (min-width:1024px) {
-      .container .item {
-        width:33.333333%;
-      }
-    }
-    @media screen and (min-width:1200px) {
-      .container .item {
-        width:25%;
-      }
-    }
+.container {
+  display:flex;
+  flex-wrap:wrap;
+}
+.container .item {
+  width:50%;
+}
+@media screen and (min-width:480px) {
+  .container .item {
+    width:33.333333%;
+  }
+}
+@media screen and (min-width:768px) {
+  .container .item {
+    width:25%;
+  }
+}
+@media screen and (min-width:1024px) {
+  .container .item {
+    width:33.333333%;
+  }
+}
+@media screen and (min-width:1200px) {
+  .container .item {
+    width:25%;
+  }
+}
 ```
 
 基準点がwindow幅なので、1024pxの時点でメインカラムとサブカラムが横並びになる際のグリッド数を再び考慮してCSSを書く必要性が出てくる。
 
-2\. Container Queriesとは
+## 2. Container Queriesとは
 -----------------------
 
 ここで、`Container Queries`の登場である。  
@@ -69,37 +69,36 @@ Container Queriesとはwindow幅が基準ではなく指定したセレクタの
 containerの幅に応じて適応するスタイルを変更すれば、メインカラムとサブカラムが横並びから縦並びになる際のことを考慮しなくていいのでもっとシンプルにCSSがかけるようになる。
 
 ```css
-    .container {
-      display:flex;
-      flex-wrap:wrap;
-    }
-    .container .item {
-      width:50%;
-    }
-    .container:(min-width:480px) {
-      .item {
-        width:33.333333%;
-      }
-    }
-    .container:(min-width:768px) {
-      .item {
-        width:25%;
-      }
-    }
+.container {
+  display:flex;
+  flex-wrap:wrap;
+}
+.container .item {
+  width:50%;
+}
+.container:(min-width:480px) {
+  .item {
+    width:33.333333%;
+  }
+}
+.container:(min-width:768px) {
+  .item {
+    width:25%;
+  }
+}
 ```
 
 これくらいのCSSなら media query でいいじゃんと思うかもしれないが、さらに複雑なレイアウトになってくると media query だけで全体のレイアウトを管理するのは難しくなってくる。  
 特に、Reactなどのライブラリの普及によって、Componentの考え方が浸透してきた今、この`Container Queries`は今後必要になってくる考え方ではないだろうか？  
 しかし残念ながらContainer Queries はCSSの仕様にはないので、JavaScriptなどのサポートを頼る必要がある。
 
-Container Queries の応用
----------------------
+## Container Queries の応用
 
 自分が趣味で制作しているスタイルガイドジェネレーター Atomic Labでも Container Queriesの考え方を利用している。このスタイルガイドジェネレーターではわざわざwindow幅を小さくしてスマートフォンやタブレット時のコンポーネントのレイアウトを確認しなくていいようリサイズハンドルをつけている。containerをリサイズすれば、いかにもIframeをリサイズしているような実行結果を得られる。
 
 * * *
 
- [![](/archives/001/201706/9d8018953c5894eefb74cde3a053a926.png)](/archives/001/201706/large-9d8018953c5894eefb74cde3a053a926.png) 
+[![](/archives/001/201706/9d8018953c5894eefb74cde3a053a926.png)](/archives/001/201706/large-9d8018953c5894eefb74cde3a053a926.png) 
 
 container幅 388px
 
