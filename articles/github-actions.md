@@ -52,3 +52,15 @@ containsを利用することで特定の文字がbranchに含まれるか判定
     aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
     aws-region: ap-northeast-1
 ```
+
+## package.jsonをもとに自動タグ付け
+
+```yml
+- name: package-version-to-git-tag
+  uses: pkgdeps/action-package-version-to-git-tag@v1
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    github_repo: ${{ github.repository }}
+    git_commit_sha: ${{ github.sha }}
+    git_tag_prefix: ""
+```
