@@ -23,6 +23,8 @@ echo ::set-env name=NAME::$(echo NAME)
 
 ## masterブランチにpushされた時に実行したい
 
+github.refにpushされたbranch名が入っている
+
 ```yml
 - name update production
   if: github.ref == 'refs/heads/master' && github.event_name == 'push'
@@ -30,6 +32,9 @@ echo ::set-env name=NAME::$(echo NAME)
 ```
 
 ## releaseという文字列が含まれるPRに対して実行したい
+
+containsを利用することで特定の文字がbranchに含まれるか判定できる
+以下のケースでは`release/1.0.0`などのbranchをmasterなどにマージしたい時に利用する
 
 ```yml
 - name release
