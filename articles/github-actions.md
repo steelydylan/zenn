@@ -6,7 +6,7 @@ topics: []
 published: true
 ---
 
-GitHub Actionsの使い方でハマることが多いので備忘録のためまとめます
+GitHub Actionsの使い方でハマることが多いので備忘録にまとめます
 
 
 ## 環境変数をセットしたい
