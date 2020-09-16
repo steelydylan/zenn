@@ -15,7 +15,7 @@ GitHub Actionsの使い方でハマることが多いので備忘録のためま
 echo ::set-env name=NAME::name
 ```
 
-現在の環境変数をstepで使いまわしたい場合
+現在の環境変数をstep共通で使いまわしたい場合
 
 ```yml
 echo ::set-env name=NAME::$(echo NAME)
