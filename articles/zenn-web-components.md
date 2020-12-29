@@ -18,7 +18,7 @@ Zennのマークダウンには通常のマークダウン記法に加え独自�
 ```
 
 たとえば、上記の記法でTwitterのウィジェットが表示されます。
-まさにこのウィジェットの表示には今回紹介する`Web Components`が利用されています。
+まさにこのウィジェットの表示には今回紹介する`Web Components`の技術の一つである`Custom Elements`が利用されています。
 
 @[tweet](https://twitter.com/steelydylan/status/1277938362473541634)
 
