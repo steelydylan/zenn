@@ -26,11 +26,11 @@ Zennのマークダウンには通常のマークダウン記法に加え独自�
 https://github.com/zenn-dev/zenn-editor/tree/master/packages/zenn-markdown-html
 
 
-## パフォーマンスの問題
+## Web Components利用前のパフォーマンスの問題
 例えば、Twitterのウィジェットを表示するためにマークダウンをレンダーした後に、`twttr.widget.load()`を実行する必要があります。
 `twttr.widget.load()`は、要素を全ドキュメント上から検索して、`twitter-tweet`というクラスが付与されている要素をウィジェットに変換するのでパフォーマンス上少しコストがかかります。できれば、`twittr.widget.load(element)`という形で要素を直接指定して検索によるパフォーマンス低下を防ぎたいところです。
 
-## コードの複雑性の問題
+## Web Components利用前のコードの複雑性の問題
 Zennでは記事の部分のみならず、記事に対するコメントの部分にもマークダウンが使用できそのコメント部分でも記事同様にZennのマークダウン記法が使えます。記事の部分とコメントの部分でそれぞれマークダウンが展開され、もし、`@[tweet](tweetのURL)`が存在すれば、その度にウィジェットに変換する必要があるため、複数箇所に`twttr.widget.load()`が記述されていました。Twitterだけだったらいいのですが今後他のJavaScriptを必要とする埋め込みウィジェットにも対応するとコードはどんどん煩雑になりそうです。
 
 # Web Componentsの利用
@@ -42,7 +42,7 @@ Zennでは記事の部分のみならず、記事に対するコメントの部�
 <embed-tweet src="https://twitter.com/steelydylan/status/1277938362473541634"></embed-tweet>
 ```
 
-HTMLタグとしてドキュメント上に表示するだけで、属性さえ正しければ、その後の処理などを気にしなくても必ず要素が同じ振る舞いをするあたりはReactやVueと同じです。ただ、ReactやVueとは異なり、HTMLドリブンなので、DOMに追加されたタイミングで独自の処理を実行することが可能です。つまり、`@[tweet](tweetのURL)`から`<embed-tweet src="URL"></embed-tweet>`に変換するパーサーさえ作ってしまえば後の処理はすべてWeb Componentsに任せることが可能です。
+HTMLタグとしてドキュメント上に表示するだけで、属性さえ正しければ、その後の処理などを気にしなくても必ず要素が同じ振る舞いをするあたりはReactやVueと同じです。ただ、ReactやVueとは異なり、HTMLドリブンなので、DOMに追加されたタイミングで独自の処理を実行することが可能です。つまり、`@[tweet](tweetのURL)`から`<embed-tweet src="URL"></embed-tweet>`に変換するパーサーさえ作ってしまえば後の処理はすべてWeb Componentsに任せることが可能なのです。
 
 Web Componentsでは以下の様なことが可能です。
 
