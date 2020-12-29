@@ -52,7 +52,7 @@ Web Componentsでは以下の様なことが可能です。他にもたくさん
 - Shadow DOMを使ったスタイルの隠蔽
 
 ## Web Components内にHTMLを表示する
-Web Componentsは基本的に`HTMLElements`やその他、`HTMLParagraphElement`などそれぞれの要素をクラスとして`extends`することで作成が可能です。
+Web Componentsは基本的に`HTMLElements`やその他、`HTMLParagraphElement`などそれぞれの要素を起点としてクラスの`extends`をすることで作成が可能です。
 また`this.innerHTML`に表示したいHTMLの内容を代入するだけで、その中にHTMLを表示することができます。非常に直感的です。
 さらに、属性値は他の要素と同様に `this.getAttribute('属性名');`で取得することができます。
 
