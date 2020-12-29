@@ -88,7 +88,7 @@ Web Components内のDOMの検索にもお馴染みの`this.querySelector`が使�
 
 ## Shadow DOMを使ったスタイルの隠蔽
 
-また、`constructor`ないで以下の様にShadow DOM ツリーをWeb Components内に定義することもできます。
+また、`constructor`内などで以下の様にShadow DOM ツリーをWeb Components内に定義することもできます。
 
 ```ts
 const shadowRoot = this.attachShadow({ mode: 'open' });
