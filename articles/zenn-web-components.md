@@ -46,13 +46,13 @@ Zennでは記事の部分のみならず、記事に対するコメントの部�
 
 HTMLタグとしてドキュメント上に表示するだけで、属性さえ正しければ、その後の処理などを気にしなくても必ず要素が同じ振る舞いをするあたりはReactやVueと似ています。ただ、ReactやVueとは異なり、HTMLドリブンなので、DOMに追加されたタイミングで独自の処理を実行することが可能です。つまり、`@[tweet](tweetのURL)`から`<embed-tweet src="URL"></embed-tweet>`に変換するパーサーさえ作ってしまえば後の処理はすべてCustom Elementsに任せることが可能なのです。
 
-Custom Elementsでは以下の様なことが可能です。他にもたくさんのことができますが、以下はZennで利用したCustom Elementsの主な技術になります。
+Web Componentsでは以下の様なことが可能です。他にもたくさんのことができますが、以下はZennで利用したWeb Componentsの主な技術になります。
 
-- Custom Elements内にHTMLを表示する
+- Custom Elementsを定義し、HTMLを表示する
 - Custom Elementsがドキュメントに追加されたタイミングでの振る舞いを定義
 - Shadow DOMを使ったスタイルの隠蔽
 
-## Custom Elements内にHTMLを表示する
+## Custom Elementsを定義し、HTMLを表示する
 Custom Elementsは基本的に`HTMLElements`やその他、`HTMLParagraphElement`などそれぞれの要素を起点としてクラスの`extends`をすることで作成が可能です。
 また`this.innerHTML`に表示したいHTMLの内容を代入するだけで、その中にHTMLを表示することができます。非常に直感的です。
 さらに、属性値は他の要素と同様に `this.getAttribute('属性名');`で取得することができます。
