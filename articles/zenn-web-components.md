@@ -74,10 +74,9 @@ class EmbedTweet extends HTMLElements {
 class EmbedTweet extends HTMLElements {
   connectedCallback() {
     const container = this.querySelector(`.${containerClassName}`);
-    (window as any).twttr?.widgets
-      ?.createTweet(this.tweetId, container, {
-        align: 'center',
-      })
+    window.twttr.widgets.createTweet(this.tweetId, container, {
+      align: 'center',
+    })
   }
 }
 ```
