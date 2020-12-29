@@ -37,23 +37,23 @@ Zennでは記事の部分のみならず、記事に対するコメントの部�
 
 # Web Componentsの利用
 
-そこで、[@catnose](https://twitter.com/catnose99) と[@steelydylan](https://twitter.com/steelydylan) はWeb Componentsに目を向けました。ReactやVueのようにあらかじめ要素の振る舞いやHTMLやそのスタイルを定義でき、以下の様にHTMLタグとして利用できます。
+そこで、[@catnose](https://twitter.com/catnose99) と[@steelydylan](https://twitter.com/steelydylan) はWeb Componentsに目を向けました。Web Componentsの技術の一つであるCustom Elementsでは、ReactやVueのようにあらかじめ要素の振る舞いやHTMLやそのスタイルを定義でき、以下の様にHTMLタグとして利用できます。
 
 
 ```html
 <embed-tweet src="https://twitter.com/steelydylan/status/1277938362473541634"></embed-tweet>
 ```
 
-HTMLタグとしてドキュメント上に表示するだけで、属性さえ正しければ、その後の処理などを気にしなくても必ず要素が同じ振る舞いをするあたりはReactやVueと似ています。ただ、ReactやVueとは異なり、HTMLドリブンなので、DOMに追加されたタイミングで独自の処理を実行することが可能です。つまり、`@[tweet](tweetのURL)`から`<embed-tweet src="URL"></embed-tweet>`に変換するパーサーさえ作ってしまえば後の処理はすべてWeb Componentsに任せることが可能なのです。
+HTMLタグとしてドキュメント上に表示するだけで、属性さえ正しければ、その後の処理などを気にしなくても必ず要素が同じ振る舞いをするあたりはReactやVueと似ています。ただ、ReactやVueとは異なり、HTMLドリブンなので、DOMに追加されたタイミングで独自の処理を実行することが可能です。つまり、`@[tweet](tweetのURL)`から`<embed-tweet src="URL"></embed-tweet>`に変換するパーサーさえ作ってしまえば後の処理はすべてCustom Elementsに任せることが可能なのです。
 
-Web Componentsでは以下の様なことが可能です。他にもたくさんのことができますが、以下はZennで利用したWeb Componentsの主な技術になります。
+Custom Elementsでは以下の様なことが可能です。他にもたくさんのことができますが、以下はZennで利用したCustom Elementsの主な技術になります。
 
-- Web Components内にHTMLを表示する
-- Web Componentsがドキュメントに追加されたタイミングでの振る舞いを定義
+- Custom Elements内にHTMLを表示する
+- Custom Elementsがドキュメントに追加されたタイミングでの振る舞いを定義
 - Shadow DOMを使ったスタイルの隠蔽
 
-## Web Components内にHTMLを表示する
-Web Componentsは基本的に`HTMLElements`やその他、`HTMLParagraphElement`などそれぞれの要素を起点としてクラスの`extends`をすることで作成が可能です。
+## Custom Elements内にHTMLを表示する
+Custom Elementsは基本的に`HTMLElements`やその他、`HTMLParagraphElement`などそれぞれの要素を起点としてクラスの`extends`をすることで作成が可能です。
 また`this.innerHTML`に表示したいHTMLの内容を代入するだけで、その中にHTMLを表示することができます。非常に直感的です。
 さらに、属性値は他の要素と同様に `this.getAttribute('属性名');`で取得することができます。
 
@@ -69,7 +69,7 @@ class EmbedTweet extends HTMLElements {
 }
 ```
 
-## Web Componentsがドキュメントに追加されたタイミングでの振る舞いを定義
+## Custom Elementsがドキュメントに追加されたタイミングでの振る舞いを定義
 ドキュメントに追加されたタイミングでの振る舞いはライフサイクルメソッドである`connectedCallback`で定義することができます。このライフサイクルメソッドのおかげで任意のタイミングで個別に`twttr.widget.load()`を記述する必要がなくなりました。
 
 ```ts
@@ -84,21 +84,21 @@ class EmbedTweet extends HTMLElements {
 ```
 
 `twttr.widget.load`の代わりに`twttr.widget.createTweet`を利用して直接、ウィジェットに変換したいDOMを指定することで、DOMの検索コストを改善しています。
-Web Components内のDOMの検索にもお馴染みの`this.querySelector`が使えます。
+Custom Elements内のDOMの検索にもお馴染みの`this.querySelector`が使えます。
 
 ## Shadow DOMを使ったスタイルの隠蔽
 
-また、`constructor`内などで以下の様にShadow DOM ツリーをWeb Components内に定義することもできます。
+また、`constructor`内などで以下の様にShadow DOM ツリーをCustom Elements内に定義することもできます。
 
 ```ts
 const shadowRoot = this.attachShadow({ mode: 'open' });
 ```
 
-`shadowRoot`の`innerHTML`に対して表示したいHTMLを代入することで通常のDOMではなくShadow DOMとしてWeb Components内にHTMLを表示することができます。Shadow DOMとして表示することで、外部のCSSからの影響を受けず内部だけでスタイルを定義することができます。
+`shadowRoot`の`innerHTML`に対して表示したいHTMLを代入することで通常のDOMではなくShadow DOMとしてCustom Elements内にHTMLを表示することができます。Shadow DOMとして表示することで、外部のCSSからの影響を受けず内部だけでスタイルを定義することができます。
 また、`attachShadow`をする際に、`mode: 'close'`にすることで外部のJavaScriptからのアクセスさえも遮断することができ、完全なコンポーネントのカプセル化が実現します。
 
 # まとめ
 
-ご紹介したように、Web Componentsではライフサイクルメソッドの利用や`this`を使った属性値へのアクセスや内部のDOM取得ができるので、マークダウンやブログコンテンツとの愛称は抜群だと思います。
+ご紹介したように、Custom Elementsではライフサイクルメソッドの利用や`this`を使った属性値へのアクセスや内部のDOM取得ができるので、マークダウンやブログコンテンツとの愛称は抜群だと思います。
 正直ここまでWeb Componentsが使いやすい物とは思っていませんでした笑
 ReactやVueといったJavaScriptフレームワークだけに着目せずHTML本来が持っている機能にも注目していきたいですね。
