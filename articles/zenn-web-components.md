@@ -26,11 +26,11 @@ Zennのマークダウンには通常のマークダウン記法に加え独自�
 https://github.com/zenn-dev/zenn-editor/tree/master/packages/zenn-markdown-html
 
 
-## Web Components利用前のパフォーマンスの問題
+## パフォーマンスの問題
 今までのZennでは、例えば、Twitterのウィジェットを表示するためにマークダウンをレンダーした後に、`twttr.widget.load()`を実行する必要がありました。
 `twttr.widget.load()`は、要素を全ドキュメント上から検索して、`twitter-tweet`というクラスが付与されている要素をウィジェットに変換するのでパフォーマンス上少しコストがかかります。できれば、`twittr.widget.load(element)`という形で要素を直接指定して検索によるパフォーマンス低下を防ぎたいところです。
 
-## Web Components利用前のコードの複雑性の問題
+## コードの複雑性の問題
 Zennでは記事の部分のみならず、記事に対するコメントの部分にもマークダウンが使用できそのコメント部分でも記事同様にZennのマークダウン記法が使えます。記事の部分とコメントの部分でそれぞれマークダウンが展開され、もし、`@[tweet](tweetのURL)`が存在すれば、その度にウィジェットに変換する必要があるため、ソースコードを見ると、複数箇所に`twttr.widget.load()`が記述されていました。Twitterだけだったらまだいいのですが今後他のJavaScriptを必要とする埋め込みウィジェットが増えてくるとコードはどんどん煩雑になりそうです。
 
 # Web Componentsの利用
@@ -68,7 +68,7 @@ class EmbedTweet extends HTMLElements {
 ```
 
 ## Web Componentsがドキュメントに追加されたタイミングでの振る舞いを定義
-ドキュメントに追加されたタイミングでの振る舞いはライフサイクルメソッドである`connectedCallback`で定義することができます。
+ドキュメントに追加されたタイミングでの振る舞いはライフサイクルメソッドである`connectedCallback`で定義することができます。このライフサイクルメソッドのおかげで任意のタイミングで個別に`twttr.widget.load()`を記述する必要がなくなりました。
 
 ```ts
 class EmbedTweet extends HTMLElements {
@@ -81,7 +81,7 @@ class EmbedTweet extends HTMLElements {
 }
 ```
 
-Zennでは、`twttr.widget.load`の代わりに`twttr.widget.createTweet`を利用して直接、ウィジェットに変換したいDOMを指定することで、DOMの検索コストを改善しています。
+`twttr.widget.load`の代わりに`twttr.widget.createTweet`を利用して直接、ウィジェットに変換したいDOMを指定することで、DOMの検索コストを改善しています。
 Web Components内のDOMの検索にもお馴染みの`this.querySelector`が使えます。
 
 ## Shadow DOMを使ったスタイルの隠蔽
@@ -93,7 +93,7 @@ const shadowRoot = this.attachShadow({ mode: 'open' });
 ```
 
 `shadowRoot`の`innerHTML`に対して表示したいHTMLを代入することで通常のDOMではなくShadow DOMとしてWeb Components内にHTMLを表示することができます。Shadow DOMとして表示することで、外部のCSSからの影響を受けず内部だけでスタイルを定義することができます。
-また、`attachShadow`をする際に、`mode: close`にすることで外部のJavaScriptからのアクセスさえも遮断することができ、完全なコンポーネントのカプセル化が実現します。
+また、`attachShadow`をする際に、`mode: 'close'`にすることで外部のJavaScriptからのアクセスさえも遮断することができ、完全なコンポーネントのカプセル化が実現します。
 
 # まとめ
 
