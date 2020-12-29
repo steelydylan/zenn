@@ -25,7 +25,7 @@ Zennのマークダウンには通常のマークダウン記法に加え独自�
 
 https://github.com/zenn-dev/zenn-editor/tree/master/packages/zenn-markdown-html
 
-Zennではこういったオリジナルの記法を実現するためにマークダウンをただパーサーを使って、HTMLに変換して表示するのみならず、いくらかJavaScriptの処理も加えていくつかのウィジェットを表示してたりします。
+Zennではこういったオリジナルの記法を実現するためにマークダウンをただパーサーを使って、HTMLに変換して表示するのみならずJavaScriptの処理も加えていくつかのウィジェットを表示してたりします。
 
 ## パフォーマンスの問題
 例えば、Twitterのウィジェットを表示するためにマークダウンをレンダーした後に、今までのZennでは、`twttr.widget.load()`を実行する必要がありました。
