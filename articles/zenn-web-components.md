@@ -3,7 +3,7 @@ title: "Web Components利用したZennマークダウン部分の改善につい
 emoji: "📌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: []
-published: false
+published: true
 ---
 
 ひっそりと [@catnose](https://twitter.com/catnose99) の友人としてZennのマークダウン部分の改善やエディターを開発している[@steelydylan](https://twitter.com/steelydylan) です。
