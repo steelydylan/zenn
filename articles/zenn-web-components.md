@@ -44,15 +44,15 @@ Zennでは記事の部分のみならず、記事に対するコメントの部�
 
 HTMLタグとしてドキュメント上に表示するだけで、属性さえ正しければ、その後の処理などを気にしなくても必ず要素が同じ振る舞いをするあたりはReactやVueと似ています。ただ、ReactやVueとは異なり、HTMLドリブンなので、DOMに追加されたタイミングで独自の処理を実行することが可能です。つまり、`@[tweet](tweetのURL)`から`<embed-tweet src="URL"></embed-tweet>`に変換するパーサーさえ作ってしまえば後の処理はすべてWeb Componentsに任せることが可能なのです。
 
-Web Componentsでは以下の様なことが可能です。
+Web Componentsでは以下の様なことが可能です。他にもたくさんのことができますが、以下はZennで利用したWeb Componentsの主な技術になります。
 
-- Web Componentsがどの様に表示されるか定義
+- Web Components内にHTMLを表示する
 - Web Componentsがドキュメントに追加されたタイミングでの振る舞いを定義
 - Shadow DOMを使ったスタイルの隠蔽
 
-## Web Componentsがどの様に表示されるか定義
+## Web Components内にHTMLを表示する
 Web Componentsは基本的に`HTMLElements`やその他、`HTMLParagraphElement`などそれぞれの要素をクラスとして`extends`することで作成が可能です。
-また`this.innerHTML`に表示したいHTMLの内容を代入するだけで、表示することができます。非常に直感的です。
+また`this.innerHTML`に表示したいHTMLの内容を代入するだけで、その中にHTMLを表示することができます。非常に直感的です。
 さらに、属性値は他の要素と同様に `this.getAttribute('属性名');`で取得することができます。
 
 ```ts
@@ -81,9 +81,8 @@ class EmbedTweet extends HTMLElements {
 }
 ```
 
-Zennでは、`twttr.widget.load`の代わりに`twttr.widget.createTweet`を利用してDOMの検索コストを改善しています。
-ちなみにWeb Components内のDOMの検索にもお馴染みの`this.querySelector`が使えます。
-
+Zennでは、`twttr.widget.load`の代わりに`twttr.widget.createTweet`を利用して直接、ウィジェットに変換したいDOMを指定することで、DOMの検索コストを改善しています。
+Web Components内のDOMの検索にもお馴染みの`this.querySelector`が使えます。
 
 ## Shadow DOMを使ったスタイルの隠蔽
 
