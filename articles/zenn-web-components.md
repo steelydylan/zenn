@@ -6,7 +6,7 @@ topics: []
 published: false
 ---
 
-ひっそりと@catnoseの友人としてZennのマークダウン部分の改善やエディターを開発している@steelydylanです。
+ひっそりと [@catnose](https://twitter.com/catnose99) の友人としてZennのマークダウン部分の改善やエディターを開発している[@steelydylan](https://twitter.com/steelydylan) です。
 ReactやVueなどのフレームワークの影に隠れてあまり注目されていないようにみえるWeb Componentsが今回活躍したのでメモがてら記事にしておこうと思います。
 
 # Web Componentsを使うまでのマークダウン表示の問題点
@@ -35,7 +35,7 @@ Zennでは記事の部分のみならず、記事に対するコメントの部�
 
 # Web Componentsの利用
 
-そこで、@catnoseと@steelydylanはWeb Componentsに目を向けました。ReactやVueのようにあらかじめ要素の振る舞いやHTMLやそのスタイルを定義でき、以下の様にHTMLタグとして利用できます。
+そこで、[@catnose](https://twitter.com/catnose99) と[@steelydylan](https://twitter.com/steelydylan) はWeb Componentsに目を向けました。ReactやVueのようにあらかじめ要素の振る舞いやHTMLやそのスタイルを定義でき、以下の様にHTMLタグとして利用できます。
 
 
 ```html
