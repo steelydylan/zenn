@@ -35,7 +35,7 @@ Zennでは記事の部分のみならず、記事に対するコメントの部�
 
 # Web Componentsの利用
 
-そこで、Web Componentsに目を向けました。ReactやVueのようにあらかじめ要素の振る舞いやHTMLやそのスタイルを定義でき、以下の様にHTMLタグとして表示できます。
+そこで、@catnoseと@steelydylanはWeb Componentsに目を向けました。ReactやVueのようにあらかじめ要素の振る舞いやHTMLやそのスタイルを定義でき、以下の様にHTMLタグとして利用できます。
 
 
 ```html
