@@ -1,5 +1,5 @@
 ---
-title: "Web Components利用したZennマークダウン部分の改善について"
+title: "Web Componentsを利用したZennマークダウン部分の改善について"
 emoji: "📌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["webcomponents", "javascript"]
