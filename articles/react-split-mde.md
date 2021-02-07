@@ -11,7 +11,7 @@ published: true
 
 # 開発したもの
 
-プレビューしながら記事を書けるマークダウンエディター
+プレビューしながら記事を書けるReact製のマークダウンエディター
 
 ![](https://storage.googleapis.com/zenn-user-upload/c8pcqwvatlj0u8dqmfv3u5frk2kk)
 
