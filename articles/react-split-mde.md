@@ -1,8 +1,8 @@
 ---
-title: "プレビューしながら記事を書けるマークダウンエディターを開発した話"
+title: "Zennのためにプレビューしながら記事を書けるマークダウンエディターを開発していた話"
 emoji: "📌"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["react"]
+topics: ["react", "markdown"]
 published: true
 ---
 
