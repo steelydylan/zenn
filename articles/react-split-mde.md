@@ -15,7 +15,7 @@ published: true
 
 ![](https://storage.googleapis.com/zenn-user-upload/c8pcqwvatlj0u8dqmfv3u5frk2kk)
 
-今はオープンソースとして自分のレポジトリに公開しています！
+今はオープンソースとしてこのエディターを自分のレポジトリに公開しています！
 
 https://github.com/steelydylan/react-split-mde
 
