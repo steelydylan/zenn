@@ -3,7 +3,7 @@ title: "プレビューしながら記事を書けるマークダウンエディ
 emoji: "📌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["react"]
-published: false
+published: true
 ---
 
 クラスメソッドさんに譲渡される前に開発者の友人としてZennの開発に関わっていた[@steelydylan](https://twitter.com/steelydylan) です。
@@ -14,6 +14,10 @@ published: false
 プレビューしながら記事を書けるマークダウンエディター
 
 ![](https://storage.googleapis.com/zenn-user-upload/c8pcqwvatlj0u8dqmfv3u5frk2kk)
+
+今はオープンソースとして自分のレポジトリに公開しています！
+
+https://github.com/steelydylan/react-split-mde
 
 ## 特徴
 
@@ -232,4 +236,4 @@ export const EditorDemo = () => {
 
 あまり長すぎるとただの開発したライブラリの紹介の様になってしまうのでこの辺にしておきます。
 この記事でお伝えしたいこととしては、公開されている多くのマークダウンディターだと、スクロールの問題やパーサーの問題、レンダリングの問題など越えなければならない多くの壁が存在し、Zennはその壁を突破するために色々と開発を頑張っているということです笑
-今はクラスメソッドにZennが買収されてしまったので自分は開発に関われませんが、ライブラリ自体の開発はできるのでいつか、Zenn側に`npm install`され、dependenciesとして使われる日を待ちたいと思います！
+今はクラスメソッドさんにZennが買収されてしまったので自分は開発に関われませんが、ライブラリ自体の開発はできるのでいつか、Zenn側に`npm install`され、dependenciesとして使われる日を待ちたいと思います！
