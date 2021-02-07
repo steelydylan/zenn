@@ -2,7 +2,7 @@
 title: "種類別、GitHub Actionsの書き方まとめ"
 emoji: "📌"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: []
+topics: ["github"]
 published: true
 ---
 
