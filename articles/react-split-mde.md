@@ -6,7 +6,7 @@ topics: ["react", "markdown"]
 published: true
 ---
 
-クラスメソッドさんに譲渡される前に開発者の友人としてZennの開発に関わっていた[@steelydylan](https://twitter.com/steelydylan) です。
+開発者の友人としてZennの開発に関わっていた[@steelydylan](https://twitter.com/steelydylan) です。今はクラスメソッドさんに譲渡されているので自分は開発に携わっていません。
 まだ、Zennには搭載されていませんが、記事の結果をプレビューしながらマークダウンをかけるエディターを開発していたので、そのエディターの供養も兼ねて記事にしておきたいと思います。
 
 # 開発したもの
