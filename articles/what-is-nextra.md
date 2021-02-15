@@ -171,6 +171,7 @@ Please visit the [React Split MDE](https://github.com/steelydylan/react-split-md
 # 記事の順番を決める
 
 `meta.json`を`pages`以下のディレクトリに設置することで記事の順番を決めることができます。
+キー名に記事のスラグ、バリューに記事のタイトルといった具合です。
 
 ```json:meta.json
 {
