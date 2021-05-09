@@ -1,31 +1,30 @@
 ---
 title: Container Queriesという考え方の紹介
-emoji: "📌"
+emoji: "📏"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: []
-published: false
+topics: ["css"]
+published: true
 ---
 
 
 ## 従来のmedia queryの問題点
 
+CSSでWindow幅に応じて適応するスタイルを変えるために`media query`がある。スマートフォンやタブレットの普及によって、レスポンシブ対応が必須になった現代においては`media query`は必須の機能である。  
+ただ、この `media query` だけでは、限界がでてくる。それは使っているブラウザのwindow幅でしかCSSの切り替えができないということである。時にそれは実装者にとって非常に厄介な問題となりうる。
 
-CSSでWindow幅に応じて適応するスタイルを変えるために`media query`という技術がある。スマートフォンやタブレットの普及によって、レスポンシブ対応が必須になった現代においてはmedia queryは非常に便利な機能の一つである。  
-ただ、この `media query` だけでは、限界がでてくる。それは使っているブラウザのwindow幅でしかCSSの切り替えが行えないということである。時にそれは実装者にとって非常に厄介な問題となりうる。
+---
+![](https://storage.googleapis.com/zenn-user-upload/khpef387po2ct2zf62nusztvyef0)
 
-* * *
+上の図のようなブログのレイアウトを考えてみよう。  
+window幅が960pxの時はメインカラムとサブカラムが横並びで表示されているとする。
+959px幅の際にメインカラムの下にサブカラムが回りこむ。  
+window幅が960pxの際にはメインカラムとサブカラムが横並びでレイアウトされているので、メインカラムの幅はwindow幅が959pxの時よりも小さくなってしまう。その際にメインカラム内に配置できるグリッド数も960pxの時と比べると少なくなってしまうだろう。よって画面幅が小さいにもかかわらず中に表示するアイテムの数を増やさざるを得ない状況が生まれる。結果的に以下のような配置がありうるだろう。
 
-![](/archives/001/201706/6ee07732f0db2b8b2b3932d96816f091.png)
-
-上の図のようなレイアウトのケースを考えてみよう。  
-window幅が1024pxの時はメインカラムとサブカラムがある。960px幅の際にメインカラムの下にサブカラムが回りこむ。  
-window幅が1024pxの際にはメインカラムとサブカラムが横並びでレイアウトされているのでcontainerの幅はwindow幅が960pxの時よりも小さくなってしまう。その際にcontainer内に配置できるグリッド数も960pxの時と比べると少なくなってしまうだろう。結果的に以下のようなgrid配置が考えられる。
-
-*   （0 ~ 479px）container内のitemを2列表示
-*   （480px ~ 767px）container内のitemを3列表示
-*   （768 ~ 1023px）container内のitemを4列表示
-*   （1024px ~ 1199px）container内のitemを3列表示
-*   （1200px ~ ）再びcontainer内のitemを4列表示
+-（0 ~ 479px）メインカラム内のアイテムを2列表示
+-（480px ~ 767px）メインカラム内のアイテムを3列表示
+-（768 ~ 1023px）メインカラム内のアイテムを4列表示
+-（1024px ~ 1199px）メインカラム内のアイテムを3列表示
+-（1200px ~ ）再びメインカラム内のアイテムを4列表示
 
 ここで上の条件で従来のmedia queryを使ってCSSを書いてみよう
 
@@ -65,82 +64,60 @@ window幅が1024pxの際にはメインカラムとサブカラムが横並び�
 -----------------------
 
 ここで、`Container Queries`の登場である。  
-Container Queriesとはwindow幅が基準ではなく指定したセレクタの幅を基準にその中に記述された子要素のセレクタに対してCSSを適応していく考え方である。  
-containerの幅に応じて適応するスタイルを変更すれば、メインカラムとサブカラムが横並びから縦並びになる際のことを考慮しなくていいのでもっとシンプルにCSSがかけるようになる。
+Container Queriesとはwindow幅が基準ではなく指定した親セレクタの幅を基準にその中に記述された子要素のセレクタに対してCSSを適応していく考え方である。  
+containerの幅に応じて適応するスタイルを変更すれば、メインカラムとサブカラムが横並びから縦並びになる際のことを考慮しなくていいのでもっとシンプルにCSSが記述できるようになる。
 
 ```css
 .container {
   display:flex;
   flex-wrap:wrap;
+  contain: layout inline-size;
 }
 .container .item {
   width:50%;
 }
-.container:(min-width:480px) {
+@container:(min-width:480px) {
   .item {
     width:33.333333%;
   }
 }
-.container:(min-width:768px) {
+@container:(min-width:768px) {
   .item {
     width:25%;
   }
 }
 ```
 
-これくらいのCSSなら media query でいいじゃんと思うかもしれないが、さらに複雑なレイアウトになってくると media query だけで全体のレイアウトを管理するのは難しくなってくる。  
-特に、Reactなどのライブラリの普及によって、Componentの考え方が浸透してきた今、この`Container Queries`は今後必要になってくる考え方ではないだろうか？  
-しかし残念ながらContainer Queries はCSSの仕様にはないので、JavaScriptなどのサポートを頼る必要がある。
+これくらいのCSSなら media query でいいのではと思うかもしれないが、さまざまな要素が絡んでくると`media query`だけで全体のレイアウトを管理するのは難しくなってくる。  
+例えば、SaaSなどでよく見かける、左側にドロワーメニューがあり折りたためるような管理画面があったとすると、ドロワーの開閉状況によってメインコンテンツの幅の大きさが変わってくるため、windowサイズだけでCSSを描くのはだいぶ大変になってくる。
 
-## Container Queries の応用
+![](https://storage.googleapis.com/zenn-user-upload/1l4chgqg51j1adujmcw4xo5blw3w)
 
-自分が趣味で制作しているスタイルガイドジェネレーター Atomic Labでも Container Queriesの考え方を利用している。このスタイルガイドジェネレーターではわざわざwindow幅を小さくしてスマートフォンやタブレット時のコンポーネントのレイアウトを確認しなくていいようリサイズハンドルをつけている。containerをリサイズすれば、いかにもIframeをリサイズしているような実行結果を得られる。
+特に、Reactなどのライブラリの普及によって、Componentの考え方が浸透してきた今、この`Container Queries`は今後必要になってくる考え方ではないだろうか？
 
-* * *
+## 3. Container Queryのブラウザー対応状況
 
-[![](/archives/001/201706/9d8018953c5894eefb74cde3a053a926.png)](/archives/001/201706/large-9d8018953c5894eefb74cde3a053a926.png) 
+残念ながら、2021年5月現在ではContainer QueryはProposedの状況なので、どのブラウザーでも標準には利用できない。唯一Chromeだけが、`chrome://flags`からお試しいただける状況だ。
 
-container幅 388px
+https://caniuse.com/?search=container%20query
 
-* * *
+![](https://storage.googleapis.com/zenn-user-upload/ngjy5c8ugqrlr3hylfc9mnnnw9do)
 
-![](/archives/001/201706/6fde0087d6205685d8b6aba80504b81d.png)
+Container QueryをサポートするPolyfillはあるようだ。
 
-container幅 818px
+https://github.com/jsxtools/cqfill
 
-* * *
+記法は少し原案と違うが、独自の記法でContainer Queryをサポートしているライブラリもある
 
-> ![](http://steelydylan.github.io/atomic-lab/images/ogp.png)
-> 
-> [AtomicLab](http://steelydylan.github.io/atomic-lab/)
-> 
-> Component Guide Generator Based on Atomic Design
-> 
-> * * *
+http://marcj.github.io/css-element-queries/
 
-参考
---
+## 4. Container Queryのデモ
 
-* * *
+ただ、PostCSSを使うことで、Reactなどで簡単にContainer Queryを今からでも使うことができる。カードの大きさをドラッグで調整することで中身のレイアウトが変化するのが確認できるだろう。
 
-> ![](https://ethanmarcotte.com/img/ethan-thumb.jpg)
-> 
-> [On container queries. ??ethanmarcotte.com](https://ethanmarcotte.com/wrote/on-container-queries/)
-> 
-> A number of prominent web folks have been asking for “container queries.” I think they’re right to do so, and here’s why.
-> 
-> * * *
+@[codesandbox](https://codesandbox.io/embed/nervous-leaf-wif8f?fontsize=14&hidenavigation=1&theme=dark)
 
-container queriesを実現するためのpolyfillもいくつかgithubなどで配布されている。
 
-* * *
+## 5. まとめ
 
-> ![](https://avatars2.githubusercontent.com/u/367169?v=3&s=400)
-> 
-> [ausi/cq-prolyfill](https://github.com/ausi/cq-prolyfill)
-> 
-> GitHub
-> 
-> cq-prolyfill - Prolyfill for CSS Container Queries
-> 
-> * * *
+ReactやVueなどのコンポーネントライブラリが主流になった現在、コンポーネントの表示のさせ方はwindowサイズではなく、親（Container）のサイズを見て判断させたほうが都合がいいケースが増えてきた。`media query`を使うよりも圧倒的にCSSの記述量が減り、メンテナンスコストが下がるはずだ。今後プロジェクトで積極的に取り入れていきたい。
