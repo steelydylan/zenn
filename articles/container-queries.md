@@ -76,12 +76,12 @@ containerの幅に応じて適応するスタイルを変更すれば、メイ�
 .container .item {
   width:50%;
 }
-@container:(min-width:480px) {
+@container(min-width:480px) {
   .item {
     width:33.333333%;
   }
 }
-@container:(min-width:768px) {
+@container(min-width:768px) {
   .item {
     width:25%;
   }
