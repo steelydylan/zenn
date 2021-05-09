@@ -95,9 +95,9 @@ containerの幅に応じて適応するスタイルを変更すれば、メイ�
 
 特に、Reactなどのライブラリの普及によって、Componentの考え方が浸透してきた今、この`Container Queries`は今後必要になってくる考え方ではないだろうか？
 
-## 3. Container Queryのブラウザー対応状況
+## 3. Container Queriesのブラウザー対応状況
 
-残念ながら、2021年5月現在ではContainer QueryはProposedの状況なので、どのブラウザーでも標準には利用できない。唯一Chromeだけが、`chrome://flags`からお試しいただける状況だ。
+残念ながら、2021年5月現在では`Container Queries`はProposedの状況なので、どのブラウザーでも標準には利用できない。唯一Chromeだけが、`chrome://flags`からお試しいただける状況だ。
 
 https://caniuse.com/?search=container%20query
 
@@ -111,9 +111,9 @@ https://github.com/jsxtools/cqfill
 
 http://marcj.github.io/css-element-queries/
 
-## 4. Container Queryのデモ
+## 4. Container Queriesのデモ
 
-ただ、PostCSSを使うことで、Reactなどで簡単にContainer Queryを今からでも使うことができる。カードの大きさをドラッグで調整することで中身のレイアウトが変化するのが確認できるだろう。
+ただ、PostCSSを使うことで、Reactなどで簡単に`Container Queries`を今からでも使うことができる。カードの大きさをドラッグで調整することで中身のレイアウトが変化するのが確認できるだろう。
 
 @[codesandbox](https://codesandbox.io/embed/nervous-leaf-wif8f?fontsize=14&hidenavigation=1&theme=dark)
 
