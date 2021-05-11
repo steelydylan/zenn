@@ -1,5 +1,5 @@
 ---
-title: Container Queriesという考え方の紹介と今からproductionで利用するには
+title: Container Queriesという考え方の紹介と今から利用するには
 emoji: "📏"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["css"]
