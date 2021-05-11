@@ -1,5 +1,5 @@
 ---
-title: Container Queriesという考え方の紹介
+title: Container Queriesという考え方の紹介と今からproductionで利用するには
 emoji: "📏"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["css"]
@@ -12,7 +12,6 @@ published: true
 CSSでWindow幅に応じて適応するスタイルを変えるために`media query`がある。スマートフォンやタブレットの普及によって、レスポンシブ対応が必須になった現代においては`media query`は必須の機能である。  
 ただ、この `media query` だけでは、限界がでてくる。それは使っているブラウザのwindow幅でしかCSSの切り替えができないということである。時にそれは実装者にとって非常に厄介な問題となりうる。
 
----
 ![](https://storage.googleapis.com/zenn-user-upload/khpef387po2ct2zf62nusztvyef0)
 
 上の図のようなブログのレイアウトを考えてみよう。  
@@ -60,8 +59,7 @@ window幅が960pxの際にはメインカラムとサブカラムが横並びで
 
 基準点がwindow幅なので、1024pxの時点でメインカラムとサブカラムが横並びになる際のグリッド数を再び考慮してCSSを書く必要性が出てくる。
 
-## 2. Container Queriesとは
------------------------
+## Container Queriesとは
 
 ここで、`Container Queries`の登場である。  
 Container Queriesとはwindow幅が基準ではなく指定した親セレクタの幅を基準にその中に記述された子要素のセレクタに対してCSSを適応していく考え方である。  
@@ -95,7 +93,7 @@ containerの幅に応じて適応するスタイルを変更すれば、メイ�
 
 特に、Reactなどのライブラリの普及によって、Componentの考え方が浸透してきた今、この`Container Queries`は今後必要になってくる考え方ではないだろうか？
 
-## 3. Container Queriesのブラウザー対応状況
+## Container Queriesのブラウザー対応状況
 
 残念ながら、2021年5月現在では`Container Queries`はProposedの状況なので、どのブラウザーでも標準には利用できない。唯一Chromeだけが、`chrome://flags`からお試しいただける状況だ。
 
@@ -111,13 +109,13 @@ https://github.com/jsxtools/cqfill
 
 http://marcj.github.io/css-element-queries/
 
-## 4. Container Queriesのデモ
+## Container Queriesのデモ
 
 ただ、PostCSSを使うことで、Reactなどで簡単に`Container Queries`を今からでも使うことができる。カードの大きさをドラッグで調整することで中身のレイアウトが変化するのが確認できるだろう。
 
 @[codesandbox](https://codesandbox.io/embed/nervous-leaf-wif8f?fontsize=14&hidenavigation=1&theme=dark)
 
 
-## 5. まとめ
+## まとめ
 
 ReactやVueなどのコンポーネントライブラリが主流になった現在、コンポーネントの表示のさせ方はwindowサイズではなく、親（Container）のサイズを見て判断させたほうが都合がいいケースが増えてきた。`media query`を使うよりも圧倒的にCSSの記述量が減り、メンテナンスコストが下がるはずだ。今後プロジェクトで積極的に取り入れていきたい。
