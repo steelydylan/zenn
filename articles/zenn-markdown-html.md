@@ -13,7 +13,7 @@ published: false
 マークダウンパーサーとはマークダウンをHTMLに変換するコードのことを指しているのですが、
 実はZennのマークダウンパーサーは GitHub に [zenn-markdown-html](https://github.com/zenn-dev/zenn-editor/tree/master/packages/zenn-markdown-html) として公開されています。
 
-`zenn-markdown-html`はブラウザーでもNode.js上、Workerでも動く様に作られているのですが、そのようにisomorphicに開発するのにとても苦労しました。
+`zenn-markdown-html`はブラウザーでもNode.js上でもWorkerでも動く様に作られているのですが、そのようにisomorphicに開発するのにとても苦労しました。
 
 # zenn-markdown-htmlの開発に使われている技術
 
