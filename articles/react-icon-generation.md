@@ -3,7 +3,7 @@ title: "Design Ops推進の一環としてFigmaのアイコンを自動でnpmに
 emoji: "📌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["github", "figma"]
-published: false
+published: true
 ---
 
 ## DesignOpsとは
@@ -112,7 +112,7 @@ main();
 
 自動化のために、このスクリプトを実行するコマンドを`package.json`に登録しておきましょう。
 
-```json
+```json:package.json
 "scripts": {
   "figma": "node ./tools/figma.js",
 }
@@ -130,7 +130,7 @@ $ sed -i 's/ fill=\"none\"//g; s/fill=\"[^\"]+\"/fill=\"currentColor\"/' ./asset
 
 自動化のために、`package.json`にコマンドを登録しておきましょう
 
-```json
+```json:package.json
 "scripts": {
   "figma": "node ./tools/figma.js",
   "currentColor": "sed -i 's/ fill=\"none\"//g; s/fill=\"[^\"]+\"/fill=\"currentColor\"/' ./assets/*.svg"
@@ -212,7 +212,7 @@ fs.writeFileSync('./src/index.ts', source, 'utf-8')
 さらに、TypeScriptをインストールし`tsc`コマンドで、srcからdistにアイコンを吐き出します。
 一連の流れを`npm scripts`としてpackage.jsonに登録します。
 
-```json
+```json:package.json
 "scripts": {
   "figma": "node ./tools/figma.js",
   "currentColor": "sed -i 's/ fill=\"none\"//g; s/fill=\"[^\"]+\"/fill=\"currentColor\"/' ./assets/*.svg",
@@ -221,6 +221,13 @@ fs.writeFileSync('./src/index.ts', source, 'utf-8')
   "build:ts": "tsc",
   "build": "yarn currentColor && yarn build:svg && yarn build:index && yarn build:ts"
 }
+```
+
+ライブラリをインストールした際にどこにある型定義ファイルとjsを読み込めばいいか`Webpack`などのツールが判断できるように、エントリーポイントも`package.json`に忘れないように書いておきましょう。
+
+```json:package.json
+"main": "dist/index.js",
+"types": "dist/index.d.ts",
 ```
 
 ### 5. 2~5の一連の流れをGitHub Actionsで定期的に回す
