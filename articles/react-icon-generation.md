@@ -27,7 +27,7 @@ DesignOpsとは質の高いデザインのアウトプットの維持を支え�
 Figmaではデザインを共通で使い回すために作ったパーツをコンポーネント化することができます。
 コンポーネント化したアイコンは一覧でこのように確認することができます。
 
-![](https://storage.googleapis.com/zenn-user-upload/d10bb6abea2d1de23c8fee0d.png)
+![](https://storage.googleapis.com/zenn-user-upload/d10bb6abea2d1de23c8fee0d.png =200x)
 
 同時にFigmaAPIからもコンポーネント化した部品は取得しやすいのでデザイナーにコンポーネント管理してもらいましょう。
 
@@ -46,7 +46,7 @@ https://www.figma.com/developers/api
 
 また、リクエストヘッダーに`X-FIGMA-TOKEN`をつけて送る必要があり、このトークンは管理画面のアカウントより取得できます。
 
-![](https://storage.googleapis.com/zenn-user-upload/ee9d4a4ee1de0dc1b8077d8c.png)
+![](https://storage.googleapis.com/zenn-user-upload/ee9d4a4ee1de0dc1b8077d8c.png =200x)
 
 取得できたコンポーネント一覧からさらにそれぞれのコンポーネントのSVGのURLを取得します。以下のAPIを叩いていただくことで取得できます。`ids`の部分には、先ほどのComponent APIから取得できたnode_id一覧をカンマ区切りにした文字列が入ります。
 
