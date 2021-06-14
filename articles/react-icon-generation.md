@@ -33,7 +33,7 @@ Figmaではデザインを共通で使い回すために作ったパーツをコ
 
 Figma上でコンポーネント化する方法はこちらの記事では触れませんがよろしければこちらの動画をご覧ください。
 
-https://youtu.be/k74IrUNaJVk?list=PLXDU_eVOJTx5LSjOmeBYMuvaa4UayfMe4
+@[youtube](https://youtu.be/k74IrUNaJVk?list=PLXDU_eVOJTx5LSjOmeBYMuvaa4UayfMe4)
 
 ### 2. FigmaAPIを利用してコンポーネント一覧を取得できるようにする
 
