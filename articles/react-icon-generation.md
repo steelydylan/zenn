@@ -45,7 +45,7 @@ https://www.figma.com/developers/api
 
 `https://api.figma.com/v1/files/${FIGMA_FILE_KEY}/components`
 
-`FIGMA_FILE_KEY`にはFigmaのファイルを開いていただくと、https://www.figma.com/file/xxxxxxx/****** のようなURLになっています。xxxxxxxの部分がFIGMA_FILE_KEYにあたります。
+`FIGMA_FILE_KEY`にはブラウザーでFigmaのファイルを開いていただくと、`https://www.figma.com/file/xxxxxxx/******` のようなURLになっています。xxxxxxxの部分がFIGMA_FILE_KEYにあたります。
 
 
 また、リクエストヘッダーに`X-FIGMA-TOKEN`をつけて送る必要があり、このトークンは管理画面のアカウントより取得できます。
