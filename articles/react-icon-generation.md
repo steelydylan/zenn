@@ -28,6 +28,7 @@ export const Main = () => (
 
 https://material-ui.com/components/material-icons/
 
+Figmaに書いたアイコンがこのように自動でReactコンポーネントとして、`npm install`できるようになるってすごく便利だと思いませんか？
 この記事ではどのような手順で自動化に成功したのかメモがてら紹介したいと思います。
 
 ## 自動化の流れ
