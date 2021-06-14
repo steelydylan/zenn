@@ -1,5 +1,5 @@
 ---
-title: "Design Ops推進の一環としてFigmaのアイコンを自動でnpmにpublishしてみる"
+title: "Design Ops推進の一環としてFigma上のコンポーネントを自動でnpmにpublishしてみる"
 emoji: "📌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["github", "figma"]
