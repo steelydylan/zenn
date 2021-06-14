@@ -17,7 +17,7 @@ js側では、以下のような雰囲気で`npm`からアイコンコンポー�
 ```tsx
 import { MenuClose } from '@karakuri-ai/icons' // <- 現在非公開のパッケージです
 
-export const Main () => (
+export const Main = () => (
   <div>
     <MenuClose />
   </div>
