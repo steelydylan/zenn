@@ -18,7 +18,8 @@ js側では、以下のような雰囲気で`npm`からアイコンコンポー�
 import { MenuClose } from '@karakuri-ai/icons' // <- 現在非公開のパッケージです
 
 export const Main = () => (
-  <div>
+  // 以下のように外側からアイコンの色を変更できます。
+  <div style={{ color: '#efefef' }}> 
     <MenuClose />
   </div>
 )
