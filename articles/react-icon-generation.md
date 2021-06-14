@@ -19,11 +19,15 @@ import { MenuClose } from '@karakuri-ai/icons' // <- 現在非公開のパッケ
 
 export const Main = () => (
   // 以下のように外側からアイコンの色を変更できます。
-  <div style={{ color: '#efefef' }}> 
-    <MenuClose />
+  <div> 
+    <MenuClose style={{ color: '#efefef', width: '20px', height: '20px' }} />
   </div>
 )
 ```
+
+使い勝手的には `@material-ui/icons` に似ていると思います。
+
+https://material-ui.com/components/material-icons/
 
 この記事ではどのような手順で自動化に成功したのかメモがてら紹介したいと思います。
 
