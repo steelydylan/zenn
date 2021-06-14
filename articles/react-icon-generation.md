@@ -2,7 +2,7 @@
 title: "DesignOps推進の一環としてFigma上のコンポーネントを自動でnpmにpublishしてみる"
 emoji: "📦"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["github", "figma", "react", "typescript"]
+topics: ["github", "figma", "react", "typescript", "npm"]
 published: true
 ---
 
@@ -283,8 +283,8 @@ jobs:
         run: yarn --frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GPR_TOKEN }}
-      - name: fetch
-        run: yarn run fetch 
+      - name: figma
+        run: yarn run figma 
         env:
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
           FIGMA_FILE_KEY: ${{ secrets.FIGMA_FILE_KEY }}
