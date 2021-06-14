@@ -52,7 +52,7 @@ https://www.figma.com/developers/api
 
 ![](https://storage.googleapis.com/zenn-user-upload/ee9d4a4ee1de0dc1b8077d8c.png =200x)
 
-取得できたコンポーネント一覧からさらにそれぞれのコンポーネントのSVGのURLを取得します。以下のAPIを叩いていただくことで取得できます。`ids`の部分には、先ほどのComponent APIから取得できたnode_id一覧をカンマ区切りにした文字列が入ります。
+取得できたコンポーネント一覧から、さらにそれぞれのコンポーネントのSVGのURLを取得します。以下のAPIを叩いていただくことで取得できます。`ids`の部分には、先ほどのComponent APIから取得できたnode_id一覧をカンマ区切りにした文字列が入ります。
 
 `https://api.figma.com/v1/images/${FIGMA_FILE_KEY}?ids=${ids}&format=svg`
 
