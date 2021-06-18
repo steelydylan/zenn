@@ -18,8 +18,8 @@ js側では、以下のような雰囲気で`npm`からアイコンコンポー�
 import { MenuClose } from '@karakuri-ai/icons' // <- 現在非公開のパッケージです
 
 export const Main = () => (
-  <div> 
-    <MenuClose style={{ color: '#efefef', width: '20px', height: '20px' }} />
+  <div style={{ color: '#efefef', width: '20px', height: '20px' }}> 
+    <MenuClose />
   </div>
 )
 ```
@@ -28,6 +28,7 @@ export const Main = () => (
 
 https://material-ui.com/components/material-icons/
 
+Figmaに書いたアイコンがこのように自動でReactコンポーネントとして、`npm install`できるようになるってすごく便利だと思いませんか？
 この記事ではどのような手順で自動化に成功したのかメモがてら紹介したいと思います。
 
 ## 自動化の流れ
