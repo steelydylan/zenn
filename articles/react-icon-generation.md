@@ -259,7 +259,7 @@ on:
     - cron:  '*/30 * * * *'
 ```
 
-`git status --porcelain`を使って、Figamaから新たに取得したsvgファイル一式によってgitに差分が発生したかチェックし、差分が発生していない場合は`exit 1`でGitHub Actionsを終了しています。
+`git status --porcelain`を使って、Figmaから新たに取得したsvgファイル一式によってgitに差分が発生したかチェックし、差分が発生していない場合は`exit 1`でGitHub Actionsを終了しています。
 差分があった場合は、`yarn version --patch`でpackage.jsonのバージョンを更新し、commit後、`yarn publish`でアイコン一式をnpmにpublishします。
 
 ```yml:publish.yml
