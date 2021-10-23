@@ -59,7 +59,6 @@ https://blog-friends.com/
 
 
 Next.jsとTypeScriptはご存知の方多いと思うので割愛して、今回利用したTailwindCSSとSupabase、Playwrightについて紹介します。
-SWRとRecoilについては今回は割愛させていただきます。
 
 ### Supabase
 
