@@ -170,7 +170,7 @@ https://headlessui.dev/
 
 GitHub ActionsはソースコードのPush時やPRのマージの際だけではなく、例えば1時間に1度処理を実行したりなどCronとしても十分役に立ちます。今回はCronとしてGitHub Actionsを利用しています。
 
-以下のコードでAPIを実行し、ユーザーの投稿に対して押されたいいね数のカウントと新規フィード情報取得を行なっています。
+以下のコードでnpm scriptsを実行し、ユーザーの投稿に対して押されたいいね数のカウントと新規フィード情報取得を行なっています。
 
 ```yml
 name: hourly-cron-job
@@ -182,15 +182,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: count-likes
-        run: |
-          curl --request POST \
-            --url 'https://blog-friends.com/api/likes/count' \
-            --header 'Authorization: Bearer ${{ secrets.CRON_KEY }}'
+        run: yarn likes
+        env:
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }} 
+
       - name: import-feeds
-        run: |
-          curl --request POST \
-          --url 'https://blog-friends.com/api/feeds/import' \
-          --header 'Authorization: Bearer ${{ secrets.CRON_KEY }}'
+        run: yarn feed
+        env:
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }} 
 ```
 
 ## 開発期間
