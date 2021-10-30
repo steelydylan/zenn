@@ -47,6 +47,8 @@ iframeは任意のサイトをパーツのように別のサイトに埋め込�
 それはiframeの高さをiframeの内側から決められないことです。
 iframeの高さが決められないと、変にiframe内がスクロールできてしまったり逆にiframeが高くなりすぎたりしてダサくなってしまいます。
 
+![](https://storage.googleapis.com/zenn-user-upload/f523f6662ca09e40e0b81262.png)
+
 そこで、iframe内から自身の高さを取得してそれを`親window`に送信するようにしました。
 `window.parent.postMessage`を使うと親windowに対してiframe内からメッセージを送信することができます。
 
