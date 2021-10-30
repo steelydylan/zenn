@@ -45,6 +45,8 @@ https://blog-friends.com/users/steelydylan/embed
 iframeは任意のサイトをパーツのように別のサイトに埋め込むことができて大変便利なのですが不便な点もあります。
 
 それはiframeの高さをiframeの内側から決められないことです。
+iframeの高さが決められないと、変にiframe内がスクロールできてしまったり逆にiframeが高くなりすぎたりしてダサくなってしまいます。
+
 そこで、iframe内から自身の高さを取得してそれを`親window`に送信するようにしました。
 `window.parent.postMessage`を使うと親windowに対してiframe内からメッセージを送信することができます。
 
