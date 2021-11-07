@@ -2,7 +2,7 @@
 title: "ブログを継続するためのサービス Blog Friends を個人開発した話"
 emoji: "👨‍💻"
 type: "idea" # tech: 技術記事 / idea: アイデア
-topics: ["nextjs", "react", "typescript", "tailwind", "supabase", "個人開発"]
+topics: ["nextjs", "typescript", "tailwind", "supabase", "個人開発"]
 published: true
 ---
 
