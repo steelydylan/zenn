@@ -2,7 +2,7 @@
 title: "Notion APIで自分のポートフォリオサイトを作ってみた"
 emoji: "📔"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["github"]
+topics: ["nextjs", "notion", "notion-api"]
 published: true
 ---
 
