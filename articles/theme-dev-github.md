@@ -119,7 +119,7 @@ template: |
 ただし、そこは人なので忘れてしまうケースが多いです。
 そのためPull Request時にラベルが設定されていないとGitHub Actionsに怒ってもらうように以下のように設定しています。
 
-:::details .github/pr.yml
+:::details .github/workflows/pr.yml
 
 ```yml
 name: PR
