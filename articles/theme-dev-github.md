@@ -218,9 +218,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: install
         run: yarn --frozen-lockfile
-      - name: package-version
+      - name: package-version #ここで環境変数にpackage.jsonのバージョンをセット
         run: node -p -e '`PACKAGE_VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
-      - name: package-version-to-git-tag
+      - name: package-version-to-git-tag #ここで先程の環境変数をgitのtagに指定
         uses: pkgdeps/action-package-version-to-git-tag@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -231,7 +231,7 @@ jobs:
       - name: get-npm-version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@master
-      - name: create release draft
+      - name: create release draft #ここでリリースノートを作成
         id: create-draft
         uses: release-drafter/release-drafter@v5.12.1
         with:
@@ -240,7 +240,7 @@ jobs:
           tag: ${{ steps.package-version.outputs.current-version }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload Release Asset
+      - name: Upload Release Asset #ここで成果物をリリースノートにアップロード
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1
         env:
