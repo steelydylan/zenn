@@ -6,7 +6,7 @@ topics: ["githubactions", "github", "wordpress"]
 published: true
 ---
 
-テーマとはWordPressやGatsbyにおけるデザインテンプレートを指します。
+この記事でいうテーマとはWordPressやGatsbyにおけるデザインテンプレートを指しています。
 
 ## 開発に携わっているテーマ
 
