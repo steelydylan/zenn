@@ -1,5 +1,5 @@
 ---
-title: "GitHub Actionsを利用し有償テーマの品質を高める施策"
+title: "GitHub Actionsを利用しリリースを自動化し有償テーマの品質を高める施策"
 emoji: "🛠️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["githubactions", "github", "wordpress"]
