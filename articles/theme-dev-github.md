@@ -216,7 +216,7 @@ jobs:
         registry-url: 'https://npm.pkg.github.com'
     - name: install
       run: yarn --frozen-lockfile
-    - name: version check
+    - name: version check #ここでブランチ名とpackage.jsonのバージョンが一致しているかをチェック
       run: BRANCH_NAME=$HEAD_BRANCH node ./tools/version-check.js
       env:
         HEAD_BRANCH: ${{ github.head_ref }}
@@ -226,6 +226,7 @@ jobs:
 const pkg = require("../package.json");
 
 const branch = process.env.BRANCH_NAME;
+ // 例えば、release/2.11.0というブランチ名の場合、version変数に2.11.0を格納する
 const [type, version] = branch.split("/");
 
 console.log(pkg.version, version);
