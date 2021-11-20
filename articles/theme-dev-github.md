@@ -18,7 +18,7 @@ published: true
 ### SANGO
 
 WordPressテーマ、装飾が豊富でWordPressのブロックエディターにも完全対応。
-カスタマイズのしやすさや表示スピードが高速なことも特徴の一つ。
+カスタマイズのしやすさや表示スピードが高速なことが自慢です！
 
 https://saruwakakun.design/
 
