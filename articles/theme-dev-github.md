@@ -255,7 +255,9 @@ jobs:
 
 package.jsonに記述されているテーマのバージョンが自動でgitのタグに設定され、そのgitのタグがリリースノートに自動で記載されるのがポイントです！
 
-また、upload-release-assetというGitHub Actionを使うことで簡単にRelease Drafterから成果物を受け取ってアセットをリリースノートにアップロードすることができました。
+また、`upload-release-asset` というGitHub Actionを使うことで簡単にRelease Drafterから成果物を受け取ってアセットをリリースノートにアップロードすることができました。
+
+
 
 この5のステップが正しく動作するためには`release/***`ブランチで正しくpackage.jsonにテーマのバージョンが記載されている必要があります。
 
