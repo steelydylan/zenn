@@ -188,8 +188,59 @@ jobs:
 5. `master`にマージされるとリリースノートが生成される
 
 
-以下は5のステップにおいてreleaseブランチのPRがmasterにマージされた際のワークフローになります。
 
+4のステップではPR時に以下のようなワークフローを作っています。
+
+:::details version-check
+
+```yml
+name: Version Check
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  auto-bumping:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v1
+    - name: setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+        registry-url: 'https://npm.pkg.github.com'
+    - name: install
+      run: yarn --frozen-lockfile
+    - name: version check
+      run: BRANCH_NAME=$HEAD_BRANCH node ./tools/version-check.js
+      env:
+        HEAD_BRANCH: ${{ github.head_ref }}
+```
+
+```js:version-check.yml
+const pkg = require("../package.json");
+
+const branch = process.env.BRANCH_NAME;
+const [type, version] = branch.split("/");
+
+console.log(pkg.version, version);
+
+if (pkg.version !== version) {
+  throw new Error("version not matched");
+}
+```
+
+:::
+
+ここでは`release/***`ブランチの`***`に当たるバージョンと`package.json`のバージョンが一致しているかを確認しています。
+
+
+5のステップにおいてはreleaseブランチのPRがmasterにマージされた際のワークフローを以下のように設定しています。
 
 :::details publish.yml
 ```yml
@@ -257,59 +308,6 @@ package.jsonに記述されているテーマのバージョンが自動でgit�
 
 また、`upload-release-asset` というGitHub Actionを使うことで簡単にRelease Drafterから成果物を受け取ってアセットをリリースノートにアップロードすることができました。
 
-
-
-この5のステップが正しく動作するためには`release/***`ブランチで正しくpackage.jsonにテーマのバージョンが記載されている必要があります。
-
-そこで、4のステップではPR時に以下のようなワークフローを作っています。
-
-:::details version-check
-
-```yml
-name: Version Check
-on:
-  pull_request:
-    branches:
-      - master
-    types:
-      - opened
-      - synchronize
-
-jobs:
-  auto-bumping:
-    runs-on: ubuntu-latest
-    steps:
-    - name: checkout
-      uses: actions/checkout@v1
-    - name: setup Node
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12.x
-        registry-url: 'https://npm.pkg.github.com'
-    - name: install
-      run: yarn --frozen-lockfile
-    - name: version check
-      run: BRANCH_NAME=$HEAD_BRANCH node ./tools/version-check.js
-      env:
-        HEAD_BRANCH: ${{ github.head_ref }}
-```
-
-```js:version-check.yml
-const pkg = require("../package.json");
-
-const branch = process.env.BRANCH_NAME;
-const [type, version] = branch.split("/");
-
-console.log(pkg.version, version);
-
-if (pkg.version !== version) {
-  throw new Error("version not matched");
-}
-```
-
-:::
-
-ここでは`release/***`ブランチの`***`に当たるバージョンと`package.json`のバージョンが一致しているかを確認しています。
 
 ### 3. サポートしているPHPの一番低いバージョンで問題が起こらないか構文チェックを行う
 
