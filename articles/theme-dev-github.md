@@ -244,7 +244,7 @@ if (pkg.version !== version) {
 
 5のステップにおいてはreleaseブランチのPRがmasterにマージされた際のワークフローを以下のように設定しています。
 
-:::details publish.yml
+:::details .github/workflows/publish.yml
 ```yml
 name: Publish
 env:
