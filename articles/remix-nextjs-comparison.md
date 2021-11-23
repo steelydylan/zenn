@@ -112,6 +112,7 @@ export async function action({ request }) {
 }
 
 export default function Todo () {
+  // ここでAPI（action）から帰ってきたデータを受け取れる
   const data = useActionData()
   return (
     <Form method="post">
