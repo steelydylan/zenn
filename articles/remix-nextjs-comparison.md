@@ -95,7 +95,6 @@ export default function Index() {
 各Nested Routesにも先程の`CatchBoundry`が設定できるので、`routes/users/$id.tsx`でエラーが起こりコンポーネントが死んだとしても、`<Outlet />`の部分のみになるので、Reactでよくあるいきなりページ全体が死ぬといったことがなくなります。
 堅牢なWebアプリケーションを作れるといった点では確かに良さそうです！
 
-
 ## POST処理も同じRoute内に書ける
 
 ページコンポーネントが置かれているファイルにPOSTされた時の処理も書いておけるので見通しがいいですね。
