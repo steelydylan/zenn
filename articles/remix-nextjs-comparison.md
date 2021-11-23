@@ -71,7 +71,7 @@ export function ErrorBoundary({ error }) {
 }
 ```
 
-以下のようにエラーの内容は`useCatch`を使って取り出すこともできます。
+CatchBoundaryでは、以下のようにエラーの内容を`useCatch`を使って取り出すこともできます。
 
 ```tsx
 export function CatchBoundary() {
