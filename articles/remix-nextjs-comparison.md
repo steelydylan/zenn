@@ -16,7 +16,7 @@ Remixとは `react-router`というライブラリーの開発元が作ったRea
 
 ## SSGやISRはサポートしていない
 
-Next.jsにはSSGやISRなどあらかじめデータをビルドしておいてその結果をリクエスト時に返すといった機能はRemixにはありませんでした。
+Next.jsにはSSGやISRなどあらかじめデータをビルドしておいてその結果をリクエスト時に返すといった機能がありますが、Remixにはありませんでした。
 その代わりRemixでは以下のようにページコンポーネントごとに`headers`をexportするだけで`HTTP header`をコントロールできる仕組みがあるので、そこで`Cache-Control HTTP`ヘッダーを使ったりして調整することができます。
 
 ```ts
@@ -27,7 +27,7 @@ export const headers: HeadersFunction = ({ loaderHeaders }) => {
 }
 ```
 
-以下のドキュメントにあるようにRemixではSSGやISRを使ったキャッシュ戦略よりも、Cloudflare WorkersなどのEdgeで実行することや、Cache Controlなどによってパフォーマンス向上を図ることを重要視しているようですね。
+以下のドキュメントにあるようにRemixではSSGやISRを使ったキャッシュ戦略よりも、Cloudflare WorkersなどのEdgeで実行することや、Cache Controlなどによってパフォーマンス向上を図ることを推奨しているようですね。
 
 https://remix.run/docs/en/v1/guides/performance
 
