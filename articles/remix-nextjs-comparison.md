@@ -53,6 +53,7 @@ export const links: LinksFunction = () => {
 ```
 
 Next.jsのライブラリでいうところの`next-seo`的なことが楽にできていいですね！
+特定のページでのみCSSを読み込むといった時にも利用できます。
 
 ## Routesごとのエラーハンドリング
 
