@@ -104,9 +104,9 @@ Next.jsでいう、`pages/api/`以下に書いてた処理をページコンポ�
 `remix`からFormコンポーネントと`useActionData`というhooksを利用することでこれが実現できます。
 
 ```tsx:todo.tsx
-import { Form, useActionData } from "remix";
+import { Form, useActionData, json } from "remix";
 
-export async function action({ request, response }) {
+export async function action({ request }) {
   const body = await request.formData();
   return json({ result: 'OK' })
 }
