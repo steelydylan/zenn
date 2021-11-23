@@ -91,7 +91,7 @@ export default function Index() {
 }
 ```
 
-この場合、`<Outlet />`に対するコンポーネントを`routes/users/$id.tsx`に設定することができます。
+この場合、`<Outlet />`に対するコンポーネントを`routes/users/$id.tsx`などに設定することができます。
 各Nested Routesにも先程の`CatchBoundry`が設定できるので、`routes/users/$id.tsx`でエラーが起こりコンポーネントが死んだとしても、`<Outlet />`の部分のみになるので、Reactでよくあるいきなりページ全体が死ぬといったことがなくなります。
 堅牢なWebアプリケーションを作れるといった点では確かに良さそうです！
 
