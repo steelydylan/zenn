@@ -57,7 +57,20 @@ Next.jsのライブラリでいうところの`next-seo`的なことが楽にで
 
 ## Routesごとのエラーハンドリング
 
-RemixではRoutesごとにエラー時の表示を`ErrorBoundary`や`CatchBoundry`コンポーネントをexportすることで設定することができます。
+RemixではRoutesごとにエラー時の表示を`ErrorBoundary`や`CatchBoundary`コンポーネントをexportすることで設定することができます。
+ErrorBoundaryはコンポーネント内での意図しないエラーが発生した場合に表示でき、
+CatchBoundaryはページを表示する際やPOST時にサーバーサイドでエラーが発生した場合に表示できます。
+
+```tsx
+export function ErrorBoundary({ error }) {
+  return (
+    <div>
+      <h1>{error.message}</h1>
+    </div>
+  );
+}
+```
+
 以下のようにエラーの内容は`useCatch`を使って取り出すこともできます。
 
 ```tsx
