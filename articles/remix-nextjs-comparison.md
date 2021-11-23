@@ -57,7 +57,7 @@ Next.jsのライブラリでいうところの`next-seo`的なことが楽にで
 
 ## Routesごとのエラーハンドリング
 
-RemixではRoutesごとにエラー時の表示を`CatchBoundry`コンポーネントをexportすることで設定することができます。
+RemixではRoutesごとにエラー時の表示を`ErrorBoundary`や`CatchBoundry`コンポーネントをexportすることで設定することができます。
 以下のようにエラーの内容は`useCatch`を使って取り出すこともできます。
 
 ```tsx
@@ -93,7 +93,7 @@ export default function Index() {
 ```
 
 この場合、`<Outlet />`に対するコンポーネントを`routes/users/$id.tsx`などに設定することができます。
-各Nested Routesにも先程の`CatchBoundry`が設定できるので、`routes/users/$id.tsx`でエラーが起こりコンポーネントが死んだとしても、`<Outlet />`の部分のみになるので、Reactでよくあるいきなりページ全体が死ぬといったことがなくなります。
+各Nested Routesにも先程の`ErrorBoundary`が設定できるので、`routes/users/$id.tsx`でエラーが起こりコンポーネントが死んだとしても、`<Outlet />`の部分のみになるので、Reactでよくあるいきなりページ全体が死ぬといったことがなくなります。
 堅牢なWebアプリケーションを作れるといった点では確かに良さそうです！
 
 ## POST処理も同じRoute内に書ける
