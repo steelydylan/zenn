@@ -59,7 +59,7 @@ Next.jsのライブラリでいうところの`next-seo`的なことが楽にで
 
 RemixではRoutesごとにエラー時の表示を`ErrorBoundary`や`CatchBoundary`コンポーネントをexportすることで設定することができます。
 ErrorBoundaryはクライアントサイドのコンポーネントで意図しないエラーが発生した場合に表示でき、
-CatchBoundaryはページを表示する際やPOST時にサーバーサイドでエラーが発生した場合に表示できます。
+CatchBoundaryはページを表示する際やPOST時にサーバーサイドからエラー系のステータスコードが返ってきた際に表示できます。
 
 ```tsx
 export function ErrorBoundary({ error }) {
