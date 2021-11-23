@@ -33,7 +33,7 @@ https://remix.run/docs/en/v1/guides/performance
 
 ## 環境にロックインされない
 
-もちろんNext.jsでは、GCPやServerlessなど他の環境にデプロイすることも当然可能なのですが、Next.jsにデプロイすることでISRや`next/image`などパフォーマンスの最適化の上でいくつか恩恵が受けられます。
+もちろんNext.jsでは、GCPやServerlessなど他の環境にデプロイすることも当然可能なのですが、VercelにデプロイすることでISRや`next/image`などパフォーマンスの最適化の上でいくつか恩恵が受けられます。
 Remixの場合、`Express`と連携することができたりするほか、`Vercel`はもちろん`AWS Lambda`や`Fly.io`、`Cloudflare Workers`など他の環境で動かせるアダプターが用意されているので、特定の環境にロックインされないといった点でいいですね！
 
 ## Routesごとにmetaタグやlinkタグなどが設定できる
