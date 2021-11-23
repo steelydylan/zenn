@@ -150,7 +150,6 @@ export default function Todo () {
 
 - SSGやISRは使えない
 - CSS Modulesなどの便利なスタイリング機能はない
-- `next/link`のようなページを事前フェッチングする機能はない
 - Next.jsの`pages/api/**`のようなAPI Routesがない
 
 パフォーマンスの側面で言えば、RemixではNext.jsで提供されているようなトリッキーな機能をあえて提供せず、開発者の各々がページごとに必要に応じて`link rel="preload"`や`Cache-Control`を設定するなど、Webの標準的な技術を利用してパフォーマンスの最適化を図ることを促したい意図がRemixにあるように感じました。
