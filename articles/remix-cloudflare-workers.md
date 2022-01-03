@@ -181,7 +181,7 @@ steps:
 
 https://dash.cloudflare.com/profile/api-tokens
 
-### Node.jsのライブラリによっては利用できない
+## 4. Node.jsのライブラリによっては利用できない
 
 これは完全に自分の調査不足だったのですが、Cloudflare WorkersはNodeとは異なるためNodeの標準ライブラリである、`fs`や`net/http`などのライブラリは使用できません。なので当然それらの標準ライブラリに依存するライブラリも利用できませんでした。
 
