@@ -42,7 +42,7 @@ $ npx create-remix@latest
 $ npm install -g @cloudflare/wrangler
 ```
 
-## サーバー側とフロント側で環境変数を扱いたい
+## 1. サーバー側とフロント側で環境変数を扱いたい
 
 ローカルでの開発では以下のように`.env`ファイルを使えます。
 ただ、`process.env.API_KEY`のように、process.envから環境変数を取り出すわけではなく、サーバーサイドではそのまま定数がグローバルに定義されています。
@@ -108,7 +108,7 @@ interface Window {
 }
 ```
 
-## TailWindCSSを使いたい
+## 2. TailWindCSSを使いたい
 
 `npx create-remix@latest`を実行にpackage.jsonが自動生成されますが、そのpackage.jsonを少し修正し、`npm run start`時にtailwind.cssをビルドするようにして、その結果を`./app/styles/tailwind.css`に吐き出します。
 
@@ -142,7 +142,7 @@ export const links: LinksFunction = () => {
 };
 ```
 
-## GitHub Actionsを使って自動デプロイしたい
+## 3. GitHub Actionsを使って自動デプロイしたい
 
 以下のようにwranglerをCI上でグローバルインストールし、`CF_EMAIL`と`CF_API_TOKEN`をGitHubの環境変数としてセットします。
 
