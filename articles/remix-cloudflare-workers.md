@@ -6,7 +6,7 @@ topics: ["remix", "cloudflare", "react", "tailwind"]
 published: true
 ---
 
-個人的に年末から年始にかけてCloudflare WorkersでRemixを触ったりしてました。
+この年末年始にCloudflare WorkersでRemixを触ったりしてました。
 いずれも公式ドキュメントなどをしっかり読めばハマることはないのですが自分の場合少し手こずったので記事として残しておきます。はまったことは以下3つです。
 
 1. サーバー側とフロント側で環境変数を扱いたい
