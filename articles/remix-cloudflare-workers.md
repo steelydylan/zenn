@@ -7,11 +7,12 @@ published: true
 ---
 
 この年末年始にCloudflare WorkersでRemixを触ったりしてました。
-いずれも公式ドキュメントなどをしっかり読めばハマることはないのですが自分の場合少し手こずったので記事として残しておきます。はまったことは以下3つです。
+いずれも公式ドキュメントなどをしっかり読めばハマることはないのですが自分の場合少し手こずったので記事として残しておきます。はまったことは以下4つです。
 
 1. サーバー側とフロント側で環境変数を扱いたい
 2. TailWindCSSを使いたい
 3. GitHub Actionsを使ってデプロイしたい
+4. Node.jsのライブラリによっては利用できない
 
 ## 開発環境のセットアップ
 
@@ -179,6 +180,15 @@ steps:
 「Cloudflare Workers を編集する」というテンプレートを選択することで簡単にトークンを生成できます。
 
 https://dash.cloudflare.com/profile/api-tokens
+
+### Node.jsのライブラリによっては利用できない
+
+これは完全に自分の調査不足だったのですが、Cloudflare WorkersはNodeとは異なるためNodeの標準ライブラリである、`fs`や`net/http`などのライブラリは使用できません。なので当然それらの標準ライブラリに依存するライブラリも利用できませんでした。
+
+https://workers.cloudflare.com/works
+
+> Many packages that require Node dependencies, such as fs or net/http, aren't supported in Workers because Workers isn't Node—it's built on V8.
+
 
 ## まとめ
 
