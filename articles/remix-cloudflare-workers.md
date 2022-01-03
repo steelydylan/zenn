@@ -183,4 +183,4 @@ https://dash.cloudflare.com/profile/api-tokens
 ## まとめ
 
 以上3つが私がRemixを触った上でハマったことでした。Next.jsに慣れきっているので色々と苦労しますね。
-また何かこの構成で困ったことがあったらこの記事に追記したいと思います。
+またRemix on Cloudflare Workersの構成で困ったことがあったらこの記事に追記したいと思います。
