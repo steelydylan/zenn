@@ -215,10 +215,6 @@ const getValidation = z.object({
   query: z.object({
     id: z.string(),
   }),
-  // 👇これはクライアントサイドでURLを組み立てる方として必要
-  params: z.object({
-    id: z.string(),
-  }),
 });
 
 const router = createRouter();
@@ -241,10 +237,13 @@ export type GetHandler = ApiHandler<typeof getValidation>;
 import { client } from "next-typed-connect";
 
 const { data, error } = await client.get('/api/sample/[id]', {
-  params: {
+  query: {
     id: '1',
   }
 })
+
+// URLに[]が含まれている場合はURLの組み立てのためにqueryが使われ、残ったパラメーターは
+// クエリーストリングとして付与されます。
 ```
 
 ### strictNullChecksを有効にする
