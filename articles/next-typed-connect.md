@@ -177,7 +177,7 @@ const { data, error } = await postApiData('/api/sample', {
 })
 ```
 
-## オプション
+### オプション
 
 `next-typed-connect`にはいくつかのコマンドがあります。
 
