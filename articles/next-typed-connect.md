@@ -221,7 +221,7 @@ const router = createRouter();
 
 router.get(
   validate(getValidation), async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.query;
     res.json({ message: "Hello World" });
   }
 );
@@ -272,7 +272,7 @@ const router = createRouter();
 
 router.get(
   validate(getValidation), async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.query;
     if (id === '1') {
       res.json({ message: "Hello World" });
     } else {
