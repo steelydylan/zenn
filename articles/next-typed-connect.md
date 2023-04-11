@@ -71,23 +71,29 @@ import { postValidation, getValidation } from "./validation";
 const router = createRouter();
 
 +   router.post(
-+     validate(postValidation, async (req, res) => {
++     validate(postValidation), async (req, res) => {
 +       const { foo } = req.body;
 +       const { bar } = req.query;
 +       // この時もしbodyとqueryの型が合わない場合はエディターでエラーが表示されます。
 +       res.json({ message: "Hello World" });
-+     })
++     }
 +   );
 
 +   router.get(
-+     validate(getValidation, async (req, res) => {
++     validate(getValidation), async (req, res) => {
 +       const { bar } = req.query;
 +       res.json({ message: "Hello World" });
-+     })
++     }
 +   );
 
 +   export default router.run()
 ```
+
+ここで、`router.get`や`router.post`には幾つでもコールバック関数を渡すことができます。
+
+:::message
+`router.use`を使うことで、全てのHTTPメソッドに対して共通の処理を行うことができます。
+:::
 
 ### 型情報のエクスポート
 
@@ -100,19 +106,19 @@ import { postValidation, getValidation } from "./validation";
 const router = createRouter();
 
 router.post(
-  validate(postValidation, async (req, res) => {
+  validate(postValidation), async (req, res) => {
     const { foo } = req.body;
     const { bar } = req.query;
     // この時もしbodyとqueryの型が合わない場合はエディターでエラーが表示されます。
     res.json({ message: "Hello World" });
-  })
+  }
 );
 
 router.get(
-  validate(getValidation, async (req, res) => {
+  validate(getValidation), async (req, res) => {
     const { bar } = req.query;
     res.json({ message: "Hello World" });
-  })
+  }
 );
 
 export default router.run()
