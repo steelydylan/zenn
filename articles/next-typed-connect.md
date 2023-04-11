@@ -266,7 +266,7 @@ const { data, error } = await client.get('/api/sample/[id]', {
 import { createRouter, validate, ApiHandler, createError } from "next-typed-connect";
 
 const getValidation = z.object({
-  params: z.object({
+  query: z.object({
     id: z.string(),
   }),
 });
