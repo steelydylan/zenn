@@ -1,5 +1,5 @@
 ---
-title: "Zodファーストな型安全なNext.js用のルーティングライブラリを作った話"
+title: "Zodファーストで型安全なNext.js用のルーティングライブラリを作った話"
 emoji: "📔"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["nextjs", "zod", "typescript"]
