@@ -203,9 +203,10 @@ next-typed-connect --pagesDir=src/pages
 
 ## 補足
 
+### dynamic routingへの対応
 なんとこのライブラリ、dynamic routingの場合にも以下のように対応できます！
 
-### サーバーサイド
+#### サーバーサイド
 
 ```ts:pages/api/sample/[id].ts
 import { createRouter, validate, ApiHandler } from "next-typed-connect";
@@ -230,7 +231,7 @@ export default router.run()
 export type GetHandler = ApiHandler<typeof getValidation>;
 ```
 
-### クライアントサイド
+#### クライアントサイド
 
 ```ts
 import { client } from "next-typed-connect";
@@ -240,6 +241,18 @@ const { data, error } = await client.get('/api/sample/[id]', {
     id: '1',
   }
 })
+```
+
+### strictNullChecksを有効にする
+
+注意して欲しいのがtsconfig.jsonの`strictNullChecks`を`true`にする点です。こうすることで、サーバーサイドで、zodの`optional`を利用しない限りは`req.body`などを扱うときに`null`や`undefined`を許容しないようにできます。
+
+```json
+{
+  "compilerOptions": {
+    "strictNullChecks": true
+  }
+}
 ```
 
 ## 苦労した点、工夫した点
