@@ -203,7 +203,7 @@ next-typed-connect --pagesDir=src/pages
 
 ## 補足
 
-dynamic routingの場合
+なんとこのライブラリ、dynamic routingの場合にも以下のように対応できます！
 
 ### サーバーサイド
 
