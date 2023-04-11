@@ -244,3 +244,7 @@ https://zenn.dev/takepepe/articles/nextjs-typesafe-api-routes
 - `next-typed-connect`のテストを書く
 - GitHub Actionsを使った自動リリース
 - requestInitが冗長なので改善する
+
+よかったらGitHubでスターください！
+
+https://github.com/steelydylan/next-typed-connect
