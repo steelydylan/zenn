@@ -121,6 +121,14 @@ export default router.run()
 +   export type GetHandler = ApiHandler<typeof getValidation>;
 ```
 
+ここで、型情報は以下のような名前でそれぞれエクスポートするようにしてください。
+
+- PostHandler
+- GetHandler
+- PutHandler
+- DeleteHandler
+- PatchHandler
+
 ### 型定義ファイルの生成
 
 次にコマンドを使ってexportされた型情報からクライアント用の型情報を生成します。
