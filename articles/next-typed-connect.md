@@ -200,6 +200,48 @@ next-typed-connect --pagesDir=src/pages
 | --distDir | 生成した型情報の出力先	 | node_modules/.next-typed-connect |
 | --moduleNameSpace | Type definition file module name | .next-typed-connect |
 
+
+## 補足
+
+dynamic routingの場合
+
+### サーバーサイド
+
+```ts:pages/api/sample/[id].ts
+import { createRouter, validate, ApiHandler } from "next-typed-connect";
+
+const getValidation = z.object({
+  params: z.object({
+    id: z.string(),
+  }),
+});
+
+const router = createRouter();
+
+router.get(
+  validate(getValidation), async (req, res) => {
+    const { id } = req.params;
+    res.json({ message: "Hello World" });
+  }
+);
+
+export default router.run()
+
+export type GetHandler = ApiHandler<typeof getValidation>;
+```
+
+### クライアントサイド
+
+```ts
+import { client } from "next-typed-connect";
+
+const { data, error } = await client.get('/api/sample/[id]', {
+  params: {
+    id: '1',
+  }
+})
+```
+
 ## 苦労した点、工夫した点
 
 ### TypeScript Compiler APIの利用
