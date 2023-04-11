@@ -157,11 +157,11 @@ $ npx next-typed-connect -w
 
 
 ```ts
-import { getApiData } from "next-typed-connect";
+import { client } from "next-typed-connect";
 
 // 型定義がされていることでパスの補完や
 // サーバーサイドに送るパラメータの型チェックが簡単にできます。
-const { data, error } = await getApiData('/api/sample', {
+const { data, error } = await client.get('/api/sample', {
   query: {
     bar: 'baz',
   }
@@ -169,13 +169,11 @@ const { data, error } = await getApiData('/api/sample', {
 ```
 
 ```ts
-import { postApiData } from "next-typed-connect";
+import { client } from "next-typed-connect";
 
-const { data, error } = await postApiData('/api/sample', {
-  requestInit: {
-    body: {
-      foo: 'bar',
-    },
+const { data, error } = await client.post('/api/sample', {
+  body: {
+    foo: 'bar',
   },
   query: {
     bar: 'baz',
@@ -243,7 +241,6 @@ https://zenn.dev/takepepe/articles/nextjs-typesafe-api-routes
 - `headers`の型チェックを実装する
 - `next-typed-connect`のテストを書く
 - GitHub Actionsを使った自動リリース
-- requestInitが冗長なので改善する
 
 よかったらGitHubでスターください！
 
