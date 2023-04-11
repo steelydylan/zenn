@@ -70,23 +70,23 @@ import { postValidation, getValidation } from "./validation";
 
 const router = createRouter();
 
-+router.post(
-+  validate(postValidation, async (req, res) => {
-+    const { foo } = req.body;
-+    const { bar } = req.query;
-+    // この時もしbodyとqueryの型が合わない場合はエディターでエラーが表示されます。
-+    res.json({ message: "Hello World" });
-+  })
-+);
++   router.post(
++     validate(postValidation, async (req, res) => {
++       const { foo } = req.body;
++       const { bar } = req.query;
++       // この時もしbodyとqueryの型が合わない場合はエディターでエラーが表示されます。
++       res.json({ message: "Hello World" });
++     })
++   );
 
-+router.get(
-+  validate(getValidation, async (req, res) => {
-+    const { bar } = req.query;
-+    res.json({ message: "Hello World" });
-+  })
-+);
++   router.get(
++     validate(getValidation, async (req, res) => {
++       const { bar } = req.query;
++       res.json({ message: "Hello World" });
++     })
++   );
 
-+export default router.run()
++   export default router.run()
 ```
 
 ### 型情報のエクスポート
@@ -94,7 +94,7 @@ const router = createRouter();
 次に現在のファイルにて各メソッドごとに型情報をエクスポートします。これにより、クライアントサイドでの型チェックが可能になります。
 
 ```ts
-+import { createRouter, validate, ApiHandler } from "next-typed-connect";
++   import { createRouter, validate, ApiHandler } from "next-typed-connect";
 import { postValidation, getValidation } from "./validation";
 
 const router = createRouter();
@@ -117,8 +117,8 @@ router.get(
 
 export default router.run()
 
-+export type PostHandler = ApiHandler<typeof postValidation>;
-+export type GetHandler = ApiHandler<typeof getValidation>;
++   export type PostHandler = ApiHandler<typeof postValidation>;
++   export type GetHandler = ApiHandler<typeof getValidation>;
 ```
 
 ### 型定義ファイルの生成
