@@ -255,6 +255,33 @@ const { data, error } = await client.get('/api/sample/[id]', {
 }
 ```
 
+### エラーを返す時
+
+`createError`を使って以下のように返すようにしてください。というのも`res.json`は成功した場合の型定義で上書きされているからです。
+
+```ts
+import { createRouter, validate, ApiHandler, createError } from "next-typed-connect";
+
+const getValidation = z.object({
+  params: z.object({
+    id: z.string(),
+  }),
+});
+
+const router = createRouter();
+
+router.get(
+  validate(getValidation), async (req, res) => {
+    const { id } = req.params;
+    if (id === '1') {
+      res.json({ message: "Hello World" });
+    } else {
+      throw createError(404, 'Not Found');
+    }
+  }
+);
+```
+
 ## 苦労した点、工夫した点
 
 ### TypeScript Compiler APIの利用
