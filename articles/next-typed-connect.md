@@ -64,7 +64,7 @@ const getValidation = {
 次にvalidationをルーティングに渡します。`validate`関数を使うことで、型チェックを行い、型が合わない場合はエディターでエラーが表示されると同時に、サーバーサイドでランタイムエラーが発生します。
 zodを使っているので型チェックとランタイムのチェックを同時に行えることが特徴です。
 
-```ts
+```diff ts
 import { createRouter, validate } from "next-typed-connect";
 import { postValidation, getValidation } from "./validation";
 
@@ -93,7 +93,7 @@ const router = createRouter();
 
 次に現在のファイルにて各メソッドごとに型情報をエクスポートします。これにより、クライアントサイドでの型チェックが可能になります。
 
-```ts
+```diff ts
 +   import { createRouter, validate, ApiHandler } from "next-typed-connect";
 import { postValidation, getValidation } from "./validation";
 
