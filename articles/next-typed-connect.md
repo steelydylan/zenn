@@ -22,7 +22,7 @@ trpcやGraphQLなどを使えばクライアントへの型共有は行えるの
 
 デモを見ていただくとクライアント側とサーバー側で型が共有できているのがわかるかと思います。
 
-@[stackblitz](https://stackblitz.com/edit/next-typescript-32qrbx?embed=1&file=pages/index.tsx&hideNavigation=1)
+@[stackblitz](https://stackblitz.com/edit/next-typescript-32qrbx?embed=1&file=pages/index.tsx&hideNavigation=1&view=editor)
 
 ## 使い方
 
