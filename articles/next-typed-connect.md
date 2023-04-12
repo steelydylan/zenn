@@ -24,7 +24,7 @@ trpcやGraphQLなどを使えばクライアントへの型共有は行えるの
 
 https://stackblitz.com/edit/next-typescript-32qrbx?embed=1&file=pages/index.tsx&file=pages/api/sample/[id].ts&hideNavigation=1&view=editor
 
-<!-- @[stackblitz](https://stackblitz.com/edit/next-typescript-32qrbx?embed=1&file=pages/index.tsx&file=pages/api/sample/[id].ts&hideNavigation=1&view=editor) -->
+@[stackblitz](https://stackblitz.com/edit/next-typescript-32qrbx?embed=1&file=pages/index.tsx&file=pages/api/sample/[id].ts&hideNavigation=1&view=editor)
 
 ## 使い方
 
