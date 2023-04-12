@@ -18,6 +18,12 @@ https://github.com/steelydylan/next-typed-connect
 
 trpcやGraphQLなどを使えばクライアントへの型共有は行えるのですが、そこまで複雑なものにしたくなかったので、軽量なZodファーストな型安全なNext.js用のルーティングライブラリを作りたいというのがモチベーションとしてありました。
 
+## デモ
+
+デモを見ていただくとクライアント側とサーバー側で型が共有できているのがわかるかと思います。
+
+@[stackblitz](https://stackblitz.com/edit/next-typescript-32qrbx?embed=1&file=pages/index.tsx)
+
 ## 使い方
 
 Zodファーストなフレームワークで、APIの型情報も、サーバーサイドでのランタイムでの型チェックも、クライアントサイドでの型チェックも、すべてZodで行うことができます。
