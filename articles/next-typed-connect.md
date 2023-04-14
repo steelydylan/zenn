@@ -14,7 +14,7 @@ https://github.com/hoangvvo/next-connect
 
 そこで、今回ZodファーストなNext.js用のルーティングライブラリを作ってみました。
 
-https://github.com/steelydylan/next-typed-connect
+https://github.com/steelydylan/next-zod-router
 
 trpcやGraphQLなどを使えばクライアントへの型共有は行えるのですが、そこまで複雑なものにしたくなかったので、軽量なZodファーストな型安全なNext.js用のルーティングライブラリを作りたいというのがモチベーションとしてありました。
 
@@ -75,7 +75,7 @@ zodを使っているので型チェックとランタイムのチェックを�
 それぞれのAPIルートで`validate`関数とともにルーティング処理を行います。
 
 ```diff ts:pages/api/sample.ts
-import { createRouter, validate } from "next-typed-connect";
+import { createRouter, validate } from "next-zod-router";
 import { postValidation, getValidation } from "./validation";
 
 const router = createRouter();
@@ -110,7 +110,7 @@ const router = createRouter();
 次に現在のファイルにて各メソッドごとに型情報をエクスポートします。これにより、クライアントサイドでの型チェックが可能になります。
 
 ```diff ts:pages/api/sample.ts
-+   import { createRouter, validate, ApiHandler } from "next-typed-connect";
++   import { createRouter, validate, ApiHandler } from "next-zod-router";
 import { postValidation, getValidation } from "./validation";
 
 const router = createRouter();
@@ -150,24 +150,24 @@ export default router.run()
 次にコマンドを使ってexportされた型情報からクライアント用の型情報を生成します。
 
 ```bash
-$ npx next-typed-connect
+$ npx next-zod-router
 ```
 
 監視モードを使うことで、ファイルの変更を検知して自動的に型情報を生成することもできます。
 
 ```bash
-$ npx next-typed-connect -w
+$ npx next-zod-router -w
 ```
 
-これで`/pages/api/**.ts`にて定義した型情報が`.node_modules/.next-typed-connect/**/**d.ts`に生成されます。
+これで`/pages/api/**.ts`にて定義した型情報が`.node_modules/.next-zod-router/**/**d.ts`に生成されます。
 
 ### クライアントサイド
 
-特に生成された型情報を気にしなくても、`next-typed-connect`にある`getApiData`や`postApiData`を使うことで、自動的にクライアントサイドで型情報を読み込んでくれます。
+特に生成された型情報を気にしなくても、`next-zod-router`にある`getApiData`や`postApiData`を使うことで、自動的にクライアントサイドで型情報を読み込んでくれます。
 
 
 ```ts
-import { client } from "next-typed-connect";
+import { client } from "next-zod-router";
 
 // 型定義がされていることでパスの補完や
 // サーバーサイドに送るパラメータの型チェックが簡単にできます。
@@ -179,7 +179,7 @@ const { data, error } = await client.get('/api/sample', {
 ```
 
 ```ts
-import { client } from "next-typed-connect";
+import { client } from "next-zod-router";
 
 const { data, error } = await client.post('/api/sample', {
   body: {
@@ -193,20 +193,20 @@ const { data, error } = await client.post('/api/sample', {
 
 ### オプション
 
-`next-typed-connect`にはいくつかのコマンドがあります。
+`next-zod-router`にはいくつかのコマンドがあります。
 
 特にNext.jsは使い方によって`pages`のディレクトリ構造が変わるので、`--pagesDir`オプションを使って`pages`のディレクトリを指定する点に注意してください。
 
 ```bash
-next-typed-connect --pagesDir=src/pages
+next-zod-router --pagesDir=src/pages
 ```
 
 | オプション | 説明 | デフォルト値 |
 | --- | --- | --- |
 | --pagesDir | ページディレクトリへのパス | pages |
 | --baseDir | プロジェクトのパス | . |
-| --distDir | 生成した型情報の出力先	 | node_modules/.next-typed-connect |
-| --moduleNameSpace | Type definition file module name | .next-typed-connect |
+| --distDir | 生成した型情報の出力先	 | node_modules/.next-zod-router |
+| --moduleNameSpace | Type definition file module name | .next-zod-router |
 
 
 ## 補足
@@ -217,7 +217,7 @@ next-typed-connect --pagesDir=src/pages
 #### サーバーサイド
 
 ```ts:pages/api/sample/[id].ts
-import { createRouter, validate, ApiHandler } from "next-typed-connect";
+import { createRouter, validate, ApiHandler } from "next-zod-router";
 
 const getValidation = z.object({
   query: z.object({
@@ -242,7 +242,7 @@ export type GetHandler = ApiHandler<typeof getValidation>;
 #### クライアントサイド
 
 ```ts
-import { client } from "next-typed-connect";
+import { client } from "next-zod-router";
 
 const { data, error } = await client.get('/api/sample/[id]', {
   query: {
@@ -271,7 +271,7 @@ const { data, error } = await client.get('/api/sample/[id]', {
 `createError`を使って以下のように返すようにしてください。というのも`res.json`は成功した場合の型定義で上書きされているからです。
 
 ```ts
-import { createRouter, validate, ApiHandler, createError } from "next-typed-connect";
+import { createRouter, validate, ApiHandler, createError } from "next-zod-router";
 
 const getValidation = z.object({
   query: z.object({
@@ -299,15 +299,15 @@ router.get(
 TypeScript Compiler APIの使用を始めて試みました。TypeScript本体の慣れないメソッド名と格闘しました。
 
 ### コマンド化
-`.bin`を使って`npx`や`yarn`で`next-typed-connect`を実行できるようにしました。またいくつかのオプションを用意するために`commander`を使いました。
+`.bin`を使って`npx`や`yarn`で`next-zod-router`を実行できるようにしました。またいくつかのオプションを用意するために`commander`を使いました。
 
 ### ファイルの監視
 `-w`で監視モードを使えるようにしました。`chokidar`を使うことでファイルの変更を検知して型定義ファイルを生成することに成功しました！
 
-### `.next-typed-connect`のモジュール名空間
+### `.next-zod-router`のモジュール名空間
 
-`getApiData`や`postApiData`などを使うときにそれぞれのAPIの型定義ファイルを読み込む必要があるのですが、そのために`.next-typed-connect`というモジュール名空間を作成する必要がありました。
-この時、`node_modules/.next-typed-connect`ディレクトリに自動的に型定義ファイルが生成されるようになってます。
+`getApiData`や`postApiData`などを使うときにそれぞれのAPIの型定義ファイルを読み込む必要があるのですが、そのために`.next-zod-router`というモジュール名空間を作成する必要がありました。
+この時、`node_modules/.next-zod-router`ディレクトリに自動的に型定義ファイルが生成されるようになってます。
 
 この時、特に利用者側が`tsconfig.json`を変更しなくても自動的にこの名前空間に`getApiData`や`postApiData`などのメソッドがアクセスできるようにするための調整が本当に大変でした。
 
@@ -334,9 +334,9 @@ https://zenn.dev/takepepe/articles/nextjs-typesafe-api-routes
 
 - `zod`以外の型チェックライブラリに対応する
 - `headers`の型チェックを実装する
-- `next-typed-connect`のテストを書く
+- `next-zod-router`のテストを書く
 - GitHub Actionsを使った自動リリース
 
 よかったらGitHubでスターください！
 
-https://github.com/steelydylan/next-typed-connect
+https://github.com/steelydylan/next-zod-router
