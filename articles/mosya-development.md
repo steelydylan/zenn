@@ -87,9 +87,15 @@ https://github.com/planetscale/deploy-deploy-request-action
 
 https://github.com/technote-space/get-diff-action/tree/main
 
+こんな感じでGitHub Actions内で差分ファイルを簡単に取得することができます！
+今回のプロジェクトでは差分ファイル一覧をとりあえず`.env`に書き出して利用しています。
+
+```
+echo "DIFF_FILES=${{ env.GIT_DIFF_FILTERED }}" >> .env
+```
+
 ### フロントエンド
 
 今回サービスを作るにあたってフロントエンドには特に力を入れました。
-
 
 
