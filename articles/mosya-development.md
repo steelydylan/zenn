@@ -259,6 +259,88 @@ monaco.editor.setModelMarkers(model, 'markuplint', diagnotics);
 import ruleset from "@markuplint/ml-core/markuplint-recommended.json"
 ```
 
+#### Emmet
+
+ご存知だとは思いますが、EmmetはHTML,CSSを簡単に書くためのツールです。例えば、`div>ul>li*3`と書くと以下のようなHTMLが生成されます。
+
+```html
+<div>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+```
+
+こんな感じのコードを書けばこれも簡単に`monaco-editor`に組み込むことができます。
+
+```ts
+import { emmetCSS, emmetHTML } from "emmet-monaco-es/dist/emmet-monaco.esm"
+
+// monaco-editorのローダーからmonacoを取得
+const monaco = await loader.init()
+emmetHTML(monaco)
+emmetCSS(monaco)
+```
+
+`monaco-editor`は拡張性が高いのがいいですね！
+
+### プレビュー画面の開発
+
+mosyaでは実際にユーザーが書いたコードが反映されるプレビュー画面に非常に力を入れました。
+これは完成系のサイトと現在自分がコーディング中のサイトを見比べるUIです。
+
+![](https://storage.googleapis.com/zenn-user-upload/b79677efa2cf-20230503.png)
+
+こちらの`CSS Battle`というサイトがこの見比べるUIを採用していたので模写学習には非常にいいUIだなと思い採用しました。
+
+https://cssbattle.dev/
+
+#### sandpack利用の挫折
+
+プレビュー画面の生成には最初`CodeSandbox`が開発した`Sandpack`というライブラリを使っていました。
+
+https://sandpack.codesandbox.io/
+
+ただ、こちらのライブラリは、`React`を書くのには向いていたのですが、`HTML`や`CSS`を書いた際にその結果を即座に反映しライブリロードするような仕組みは整っていなかったのでこちらは断念しました。
+
+
+#### iframeのsrcdocの利用の挫折
+
+次にiframeの`srcdoc`の利用を検討しました。`srcdoc`を使うと`srcdoc`に`HTML`を文字列として代入するだけで`iframe`の中にその内容が表示されて非常に便利です。
+ところが、こちらユーザーが書いたcssを`link`タグとして読み込むことができないので学習体験が悪いと思い断念しました。
+
+#### Blob化してURLとして読み込む方向で調整
+
+最終的にユーザーが書いたHTML、CSSをBlob化してそれを`URL.createObjectURL`を使って一時的に`URL`を作成しそれをiframeで読み込む形に落ち着きました。
+
+```ts
+const jsBlob = new Blob(
+  [script],
+  { type: "text/javascript" }
+)
+const cssBlob = new Blob(
+  [css],
+  { type: "text/css" }
+)
+
+const jsBlobUrl = URL.createObjectURL(jsBlob)
+const cssBlobUrl = URL.createObjectURL(cssBlob)
+```
+
+ユーザーが書いたHTMLのコードを正規表現で置換し、`script.js`と`style.css`の読み込みがあったらその読み込みを発行した一時的なURLに置き換えています。
+
+大体こんな感じです👇
+
+```ts
+code
+  .replace(/src=("|')(\.\/)?script\.js("|')/, `src="${jsBlobUrl}"`)
+  .replace(/href=("|')(\.\/)?style\.css("|')/, `href="${cssBlobUrl}" crossorigin="anonymous"`)
+```
+
+こうすることによりユーザーにとって本当にリアルなコーディング体験を提供できるようになりました。
+
 ### Next.jsの利用
 
 今回費用の関係で`Next.js`を`Vercel`ではなく`Cloud Run`にデプロイする形で運用しているのですが、そのAPI部分もそのまま`Next.js`の`API Routes`を使っています。
@@ -272,3 +354,11 @@ https://stackblitz.com/edit/next-typescript-32qrbx?embed=1&file=pages/index.tsx&
 
 https://zenn.dev/steelydylan/articles/next-typed-connect
 
+## まとめ
+
+このように`mosya`にはユーザーに喜んでいただけるような体験を提供するための工夫が詰まっています。
+またWeb歴が長い方でも、もしかしたら初耳かもしれない新しいCSSやHTMLも紹介してたりするので良かったらぜひ使ってみてください！
+
+もう一度mosyaのリンクを貼っておきます！
+
+https://mosya.dev/
