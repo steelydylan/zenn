@@ -272,7 +272,7 @@ https://rsmbl.github.io/Resemble.js/
 ### エディターの開発
 
 またユーザーがコーディングに使うエディターには`monaco-editor`を使っています。
-VisualStudioCodeにとてもよく似たエディターで、VS Codeの拡張機能をそのまま使えるのでとても便利です。
+VS Codeにとてもよく似たエディターで、VS Codeの拡張機能をそのまま使えるのでとても便利です。
 
 https://microsoft.github.io/monaco-editor/
 
