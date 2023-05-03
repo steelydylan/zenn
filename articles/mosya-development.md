@@ -19,7 +19,7 @@ published: false
 
 ## なぜ作ったのか
 
-### 既存の教材の問題点
+### 動画だけではなく手を動かして体系的に学べるサービスを作りたい
 
 Web制作を学ぶ上ですでにたくさんの教材はあるのですが、部分的な知識を学ぶに過ぎない教材が多く、
 実際に見本のサイトを完成させられるようになるまでには至らないと感じていました。
@@ -94,8 +94,129 @@ https://github.com/technote-space/get-diff-action/tree/main
 echo "DIFF_FILES=${{ env.GIT_DIFF_FILTERED }}" >> .env
 ```
 
-### フロントエンド
+### コーディングの採点ロジック
 
-今回サービスを作るにあたってフロントエンドには特に力を入れました。
+今回サービスを作るにあたってコーディングの採点
+
+特に採点部分は今回かなり力を入れました。
+ユーザーが課題を提出してから採点までの時間が長すぎるとストレスを感じてしまうのでなるべく採点時間を短くするために以下の手段で実現しました。
+
+#### ロジック採点
+
+最初、`cypress` を使ってサーバー側でユーザーの提出したコードをテストしていたのですが、それだと採点に10秒以上かかってしまうことがわかりました。
+そこで、ユーザーが提出したHTMLとCSSがコード的に間違っていないかをチェックするための採点は **フロントエンド** で行うことにしました。
+それにあたって、ブラウザーでHTMLとCSSを気軽にテストできるツールがなかったので`jest`に記法が似た独自のテストツールを自作しました。
+
+https://github.com/steelydylan/html-browser-tester
+
+こんな感じでユーザーが提出したHTMLとCSSを渡すだけでフロントエンドでテストが完結できます。
+
+```ts
+import { BrowserTester } from 'html-browser-tester'
+
+const html = `
+  <!DOCTYPE html>
+  <html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello</title>
+    <style>
+      h1 {
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Title1</h1>
+    <h2>Title2</h2>
+  </body>
+  </html>
+`
+
+const main = async () => {
+  const browserTester = new BrowserTester({ html, width: 980, height: 980 })
+
+  browserTester.test('h1,h2 textContent should have right textContent', async (_, doc) => {
+    const h1 = doc.querySelector('h1')
+    const h2 = doc.querySelector('h2')
+    browserTester.expect(h1?.textContent).toBe('Title1')
+    browserTester.expect(h2?.textContent).toBe('Title2')
+  })
+
+  browserTester.test('title should have right textContent', async (_, doc) => {
+    const title = doc.querySelector('title')
+    browserTester.expect(title?.textContent).toBe('Hello')
+  })
+
+  browserTester.test('h2 should have red text', async (window, doc) => {
+    const h2 = doc.querySelector('h2')
+    browserTest.expect(window.getComputedStyle(h2).color).toBe('rgb(255, 0, 0)')
+  })
+
+  const results = await browserTester.run()
+
+  console.log(results)
+  /*
+   [
+    { description: 'h1,h2 textContent should have right textContent', result: true },
+    { description: 'title should have right textContent', result: true },
+    { description: 'h2 should have red text', result: true }
+   ]
+  */
+}
+
+main()
+```
+
+この場合、テストをモロにコードに含めないといけなくなり大変なので文字列を以下のように評価できるメソッドも用意しました。
+
+```ts
+browserTest.evaluate(`
+  test('h1,h2 textContent should have right textContent', async (_, doc) => {
+    const h1 = doc.querySelector('h1')
+    const h2 = doc.querySelector('h2')
+    expect(h1?.textContent).toBe('Title1')
+    expect(h2?.textContent).toBe('Title2')
+  })
+
+  test('title should have right textContent', async (_, doc) => {
+    const title = doc.querySelector('title')
+    expect(title?.textContent).toBe('Hello')
+  })
+
+  test('h2 should have red text', async (window, doc) => {
+    const h2 = doc.querySelector('h2')
+    expect(window.getComputedStyle(h2).color).toBe('rgb(255, 0, 0)')
+  })
+`)
+```
+
+このテストを教材ごとのDBに保存しておいて、ユーザーが提出したコードを評価するときにこのテストを実行して結果を返すようにしました。
+このテスト結果だけをサーバーに送信するようにしています。
+
+#### ビジュアル採点
+
+mosyaには実際に書いたコードと模写対象のサイトの比較のためのビジュアル採点機能があります。
+提出すると以下のような表示結果で採点画面が表示されます。
+
+ピンク色になっている部分がユーザーが書いたコードと模写対象のサイトの差分になります。
+
+![](https://storage.googleapis.com/zenn-user-upload/272ceb4fcd63-20230503.png)
+
+見本のサイトは`mosya-lessons`レポジトリでのpushタイミングで`GitHub Actions`でスクリーンショットを撮ってそれを`Cloudflare Workers`の`R2`にあらかじめ保存しています。
+
+一方ユーザー側のコードはHTML,CSSをサーバーに送信してそれを`R2`にアップロードし、アップロードされて生成されたWebサイトに`playwright`でアクセスしてスクリーンショットを撮っています。
+
+そのスクリーンショットデータとあらかじめアップロードしておいた見本のスクリーンショットを`Resemble.js`で比較して差分を取得しています。
+
+https://rsmbl.github.io/Resemble.js/
+
+この差分データを再び`R2`にアップロードしてその結果をブラウザーに返却しています。
+
+あらかじめ見本データをR2に保存しておくことでレスポンスにかかる時間を短縮しています。
+
+
 
 
