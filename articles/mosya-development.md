@@ -1,5 +1,5 @@
 ---
-title: "【個人開発】模写を通してWeb制作を学ぶmosyaというサービスを開発した話"
+title: "個人開発したWeb制作学習サービスmosyaの技術スタック紹介"
 emoji: "👨‍💻"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["nextjs", "typescript", "tailwind", "planetscale", "個人開発", "cloudrun", "cloudflare"]
