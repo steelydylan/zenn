@@ -209,6 +209,8 @@ mosyaには実際に書いたコードと模写対象のサイトの比較のた
 
 一方ユーザー側のコードはHTML,CSSをサーバーに送信してそれを`R2`にアップロードし、アップロードされて生成されたWebサイトに`playwright`でアクセスしてスクリーンショットを撮っています。
 
+https://playwright.dev/
+
 そのスクリーンショットデータとあらかじめアップロードしておいた見本のスクリーンショットを`Resemble.js`で比較して差分を取得しています。
 
 https://rsmbl.github.io/Resemble.js/
@@ -217,6 +219,33 @@ https://rsmbl.github.io/Resemble.js/
 
 あらかじめ見本データをR2に保存しておくことでレスポンスにかかる時間を短縮しています。
 
+### エディターの開発
 
+またユーザーがコーディングに使うエディターには`monaco-editor`を使っています。
+VisualStudioCodeにとてもよく似たエディターで、VSCodeの拡張機能をそのまま使えるのでとても便利です。
+
+https://microsoft.github.io/monaco-editor/
+
+例えばこの`monaco-editor`に`markup-lint`や`emmet`などのプラグインを入れることでユーザーにコーディング体験を向上させています。
+
+#### Markuplint
+
+Markuplintはユーザーが書いたHTMLがマークアップ的に正しいかをチェックしてくれるツールです。
+
+https://markuplint.dev/ja/
+
+mosyaではこのMarkuplintを後半のレッスンで使うためにエディターに組み込んでいます。
+長くなるので省略しますが代替以下のような感じで`monaco-editor`に`Markuplint`を組み込んでいます。
+
+```ts
+// ユーザーの入力したコードをlinterにかけてエラーを取得する
+linter.setCode(value)
+// レポートを生成
+const reports = await linter.verify();
+const diagnotics = await diagnose(reports);
+const model = monacoEditorRef.current.getModel();
+// レポート結果をmonaco-editorに反映
+monaco.editor.setModelMarkers(model, 'markuplint', diagnotics);
+```
 
 
