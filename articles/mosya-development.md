@@ -3,7 +3,7 @@ title: "【個人開発】模写を通してWeb制作を学ぶmosyaというサ�
 emoji: "👨‍💻"
 type: "idea" # tech: 技術記事 / idea: アイデア
 topics: ["nextjs", "typescript", "tailwind", "planetscale", "個人開発", "cloudrun", "cloudflare"]
-published: false
+published: true
 ---
 
 今回、個人開発で1年もの歳月をかけて`mosya`というコーディング学習サービスを開発しました。
