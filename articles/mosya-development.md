@@ -83,6 +83,10 @@ https://github.com/planetscale/deploy-deploy-request-action
 
 `GitHub Actions`を使えば`git`の操作が楽に行えるので教材の反映などは差分があったファイルから、教材の反映に必要な処理だけを抽出して必要に応じて`DB`に更新をかけたり`Cloudflare`の`R2`に画像をアップロードしたりしています。
 
+`git`の差分の抽出にはシェルスクリプトをゴリゴリ書いても良かったのですが少し面倒だったのでGitHub Actionsに公開されているこちらのアクションを利用しました。
+
+https://github.com/technote-space/get-diff-action/tree/main
+
 ### フロントエンド
 
 今回サービスを作るにあたってフロントエンドには特に力を入れました。
