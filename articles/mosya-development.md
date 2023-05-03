@@ -71,6 +71,10 @@ PlanetScaleは開発用と本番用でDBのブランチを切り替えること�
 
 https://github.com/planetscale/deploy-deploy-request-action
 
+こんな感じで、自動でPlanet Scaleでスキーマのマージリクエストが作成されマージされるようになっています。
+
+![](https://storage.googleapis.com/zenn-user-upload/e1137886971e-20230503.png)
+
 ワークフローの中でスキーマの反映が行えるのは非常に便利ですね！
 
 #### Github Actionsの利用
