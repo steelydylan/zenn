@@ -82,3 +82,4 @@ https://github.com/planetscale/deploy-deploy-request-action
 今回サービスを作るにあたってフロントエンドには特に力を入れました。
 
 
+
