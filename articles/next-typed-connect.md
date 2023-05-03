@@ -6,6 +6,7 @@ topics: ["nextjs", "zod", "typescript"]
 published: true
 ---
 
+
 今までNext.jsのAPIでちょっとしたルーティングを実現するために下記のライブラリを使っていました。
 
 https://github.com/hoangvvo/next-connect
