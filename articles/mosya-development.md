@@ -6,6 +6,11 @@ topics: ["nextjs", "typescript", "tailwind", "planetscale", "個人開発", "clo
 published: false
 ---
 
+今回、個人開発で1年もの歳月をかけて`mosya`というコーディング学習サービスを開発しました。
+主なターゲットは`Web制作者`を目指している方で、`Progate`の次の学習に悩んでいる方や一からWeb制作を学びたい方、企業のWeb担当者の方などを想定しています。
+
+https://mosya.dev/
+
 ## どんなサービスか
 
 模写を通してWeb制作の基礎を学ぶmosyaというサービスを開発しました。
@@ -248,4 +253,22 @@ const model = monacoEditorRef.current.getModel();
 monaco.editor.setModelMarkers(model, 'markuplint', diagnotics);
 ```
 
+リンターのルールセットにはMarkuplintのおすすめのルールセットがあるのでそれを少し上書きして使っています。
+
+```ts
+import ruleset from "@markuplint/ml-core/markuplint-recommended.json"
+```
+
+### Next.jsの利用
+
+今回費用の関係で`Next.js`を`Vercel`ではなく`Cloud Run`にデプロイする形で運用しているのですが、そのAPI部分もそのまま`Next.js`の`API Routes`を使っています。
+ただ、`Next.js`の`API Routes`はとても簡素で、クライアントからサーバーサイドの型情報を取得したりあらかじめ`zod`でバリデーションをかけた上で`ts`の型をAPI内で効かせることが難しかったのでそこの部分も別にライブラリを作りました。
+
+以下のサイトのようにAPIで書いたコードがクライアント側のコードにも型として反映されるようになっていて非常に開発が捗りました。
+
+https://stackblitz.com/edit/next-typescript-32qrbx?embed=1&file=pages/index.tsx&file=pages/api/sample/%5Bid%5D.ts&hideNavigation=1&view=editor
+
+その件については別で`zenn`に記事を書いてます。
+
+https://zenn.dev/steelydylan/articles/next-typed-connect
 
