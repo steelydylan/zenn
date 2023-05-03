@@ -60,6 +60,44 @@ mosyaはなるべくコストを抑え、一度購入すればずっと使い続
 何名かの方に教材部分を手伝ってもらったのですが、レポジトリを分けたことにより **mosya** 本体のコード内容を知らなくてもマークダウンを書くだけで教材を作成できるようになりました。
 結果、学習コストを下げることができその人たちのオンボーディングの時間を短縮できたので、レポジトリを分けてよかったと思っています。
 
+
+#### サービス関認証の実装
+
+mosyaのユーザーが書いたコードのビジュアル採点部分は小さいマイクロサービスとなっており、これは本体のサーバーである`mosya`のCloud Runからしかアクセスできないようにしています。
+`GCP`には **サービス間認証** のための機能が揃っているのでこちらが簡単に実現しました。
+
+代替以下のような手順でサービス関連系の自走ができました。
+
+プリンシパルの設定で、呼び出し先のCloud Runに呼び出し元のCloud RunのサービスアカウントのCloud Run起動元として設定する
+
+![](https://storage.googleapis.com/zenn-user-upload/408ebcdfda77-20230309.png =300x)
+
+
+呼び出し元のCloud Runで以下のように`google-auth-library`を使って、
+`auth.getIdTokenClient`に呼び出し先のURLを指定して、`client`を取得し、以下のように`Authorization`ヘッダーなどの情報を取得
+
+
+```js
+import { GoogleAuth } from "google-auth-library"
+
+const auth = new GoogleAuth();
+const client = await auth.getIdTokenClient(process.env.SITE_COMPARE_API)
+const headers = await client.getRequestHeaders()
+```
+
+:::message
+同じProjectの場合は特に認証鍵をサーバーに設置しておく必要もなしで便利です。
+:::
+
+あとはこの情報を使ってアクセスするだけ
+
+```js
+const res = await superagent
+  .post(process.env.SITE_COMPARE_API)
+  .set(headers)
+  .send()
+```
+
 #### Cloudflareの利用
 
 ![](https://storage.googleapis.com/zenn-user-upload/de72944ba42c-20230503.png)
