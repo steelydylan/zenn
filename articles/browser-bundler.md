@@ -13,7 +13,7 @@ published: true
 以下のようにコードを書くだけで、ブラウザーで実行可能なJavaScriptコードが生成されます。
 
 ```ts
-import { browserBundle } from "browser-bundle";
+import { browserBundle } from "browser-bundler";
 
 const code = `
 import React from "react";
