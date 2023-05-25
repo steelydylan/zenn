@@ -1,5 +1,5 @@
 ---
-title: "ブラウザー上でリアルタイムでReactやTypeScriptをバンドルするツールを作った"
+title: "ブラウザー上でリアルタイムでReactやTypeScriptをバンドルするライブラリを作った"
 emoji: "👨‍💻"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["typescript", "react", "npm"]
@@ -9,6 +9,7 @@ published: true
 通常、ReactやTypeScriptを使って開発する場合は、ローカル環境で開発して、ビルドして、ブラウザーで表示するという流れになります。
 ただ、昨今のブラウザーの性能はかなり高くなっており、ES Modulesをうまく使うことで、ノーバンドルでReactやTypeScriptをリアルタイムにブラウザー上で反映させることができるのではないかと考えました。
 
+この案をもとに、何番煎じかわかりませんが、ブラウザー上でリアルタイムにReactやTypeScriptをバンドルするライブラリを作成しました。
 以下のようにコードを書くだけで、ブラウザーで実行可能なJavaScriptコードが生成されます。
 
 ```ts
