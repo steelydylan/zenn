@@ -40,7 +40,9 @@ const result = await browserBundle(code, {
 コードをみていただいたらお分かりになる通り、`files`というオプションを指定することで、相対パスを使ってファイル名に一致するモジュールを`import`することもできます。
 
 これを`ES Modules`を使ってブラウザー上で実行することができます。
-今回はiframe内でそのコードを実行しています。
+
+生成されたコードをそのつど、iframeのsrcdocに埋め込むことで、リアルタイムに書いたコードをブラウザー上で実行することができます。
+
 
 ```ts
 const { code: bundleCode } = await browserBundle(code)
