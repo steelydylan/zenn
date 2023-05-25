@@ -38,13 +38,23 @@ const result = await browserBundle(code, {
 ```
 
 これを`ES Modules`を使ってブラウザー上で実行することができます。
-
+今回はiframe内でそのコードを実行しています。
 
 ```ts
-const script = document.createElement("script")
-script.type = "module"
-script.innerHTML = code
-document.body.appendChild(script)
+const { code: bundleCode } = await browserBundle(code)
+iframe.srcdoc = `
+  <html>
+    <head>
+      <meta charset="utf-8">
+    </head>
+    <body>
+      <div id="root"></div>
+      <script type="module">
+      ${bundleCode}
+      </script>
+    </body>
+  </html>
+`
 ```
 
 ## なぜ作ったのか
@@ -149,13 +159,23 @@ if (relativeImportStatements) {
 ### 4. 出来上がったコードを`script type="module"`の中に埋め込む
 
 最終的に出来上がったソースコードを`script type="module"`の中に埋め込めばこれらのコードを実行することができます。
-大体以下のような感じです！
+`iframe`の`srcDoc`に出来上がったコードを入れ込む使い方をおすすめしています。
 
 ```ts
-const script = document.createElement("script")
-script.type = "module"
-script.innerHTML = code
-document.body.appendChild(script)
+const { code: bundleCode } = await browserBundle(code)
+iframe.srcdoc = `
+  <html>
+    <head>
+      <meta charset="utf-8">
+    </head>
+    <body>
+      <div id="root"></div>
+      <script type="module">
+      ${bundleCode}
+      </script>
+    </body>
+  </html>
+`
 ```
 
 ## まとめ
