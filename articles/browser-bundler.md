@@ -1,5 +1,5 @@
 ---
-title: "ブラウザー上でリアルタイムでReactやTypeScriptを実行するためのライブラリを作った"
+title: "ブラウザー上でリアルタイムに書いたReactやTypeScriptを実行するためのライブラリを作った"
 emoji: "👨‍💻"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["typescript", "react", "npm"]
