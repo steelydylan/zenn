@@ -111,7 +111,7 @@ const jsCode = transpileModule(code, {
 
 ### 2. 相対パスなしでimportされたモジュールは`esm.sh`を利用してCDNから取得
 
-生成されたコードに相対パスなしの`import`が含まれている場合は、`esm.sh`を利用してCDNからモジュールを取得します。
+生成されたコードに相対パスなしの`import`が含まれている場合は、`esm.sh`を利用してCDNからモジュールを取得するように正規表現で書き換えます。
 
 ```ts
 const importRegex = /import\s+.*\s+from\s+['"][^'.].*['"];?/g
