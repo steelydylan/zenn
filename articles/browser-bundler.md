@@ -9,6 +9,43 @@ published: true
 通常、ReactやTypeScriptを使って開発する場合は、ローカル環境で開発して、ビルドして、ブラウザーで表示するという流れになります。
 ただ、昨今のブラウザーの性能はかなり高くなっており、ES Modulesをうまく使うことで、ノーバンドルでReactやTypeScriptをリアルタイムにブラウザー上で反映させることができるのではないかと考えました。
 
+以下のようにコードを書くだけで、ブラウザーで実行可能なJavaScriptコードが生成されます。
+
+```ts
+import { browserBundle } from "browser-bundle";
+
+const code = `
+import React from "react";
+import ReactDOM from "react-dom";
+import { Hello } from "./hello.tsx";
+
+const App = () => {
+  return (<div><Hello /></div>)
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));
+`
+
+const result = await browserBundle(code, {
+  files: {
+    "./hello.tsx": `import React from "react";
+    export const Hello = () => {
+      return (<div>Hello World</div>)
+    }`,
+  }
+})
+```
+
+これを`ES Modules`を使ってブラウザー上で実行することができます。
+
+
+```ts
+const script = document.createElement("script")
+script.type = "module"
+script.innerHTML = code
+document.body.appendChild(script)
+```
+
 ## なぜ作ったのか
 
 先日個人開発でリリースした模写して学ぶコーディング学習サービス、mosyaというサービスがあります。
