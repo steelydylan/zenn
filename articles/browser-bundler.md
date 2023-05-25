@@ -145,6 +145,8 @@ if (relativeImportStatements) {
 }
 ```
 
+### 4. 出来上がったコードを`script type="module"`の中に埋め込む
+
 最終的に出来上がったソースコードを`script type="module"`の中に埋め込めばこれらのコードを実行することができます。
 大体以下のような感じです！
 
