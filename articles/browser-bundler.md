@@ -33,7 +33,7 @@ https://esm.sh/
 
 順を追って、どのように動いているかを説明していきます。
 
-1. コードをTypeScriptでJavaScriptに変換
+### 1. コードをTypeScriptでJavaScriptに変換
 
 まず初めに入力されたコードを`ts.transpileModule`というAPIを利用して`ES Modules`として実行可能なJavaScriptに変換します。
 
@@ -57,7 +57,7 @@ const jsCode = transpileModule(code, {
 });
 ```
 
-2. 相対パスなしでimportされたモジュールは`esm.sh`を利用してCDNから取得
+### 2. 相対パスなしでimportされたモジュールは`esm.sh`を利用してCDNから取得
 
 生成されたコードに相対パスなしの`import`が含まれている場合は、`esm.sh`を利用してCDNからモジュールを取得します。
 
@@ -75,7 +75,7 @@ importStatements?.forEach((importStatement) => {
 
 これで、reactやreact-domなど多くのライブラリが`ES Modules`として実行可能となります。
 
-3. 相対パスとして読み込まれたモジュールは`Blob URL`に変換
+### 3. 相対パスとして読み込まれたモジュールは`Blob URL`に変換
 
 ここが肝となっています。実は`ES Modules`の`import`文ですが、スクリプトのURLに`Blob`や`data`スキームを指定することができます。
 
