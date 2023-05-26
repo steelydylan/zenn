@@ -1,5 +1,5 @@
 ---
-title: "ブラウザー上でReactやTypeScriptのコードを書いて動かすツールを作った"
+title: "ブラウザー上でReactやTypeScriptのコードをコンパイルして動かすツールを作った"
 emoji: "👨‍💻"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["typescript", "react", "npm"]
