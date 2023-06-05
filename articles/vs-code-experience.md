@@ -1,5 +1,5 @@
 ---
-title: "esm.shとmonaco-editorを使ってVS Codeのようなフロントエンドの開発体験を実現する"
+title: "esm.shとmonaco-editorを使ってブラウザー上でVS Codeのようなフロントエンドの開発体験を実現する"
 emoji: "👨‍💻"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["typescript", "react", "npm"]
