@@ -25,7 +25,7 @@ https://monaco-browser-bundler.vercel.app/
 今回の実装には`monaco editor`と`esm.sh`を使っています。
 `monaco editor`は`VS Code`のようなエディターをブラウザー上で実現するためのライブラリで、`esm.sh`は`CDN`から`npm`のライブラリを取得するためのサービスです。
 
-### 1. `TypeScript`のセットアップ
+### 1. monaco editorでTypeScriptのセットアップ
 
 monaco-editorには内部に`TypeScript`のコンパイラが含まれているので、そのコンパイラでまずはTypeScriptのオプションを設定します。
 この時、`typeRoots`を`node_modules/@types`に設定しておくことがポイントです。
