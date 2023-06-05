@@ -229,7 +229,7 @@ if (relativeImportStatements) {
 }
 ```
 
-### 4. iframeへの遅延反映処理
+### 5. iframeへの遅延反映処理
 
 コードが変更されるたびにiframeを更新していると処理が重くなるので、`debounce`を使って遅延反映させています。
 詳しくはコードをご覧ください。
