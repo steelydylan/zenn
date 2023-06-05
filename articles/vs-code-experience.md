@@ -14,7 +14,7 @@ https://zenn.dev/ryuu/articles/browser-bundler
 
 @[youtube](https://youtu.be/uMu8whYWtHM)
 
-触っていただいたらわかるようにエディター上でちゃんと型解決が効いていて、ブラウザー上でReactやTypeScriptのコードを実行することができます。
+下のURLを触っていただいたらわかるようにエディター上でちゃんと型解決が効いていて、ブラウザー上でReactやTypeScriptのコードを実行することができます。
 
 https://monaco-browser-bundler.vercel.app/
 
