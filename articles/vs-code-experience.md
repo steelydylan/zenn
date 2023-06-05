@@ -68,6 +68,7 @@ export const resolveModuleType = async (
   );
 };
 
+// reactの型を取得
 resolveModuleType("react");
 ```
 
