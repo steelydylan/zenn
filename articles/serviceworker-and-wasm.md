@@ -55,6 +55,10 @@ Wasmはさまざまな環境に持ち運び可能で、ブラウザーだけで�
 
 https://ja.wikipedia.org/wiki/Emscripten
 
+最近では`Docker`イメージから直接Wasmを生成するこんなツールも出てきています。
+
+https://www.publickey1.jp/blog/23/dockerwebassemblywebcontainer2wasm03.html
+
 
 ## Next.jsでの実装
 
