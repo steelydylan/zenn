@@ -73,7 +73,7 @@ https://www.publickey1.jp/blog/22/postgresqlwebpostgre-wasmwebx86.html
 実際にこのデモを作るにあたって、Next.js上での実装を行いました。
 Next.jsにおける図にあるプロセスを解説していきます。
 
-### 1. Service Workerの登録
+### Service Workerの登録
 
 今回、Service Workerを開発しやすくするために`next-pwa`というライブラリを使っています。
 
