@@ -6,6 +6,8 @@ topics: ["wasm", "service-worker", "webassembly", "php"]
 published: true
 ---
 
+今回の話は`Wasm`というよりも`ServiceWorker`の話がメインになりますが、`Wasm`と`ServiceWorker`を組み合わせることで、ブラウザー上でサーバー処理をリアルに再現することができるので、このタイトルにしています。
+
 まずは動画をご覧ください。
 
 @[tweet](https://twitter.com/steelydylan/status/1671051881723105280)
