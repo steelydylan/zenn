@@ -51,7 +51,7 @@ Wasmとは、ブラウザー上で動作するバイナリフォーマットの�
 Wasmはさまざまな環境に持ち運び可能で、ブラウザーだけではなく、ServiceWorker上やNode.js
 また最近では、CDNなどのエッジコンピューティング上やDockerでも実行することができます。
 
-`emscripten`というコンパイラーなどを使うことで、CやC++などの言語をWasmに変換することができるので、CやC++で作られた言語からならWasmにビルドすることが可能です。
+`emscripten`というコンパイラーなどを使うことで、CやC++などの言語をWasmに変換することができるので、CやC++で作られた言語からならWasm化することが可能です。
 
 https://ja.wikipedia.org/wiki/Emscripten
 
