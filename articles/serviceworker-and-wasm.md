@@ -1,5 +1,5 @@
 ---
-title: "ServiceWorkerとWasmを組み合わせてサーバー処理をブラウザーでリアルに再現する"
+title: "Service WorkerとWasmを組み合わせてサーバー処理をブラウザーでリアルに再現する"
 emoji: "👨‍💻"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["wasm", "service-worker", "webassembly", "php"]
