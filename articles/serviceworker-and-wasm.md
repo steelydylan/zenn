@@ -6,7 +6,7 @@ topics: ["wasm", "service-worker", "webassembly", "php"]
 published: true
 ---
 
-今回の話は`Wasm`というよりも`ServiceWorker`の話がメインになりますが、`Wasm`と`ServiceWorker`を組み合わせることで、ブラウザー上でサーバー処理をリアルに再現することができるので、このタイトルにしています。
+今回の話は`Wasm`というよりも`Service Worker`の話がメインになりますが、`Wasm`と`Service Worker`を組み合わせることで、ブラウザー上でサーバー処理をリアルに再現することができるので、このタイトルにしています。
 
 まずは動画をご覧ください。
 
@@ -15,13 +15,13 @@ published: true
 見ていただくと分かるように、ブラウザー上でPHPのコードを書くとその実行結果が右側に表示されています。
 特に面白い点が、お問い合わせフォームのPOST後の処理までもブラウザー上だけで実行できているという点です。
 
-これは`Wasm`と`ServiceWorker`を組み合わせて実現しています。
+これは`Wasm`と`Service Worker`を組み合わせて実現しています。
 大体以下のようなプロセスで実現しています。
 
 ![](https://storage.googleapis.com/zenn-user-upload/7822028c246a-20230621.png)
 
-Wasmはブラウザー側でも実行可能ですが、あえてServiceWorker上で実行しているのは、URLへのリクエストに対してそのリクエストにインターセプト（介入）することで、POST後の処理などもブラウザー上で実現できるようにするためです。
-全てのリクエストに対してServiceWorkerを介在させることでよりリアルなサーバー処理をブラウザー上で実現できます。
+Wasmはブラウザー側でも実行可能ですが、あえてService Worker上で実行しているのは、URLへのリクエストに対してそのリクエストにインターセプト（介入）することで、POST後の処理などもブラウザー上で実現できるようにするためです。
+全てのリクエストに対してService Workerを介在させることでよりリアルなサーバー処理をブラウザー上で実現できます。
 
 例えば、以前リリースされた`WordPress`のPlaygroundもこの方法で実装されていたりします。
 
@@ -36,10 +36,10 @@ https://mosya.dev/
 
 現在は、HTMLとCSS、JavaScript、PHPの学習を対象としていますが、今後はReactやTypeScriptなどのフレームワークやライブラリを対象にしたコンテンツやサーバーサイドの学習コンテンツの追加も視野に入れています。
 
-## ServiceWorkerとは何か
+## Service Workerとは何か
 
-まず、ServiceWorkerとは何か軽くおさらいです。
-ServiceWorkerとは、ブラウザーのバックグラウンドで動作するスクリプトのことです。以下のようなことができるのが特徴です。
+まず、Service Workerとは何か軽くおさらいです。
+Service Workerとは、ブラウザーのバックグラウンドで動作するスクリプトのことです。以下のようなことができるのが特徴です。
 
 - ブラウザーのバックグラウンドで動作する
 - ブラウザーのリクエストにインターセプト（介入）できる 👈これがアツイ！！
@@ -50,7 +50,7 @@ ServiceWorkerとは、ブラウザーのバックグラウンドで動作する�
 
 Wasmとは何かについても触れておきましょう。
 Wasmとは、ブラウザー上で動作するバイナリフォーマットのことです。
-Wasmはさまざまな環境に持ち運び可能で、ブラウザーだけではなく、ServiceWorker上やNode.js
+Wasmはさまざまな環境に持ち運び可能で、ブラウザーだけではなく、Service Worker上やNode.js
 また最近では、CDNなどのエッジコンピューティング上やDockerでも実行することができます。
 
 また最近では、`emscripten`というコンパイラーを使って、CやC++などから作られた言語をWasmに変換することで言語自体をブラウザーで動かそうという面白い試みもされています。
@@ -71,13 +71,13 @@ https://www.publickey1.jp/blog/22/postgresqlwebpostgre-wasmwebx86.html
 実際にこのデモを作るにあたって、Next.js上での実装を行いました。
 Next.jsにおける図にあるプロセスを解説していきます。
 
-### 1. ServiceWorkerの登録
+### 1. Service Workerの登録
 
-今回、ServiceWorkerを開発しやすくするために`next-pwa`というライブラリを使っています。
+今回、Service Workerを開発しやすくするために`next-pwa`というライブラリを使っています。
 
 https://github.com/shadowwalker/next-pwa
 
-`next-pwa`は`next.config.js`に以下のように設定するだけでServiceWorkerを登録できるようになります。
+`next-pwa`は`next.config.js`に以下のように設定するだけでService Workerを登録できるようになります。
 
 ```js:next.config.js
 const withPWA = require("next-pwa")({
@@ -89,9 +89,9 @@ module.exports = withPWA({
 });
 ```
 
-`workers/index.ts`にServiceWorkerのコードを書くだけで自動でServiceWorkerのビルドを行ってくれるので非常に便利です。
+`workers/index.ts`にService Workerのコードを書くだけで自動でService Workerのビルドを行ってくれるので非常に便利です。
 
-また、ServiceWorkerに型をつけるために`tsconfig.json`に以下のように`WebWorker`を追加します。
+また、Service Workerに型をつけるために`tsconfig.json`に以下のように`WebWorker`を追加します。
 
 ```json:tsconfig.json
 {
@@ -103,10 +103,10 @@ module.exports = withPWA({
 
 ### Workerの実装
 
-次にWoerker側の実装です。`tsconfig.json`に`WebWorker`を追加したので、`workers/index.ts`にて、`ServiceWorkerGlobalScope`という型を使うことができます。
+次にWoerker側の実装です。`tsconfig.json`に`WebWorker`を追加したので、`workers/index.ts`にて、`Service WorkerGlobalScope`という型を使うことができます。
 
 ```ts:workers/index.ts
-declare let self: ServiceWorkerGlobalScope;
+declare let self: Service WorkerGlobalScope;
 
 self.__WB_DISABLE_DEV_LOGS = true;
 
@@ -119,20 +119,20 @@ self.addEventListener("activate", function (event) {
 });
 ```
 
-ServiceWorkerでは`self`というグローバル変数を使うことで、ServiceWorkerのライフサイクルに応じた処理を書くことができます。
+Service Workerでは`self`というグローバル変数を使うことで、Service Workerのライフサイクルに応じた処理を書くことができます。
 
-`install`と`activate`はServiceWorkerのライフサイクルにおけるイベントで、`install`はServiceWorkerがインストールされた時、`activate`はServiceWorkerが有効化された時に呼ばれます。
+`install`と`activate`はService Workerのライフサイクルにおけるイベントで、`install`はService Workerがインストールされた時、`activate`はService Workerが有効化された時に呼ばれます。
 
 #### skipWaiting()
 
-`skipWaiting()`はServiceWorkerのインストール時に呼ぶことで、すぐにサービスワーカーを有効化します。
-これを呼ばないと、ServiceWorkerのインストールが完了しても、ページをリロードするまでServiceWorkerが有効化されません。
+`skipWaiting()`はService Workerのインストール時に呼ぶことで、すぐにサービスワーカーを有効化します。
+これを呼ばないと、Service Workerのインストールが完了しても、ページをリロードするまでService Workerが有効化されません。
 
 #### clients.claim()
 
 `claim()`は`activate`イベントの中で呼ぶ必要があります。`waitUntil`で`claim`を呼ぶことで、ブラウザー側で
-`navigator.serviceWorker.controller`を使ってServiceWorkerのコントローラーを取得できるようになります。
-クライアント側ではこのコントローラーを介してServiceWorkerにメッセージを送ることができます。
+`navigator.serviceWorker.controller`を使ってService Workerのコントローラーを取得できるようになります。
+クライアント側ではこのコントローラーを介してService Workerにメッセージを送ることができます。
 
 ```ts
 navigator.serviceWorker.addEventListener("controllerchange", () => {
@@ -144,7 +144,7 @@ navigator.serviceWorker.addEventListener("controllerchange", () => {
 
 ### ブラウザーからメッセージが送られた時の処理
 
-ServiceWorkerにブラウザーからメッセージが送られた時の処理は`message`イベントで受け取ることができます。
+Service Workerにブラウザーからメッセージが送られた時の処理は`message`イベントで受け取ることができます。
 最初にお見せした図解のステップ2にあたるのですが、ここで`localforage`というライブラリを使って、ブラウザーのIndexedDBにコードを保存しています。`localStorage`のような使い勝手で非常に便利です。
 保存している内容としては実行するiframeのidとそこで実行するコードと言語の情報です。
 
@@ -161,7 +161,7 @@ self.addEventListener("message", async function (event) {
 
 ### リクエストへの介在処理
 
-ServiceWorkerにリクエストへの介在処理を行うためには`fetch`イベントを使います。
+Service Workerにリクエストへの介在処理を行うためには`fetch`イベントを使います。
 `fetch`イベントではXHRだけではなく画像やCSS、HTML自体のリクエストにも介在することができます。
 
 以下の処理では`php-mock`というパスにリクエストが来た時に、`localforage`に保存しているコードを取得して、PHPを実行しています。リクエストの種類が`xhr`など`navigate`以外の場合は何もせずに終了します。
@@ -291,8 +291,8 @@ postMessage({
 
 ## まとめ
 
-今回はServiceWorkerとWasmを組み合わせて、ブラウザー上でPHPのコードを実行するデモを作ってみました。
-`Wasm`だけではなく、`ServiceWorker`も同時に組み合わせることで **お問い合わせフォームの実行など** よりリアルなサーバー処理をブラウザー上でエミュレートできるようになります。
+今回はService WorkerとWasmを組み合わせて、ブラウザー上でPHPのコードを実行するデモを作ってみました。
+`Wasm`だけではなく、`Service Worker`も同時に組み合わせることで **お問い合わせフォームの実行など** よりリアルなサーバー処理をブラウザー上でエミュレートできるようになります。
 この技術を応用すれば`PHP`だけではなく、`WordPress`や`Next.js`をブラウザーだけで動かすというのも可能になりそうな気がします。
 
 
