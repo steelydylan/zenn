@@ -305,3 +305,7 @@ postMessage({
 最後に今回のデモページを作ってみたのでぜひ遊んでみてください。
 
 https://mosya.dev/tools/php
+
+以下のgistのコードを貼り付けることでフォームが正しく動作しているのが確認できます。
+
+https://gist.github.com/steelydylan/bf533878d57b6f6d94d52530634b2dd9
