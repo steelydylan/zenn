@@ -53,11 +53,11 @@ Wasmとは、ブラウザー上で動作するバイナリフォーマットの�
 Wasmはさまざまな環境に持ち運び可能で、ブラウザーだけではなく、ServiceWorker上やNode.js
 また最近では、CDNなどのエッジコンピューティング上やDockerでも実行することができます。
 
-`emscripten`というコンパイラーなどを使うことで、CやC++などの言語をWasmに変換することができるので、CやC++で作られた言語からならWasm化することが可能です。
+また最近では、`emscripten`というコンパイラーを使って、CやC++などから作られた言語をWasmに変換することで言語自体をブラウザーで動かそうという面白い試みもされています。
 
 https://ja.wikipedia.org/wiki/Emscripten
 
-最近では`Docker`イメージから直接Wasmを生成するこんなツールも出てきています。
+`Docker`イメージから直接Wasmを生成するこんなツールも出てきています。
 
 https://www.publickey1.jp/blog/23/dockerwebassemblywebcontainer2wasm03.html
 
