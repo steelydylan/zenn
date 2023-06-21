@@ -61,6 +61,10 @@ https://ja.wikipedia.org/wiki/Emscripten
 
 https://www.publickey1.jp/blog/23/dockerwebassemblywebcontainer2wasm03.html
 
+言語だけでなく、`PostgreSQL`をブラウザーで動かすためのツールが`Supabase`から発表されていたりもしています。
+
+https://www.publickey1.jp/blog/22/postgresqlwebpostgre-wasmwebx86.html
+
 
 ## Next.jsでの実装
 
