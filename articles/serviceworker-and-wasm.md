@@ -186,7 +186,7 @@ self.addEventListener("fetch", function (event) {
   // only navigate request
   if (request.mode !== "navigate") return;
 
-  // Bypass navigation requests.
+  // 特定のパスの時のみ介在する
   if (request.url.includes("php-mock")) {
     const scopeId = request.url.split("/").pop();
 
