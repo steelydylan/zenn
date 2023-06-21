@@ -147,8 +147,14 @@ navigator.serviceWorker.addEventListener("controllerchange", () => {
 ### ブラウザーからメッセージが送られた時の処理
 
 Service Workerにブラウザーからメッセージが送られた時の処理は`message`イベントで受け取ることができます。
-最初にお見せした図解のステップ2にあたるのですが、ここで`localforage`というライブラリを使って、ブラウザーのIndexedDBにコードを保存しています。`localStorage`のような使い勝手で非常に便利です。
-保存している内容としては実行するiframeのidとそこで実行するコードと言語の情報です。
+最初にお見せした図解のステップ2にあたるのですが、ここで`localforage`というライブラリを使って、ブラウザーのIndexedDBにコードを保存しています。localStorageのような使い勝手で非常に便利です。
+
+https://github.com/localForage/localForage
+
+IndexedDBはブラウザーからでもService Workerからでもアクセスできるので、Service WorkerからIndexedDBに保存したデータをクライアント側で取得することができます。
+さらに保存できるデータ量が`localStorage`よりも大きいのも特徴です。
+
+IndexedDBに保存している内容としては実行するiframeのidとそこで実行するコードと言語の情報です。
 
 ```ts
 self.addEventListener("message", async function (event) {
@@ -168,8 +174,6 @@ Service Workerにリクエストへの介在処理を行うためには`fetch`�
 
 以下の処理では`php-mock`というパスにリクエストが来た時に、`localforage`に保存しているコードを取得して、PHPを実行しています。リクエストの種類が`xhr`など`navigate`以外の場合は何もせずに終了します。
 これでRest APIなどのリクエストには介在しないようにします。
-
-https://github.com/localForage/localForage
 
 ここで気をつけたいのがリクエストに介在する際にイベントリスナーのコールバック自体を非同期処理を書けないという点です。非同期処理をイベントリスナーに書くとサービスワーカーが介在する前に普通にリクエストが行われてしまうためです。
 なので、非同期処理が必要な場合は`event.respondWith`に渡す関数の中で非同期処理を行う必要があります。
