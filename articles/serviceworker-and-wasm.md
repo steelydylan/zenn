@@ -38,6 +38,10 @@ https://mosya.dev/
 
 現在は、HTMLとCSS、JavaScript、PHPの学習を対象としていますが、今後はReactやTypeScriptなどのフレームワークやライブラリを対象にしたコンテンツやサーバーサイドの学習コンテンツの追加も視野に入れています。
 
+::: message
+また、Service WorkerとWasmの環境を提供することで開発者にとっても、学習対象の言語ごとに例えばGoであったりPHPであったりのサーバーを個別に建てる必要がなくなるのでメンテナンスもしやすいです！
+:::
+
 ## Service Workerとは何か
 
 まず、Service Workerとは何か軽くおさらいです。
