@@ -136,6 +136,7 @@ IndexedDBはブラウザーからでもService Workerからでもアクセス可
 
 IndexedDBへのデータの保存が終わったタイミングで、iframeを更新します。
 更新することで、リクエストに対してService Workerの処理が走るようになります。
+Service Worker側は`IndexedDB`からコードを取得してPHPを実行します。
 
 ```ts
 await localforage.setItem(scopeId, {
