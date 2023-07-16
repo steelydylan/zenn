@@ -177,7 +177,7 @@ const compilerHost: ts.CompilerHost = {
 /// <reference lib="es2015.iterable" />
 ```
 
-また`createProgram`により実行した型のチェックはレポートとして以下のように取得できます。
+`createProgram`により実行した型のチェックはレポートとして以下のように取得できます。
 
 ```ts
 const program = ts.createProgram(
