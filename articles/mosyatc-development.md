@@ -60,7 +60,8 @@ https://zenn.dev/steelydylan/articles/mosya-development
 
 ### ChatGPTの Code Interpreterを利用している
 
-つい最近、リリースされたChatGPTのCode Interpreterを利用して、一気に問題を量産しました。
+現在レッスン用の教材データは、問題文用の**CHALLENGE.md**やテスト用の**type-test.js**、答え用の**answer.ts**、最初の状態のスクリプトである**draft.ts**などのファイルを作成して管理しています。
+これらのデータをちまちま手動で作成するのはかなりの手間なので、つい最近、リリースされたChatGPTのCode Interpreterを利用して、一気に問題を量産しました。
 ChatGPT Code Interpreterとは、ユーザーのプロンプトから必要に応じてJupyter Notebookを実行して結果を返してくれる仕組みです。
 
 @[tweet](https://twitter.com/steelydylan/status/1678001771913019394)
