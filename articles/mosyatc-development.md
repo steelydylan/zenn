@@ -18,6 +18,11 @@ https://mosya.dev/type-challenges
 
 https://www.youtube.com/watch?v=pRARV_-YJ1o
 
+反響もよく4日でリリースしたサービスの割にたくさんの方に利用していただけています。
+おかげ様でTwitterでのいいねも過去のサービスリリースの中で最高のいいね数を獲得しました。
+
+@[tweet](https://twitter.com/steelydylan/status/1679636826368114690)
+
 ## 4日でリリースできた理由
 
 4日でリリースできたというのは決して誇張ではなく、本当に4日で思いついてからリリースができました。
