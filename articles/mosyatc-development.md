@@ -8,7 +8,7 @@ published: true
 
 今回、mosya&lt;TC&gt;という[Type Challenges](https://github.com/type-challenges/type-challenges)をブラウザーのエディターから挑戦して採点できるサービスをリリースしました。
 
-Type ChallengesはTypeScriptの型に関する問題を解くことでGitHub上のプロジェクトで、MITでライセンスされているので、誰でも自由に利用することができます。
+Type ChallengesはTypeScriptの型に関する問題を解くためのGitHub上のプロジェクトで、MITでライセンスされているので、誰でも自由に利用することができます。
 これを解くことで、かなりの型力が身につくので、以前から昼休みによく友人と解いていました。
 今回、このことを思い出しType Challengesに挑戦しやすくするためにブラウザー上でエディターを提供し、問題を解いた後にすぐ採点できるサービスを作りました。
 
@@ -17,6 +17,8 @@ https://mosya.dev/type-challenges
 使い方を動画にしてみたのでぜひご覧ください
 
 https://www.youtube.com/watch?v=pRARV_-YJ1o
+
+このように気軽にType Challengesに挑戦できるのがサービスの特徴です。
 
 反響もよく4日でリリースしたサービスの割にたくさんの方に利用していただけています。
 おかげ様でTwitterでのいいねも過去のサービスリリースの中で最高のいいね数を獲得しました。
