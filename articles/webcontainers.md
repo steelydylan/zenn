@@ -521,3 +521,8 @@ StackBlitz社が開発した`WebContainers`を使うことで、ブラウザー�
 - `npm install`などした後に`package.json`を更新する
 - Prismaなどのデータベースを使うライブラリのサポート
 - 作ったコードの共有など
+
+
+WebContainersでSQLiteを動かすことができるそうなので、Prismaを動かすのは多分できそうです！
+
+https://blog.stackblitz.com/posts/introducing-sqlite3-webcontainers-support/
