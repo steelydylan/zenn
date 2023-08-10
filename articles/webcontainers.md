@@ -357,7 +357,7 @@ export const Preview = () => {
 ```
 :::
 
-## ファイルツリーの可視化
+### ファイルツリーの可視化
 
 次にファイルツリーの可視化です。
 ファイルツリーの可視化には`@sinm/react-file-tree`というライブラリを使っています。
@@ -370,7 +370,7 @@ export const Preview = () => {
 
 https://github.com/pansinm/react-file-tree
 
-## エディター部分の実装
+### エディター部分の実装
 
 エディターの実装にはお馴染みMonaco Editorを使っています。
 難しかったのがライブラリの型情報と表示なのですが、
