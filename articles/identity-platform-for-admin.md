@@ -167,15 +167,15 @@ await app.auth().deleteUser(user.uid)
 
 アプリケーションにアクセスする際に初めに必ず`Identity Platform`のログイン画面が表示されるので一般のユーザーが使うサービスには向いていません。
 
-### 実装方法
+## 実装方法
 
 メリットについて説明しましたが、次に実際にどのように実装するのかを説明します。
 
-#### HTTP(S)ロードバランシングの作成
+### HTTP(S)ロードバランシングの作成
 
 まず、`IAP`を使うためには*HTTP(S)ロードバランシング*を作成する必要があります。
 
-##### フロントエンド構成の作成
+#### フロントエンド構成の作成
 
 `HTTP(S)ロードバランシング`を作成するにはまず、`フロントエンド構成`を作成する必要があります。
 フロントエンド構成では`IPアドレス`やポート、`プロトコル`、証明書の設定などを行います。
@@ -183,7 +183,7 @@ await app.auth().deleteUser(user.uid)
 ![](https://storage.googleapis.com/zenn-user-upload/1b7d6e14aee9-20230815.png)
 
 
-##### バックエンド構成の作成
+#### バックエンド構成の作成
 
 次に、*バックエンド構成*を作成します。
 
@@ -191,11 +191,11 @@ await app.auth().deleteUser(user.uid)
 
 ![](https://storage.googleapis.com/zenn-user-upload/1cba9cba7eef-20230815.png)
 
-##### ルーティングルールの作成
+#### ルーティングルールの作成
 
 *ルーティングルール*を作成します。今回は「単純なホストとパスのルール」を選択します。
 
-#### IAPの有効化
+### IAPの有効化
 
 次に、`IAP`を有効化します。
 
@@ -206,7 +206,7 @@ https://console.cloud.google.com/security/iap
 ![](https://storage.googleapis.com/zenn-user-upload/78888cf1faa6-20230815.png)
 
 
-#### IAPとIdentity Platformの連携
+### IAPとIdentity Platformの連携
 
 IAPとIdentity Platformを組み合わせるにはIAPの画面で認証に`IAM`ではなく、`Identity Platform`を選択します。
 IAPの画面にて該当のバックエンドサービスにチェックを入れ選択します。
@@ -220,7 +220,7 @@ IAPの画面にて該当のバックエンドサービスにチェックを入�
 
 Google認証を使う場合は必要に応じて、OAuth同意画面などの設定をしましょう。
 
-#### Cloud Runにてトリガーを選択
+### Cloud Runにてトリガーを選択
 
 私は管理者用のサービスにCloud Runを使っているので、最後に該当の *Cloud Run* のアプリケーションに対してトリガーを設定します。
 今回は作成したCloud Load Balancingからのリクエストのみ許可したいので以下のように選択します。
