@@ -147,7 +147,7 @@ await app.auth().deleteUser(user.uid)
 ```
 
 
-## IAPとIdentity Platformを組み合わせるメリット
+## IAPとIdentity Platformのメリット
 
 この`IAP`と`Identity Platform`を組み合わせることで、`Identity Platform`でユーザーを管理しつつ、`IAP`で認証を行うことができます。
 これによって、認証方法が限られている`IAP`の欠点を補うことができます。
@@ -162,7 +162,7 @@ await app.auth().deleteUser(user.uid)
 今回は私（管理者）がログインして確認するための画面なので、私以外の人間がこの画面にアクセスできないIAPの仕組みがあると、
 アプリケーション側の実装でセキュリティの心配をあまりする必要がなくなります。
 
-## IAPとIdentity Platformの組み合わせのデメリット
+## IAPとIdentity Platformのデメリット
 
 アプリケーションにアクセスする際に初めに必ず`Identity Platform`のログイン画面が表示されるので一般のユーザーが使うサービスには向いていません。
 
