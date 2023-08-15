@@ -86,7 +86,7 @@ export const getUserByJwt = async () => {
 
   const mail = email.split(':')[1]
 
-  const user = await prisma.user.findFirst({
+  const user = await prisma.user.findUnique({
     where: {
       email: mail
     },
