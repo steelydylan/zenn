@@ -222,7 +222,7 @@ Google認証を使う場合は必要に応じて、OAuth同意画面などの設
 
 #### Cloud Runにてトリガーを選択
 
-最後に該当の *Cloud Run* のアプリケーションに対してトリガーを設定します。
+私は管理者用のサービスにCloud Runを使っているので、最後に該当の *Cloud Run* のアプリケーションに対してトリガーを設定します。
 今回は作成したCloud Load Balancingからのリクエストのみ許可したいので以下のように選択します。
 
 ![](https://storage.googleapis.com/zenn-user-upload/3ef23f849bfb-20230815.png)
