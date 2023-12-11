@@ -135,6 +135,12 @@ https://codemirror.net/5/
 acornはJavaScriptのコードからそのコードをASTというデータ構造に変換してくれます。
 このデータ構造を使えば、JSXのコードにどんなpropsが使われているのかを取得することができます。
 
+TypeScriptと比べると118KBとかなり軽量なので、ブラウザーでも気軽に使えるのがとても便利です。
+
+![](https://storage.googleapis.com/zenn-user-upload/225098588449-20231211.png)
+
+### acornを使ってJSXのpropsを取得する
+
 まず、`acorn`でJSXを解析できるようにするために`acorn-jsx`というライブラリを使います。
 
 ```jsx
