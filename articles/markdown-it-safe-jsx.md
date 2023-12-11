@@ -39,7 +39,7 @@ https://www.joshwcomeau.com/css/interactive-guide-to-grid/
 
 https://mosya.dev/blog/clippath
 
-パフォーマンスも意識したmarkdown-itのプラグインが作れて非常に私の満足度が高いです笑！
+パフォーマンスも意識したmarkdown-itのプラグインが作れて筆者はとても満足です笑
 
 ## 使い方
 
