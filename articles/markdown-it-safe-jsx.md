@@ -18,7 +18,11 @@ https://github.com/steelydylan/markdown-it-safe-jsx
 
 ![](https://storage.googleapis.com/zenn-user-upload/f6e22bdf39e5-20231211.gif)
 
-個人の技術ブログ用途にはぴったりなのではないかと思います！
+この実行結果は mosya.dev という私が開発したプログラミング学習サービスのブログで確認することができます👇
+
+https://mosya.dev/blog/clippath
+
+JSXを書けるこの仕組みは個人の技術ブログ用途にはぴったりなのではないかと思います！
 
 ## なぜ作ったか
 
@@ -34,10 +38,6 @@ https://www.joshwcomeau.com/css/interactive-guide-to-grid/
 最初は表示されたマークダウンに対してあとからReactコンポーネントをマウントする方法を考えました。
 ただこれだとガクッと表示されてしまってパフォーマンスの指標の一つであるCLSの指標で不利になってしまいます。
 そこで、サーバーサイドで出力しておいたHTMLとして普通に出力して、フロント側で`hydrate`してインタラクティブに動かすような仕組みを頑張ってつくりました。
-
-この実行結果は mosya.dev という私が開発したプログラミング学習サービスのブログで確認することができます👇
-
-https://mosya.dev/blog/clippath
 
 パフォーマンスも意識したmarkdown-itのプラグインが作れて筆者はとても満足です笑
 
