@@ -37,9 +37,7 @@ import { safeJsx } from "markdown-it-safe-jsx";
 
 const md = new MarkdownIt();
 md.use(safeJsx, {
-  components: {
-    MyComponent: ({ text }) => <MyComponent text={text} />,
-  },
+  MyComponent: ({ text }) => <MyComponent text={text} />,
 });
 
 const html = md.render(`
