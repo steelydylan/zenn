@@ -19,6 +19,7 @@ https://github.com/steelydylan/markdown-it-safe-jsx
 ![](https://storage.googleapis.com/zenn-user-upload/f6e22bdf39e5-20231211.gif)
 
 個人の技術ブログ用途にはぴったりなのではないかと思います！
+また、記事の好きな場所にインタラクティブな要素を設置することができればかなり目を惹くものになります！！
 
 さらにあらかじめサーバーサイドで出力しておいたHTMLをフロント側で`hydrate`する仕組みになっているので、ガクッとした動きもなく、`CLS`を意識した実装になっています。
 
