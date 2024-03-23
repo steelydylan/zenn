@@ -7,6 +7,9 @@ published: true
 ---
 
 2024年3月15日の一粒万倍日に、mosya ReactというReactを学習できるサービスをリリースしました。
+
+![](https://storage.googleapis.com/zenn-user-upload/3e864523bc9c-20240323.png)
+
 こちら1年間の開発期間を経て、ようやくリリースできました！
 mosyaの開発期間と合わせると約2年間の開発期間を経てのリリースとなります。
 いやー、長かった！
@@ -15,11 +18,6 @@ mosyaの開発期間と合わせると約2年間の開発期間を経てのリ�
 
 https://mosya.dev/react
 
-mosyaやmosya&lt;TC&gt;の開発については以下の記事にまとめています。
-
-https://zenn.dev/steelydylan/articles/mosya-development
-
-https://zenn.dev/steelydylan/articles/mosyatc-development
 
 ## どんなサービスか
 
@@ -210,6 +208,15 @@ WebContainersに関する記事も実は以前Zennに書いてます！
 
 https://zenn.dev/steelydylan/articles/webcontainers
 
+
+## 他のサービスの技術的な紹介
+
+以前リリースしたmosyaやmosya&lt;TC&gt;の開発の詳細については以下のZennの記事にまとめています。
+
+https://zenn.dev/steelydylan/articles/mosya-development
+
+https://zenn.dev/steelydylan/articles/mosyatc-development
+
 ## 宣伝
 
 mosya Businessという法人向けサービスも運営しています！
@@ -226,7 +233,6 @@ mosyaやmosya Reactなどのサービスが法人の社員向けに提供でき�
 必要なレッスンも私に相談していただける窓口も用意していますので興味のある方はぜひこちらをご覧ください！
 会社でもmosyaを使ってくれるととても嬉しいです！
 
-下のリンクから詳細を見てみてください！
+下のリンクから詳細を確認できます！
 
 https://mosya.dev/business
-
