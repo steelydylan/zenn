@@ -60,10 +60,14 @@ mosya ReactではBiomeを動かしていて、リントのレッスンや実践�
 ## 技術的な紹介
 
 mosya Reactは以下の技術を使って開発しています。
+特に頑張った以下の項目について紹介していきます！
 
-- Service Worker
-- Web Worker
-- IndexedDB
+- Service Workerを使ったReactのコンパイル
+- エディターのリント
+- エディター内での型の解決
+- 型のテスト
+
+### Service Workerを使ったReactのコンパイル
 
 特に頑張ったのがコードを書いた際にリアルタイムに反映されるプレビュ画面です！
 このプレビュー画面にはService Workerを使ってReactのコードをコンパイルしています！
@@ -98,7 +102,7 @@ Service Workerの機能の一つで、リクエストに対して処理を介在
 例えば、`Hoge.mjs`のファイルにアクセスがあった場合、`Hoge.tsx`のファイルをIndexedDBから取得してコンパイルして、それをService Workerから返します。
 
 
-### Reactなどのライブラリの解決
+#### Reactなどのライブラリの解決
 
 Reactなどのライブラリの解決はServiceWorkerではなくimportmapという機能を使って解決します。
 例えば下のようなコードを書くとしましょう。
