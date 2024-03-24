@@ -14,7 +14,7 @@ published: true
 mosyaの開発期間と合わせると約2年間の開発期間を経てのリリースとなります。
 いやー、長かった！
 
-良かったら下のリンクからサービスを試してみてください！
+良かったら下のリンクから試してみてください！
 
 https://mosya.dev/react
 
@@ -23,7 +23,8 @@ https://mosya.dev/react
 
 mosya ReactはReactをオンライン上で学習できるサービスです。
 エディターに書いたコードがリアルタイムにプレビューできるようになっていて環境構築なしでReactを学習できます！
-採点機能が搭載されているのでメンターなどをつけずにReactを自学習したい方におすすめです！
+採点機能が搭載されているのでReactを自学習したい方におすすめです！
+JavaScriptの基礎がわかっている方を対象としています！
 
 このサービスの開発で特に頑張ったのが以下の特徴です！
 
@@ -156,6 +157,29 @@ Comlink.expose(workerApi);
 
 このとき`@biomejs/wasm-web`というWasm化された`Biome`のライブラリがめっちゃ役に立ちました！
 ブラウザー上でリンターが動かせるのすごい！
+
+### エディター内での型の解決
+
+先ほど紹介したようにmosya Reactでは型を調べたい変数や関数にカーソルを合わせると型が表示されます。
+これはあらかじめレッスンごとに`node_modules`のファイル内容を`JSON化`しておき、それを`Monaco Editor`の機能を使って読み込ませています。
+
+大体こんな感じで読み込ませています。
+
+```ts
+const deps = await fetch(
+  `${process.env.NEXT_PUBLIC_CLOUD_FLARE_PUBLIC_URL}/${lessonName}/deps.json`
+);
+const depsJson = await deps.json()
+
+Object.entries(depsJson).forEach(([key, value]) => {
+  monaco.languages.typescript.typescriptDefaults.addExtraLib(
+    value,
+    `file:///node_modules/${key}`
+  );
+});
+```
+
+node_modulesのファイル内容を読み込ませるだけで型を解決してくれる`Monaco Editor`は優秀ですね！
 
 ### 型のテスト
 
