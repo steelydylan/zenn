@@ -161,6 +161,9 @@ Comlink.expose(workerApi);
 ### エディター内での型の解決
 
 先ほど紹介したようにmosya Reactでは型を調べたい変数や関数にカーソルを合わせると型が表示されます。
+
+![](https://storage.googleapis.com/zenn-user-upload/cf42e133c538-20240323.png)
+
 これはあらかじめレッスンごとに`node_modules`のファイル内容を`JSON化`しておき、それを`Monaco Editor`の機能を使って読み込ませています。
 
 大体こんな感じで読み込ませています。
