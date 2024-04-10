@@ -181,6 +181,28 @@ export function useDevtools() {
 ```
 :::
 
+### プレビューとDevToolsを持つアプリケーション側
+
+アプリケーション側ではDevtoolsから来たメッセージをプレビュー側に流す処理とDevtoolsから来たメッセージをプレビュー側に流す処理をします。
+つまり二つのiframeの仲介役です！
+
+```ts
+const messageListener = (event: MessageEvent) => {
+  // プレビューからのメッセージをDevtoolsに送信
+  if (event.source === iframeRef.current?.contentWindow) {
+    devtoolsIframeRef.current?.contentWindow?.postMessage(event.data, "*");
+  }
+  // Devtoolsからのメッセージをプレビューに送信
+  if (event.source === devtoolsIframeRef.current?.contentWindow) {
+    iframeRef.current?.contentWindow?.postMessage(
+      { event: "DEV", data: event.data },
+      "*"
+    );
+  }
+};
+window.addEventListener("message", messageListener);
+```
+
 ## ライブラリ化した
 
 これらの処理をまとめて今回`react-embed-devtools`というライブラリとして公開しました。
