@@ -342,10 +342,14 @@ runs:
 
 無事にアプリが配布されると、テスターに招待メールが送られます。
 
+### Androidの場合
+
 Androidの場合は、メールに記載されたリンクをクリックすることでアプリをインストールすることができます。
 `App Tester`アプリがインストールされていることを確認してください。
 
 ![](https://storage.googleapis.com/zenn-user-upload/f6d5ac072c42-20241208.png =250x)
+
+### iOSの場合
 
 iOSの場合は、メールに記載されたリンクをクリックし「Install Firebase profile」をクリックします。
 Profileをインストールすると設定アプリに「Firebase App Distribution」が追加されているので、そこからアプリをインストールすることができます。
@@ -353,7 +357,7 @@ Profileをインストールすると設定アプリに「Firebase App Distribut
 アプリをインストールしたタイミングではまだ、「Firebase App Distribution」からアプリがダウンロードできません。
 
 
-### Apple Developerでの設定
+#### Apple Developerでの設定
 
 そこで、iOSの場合は、テスターのUDIDをApple Developerに登録する作業が必要です。
 テスターがアプリをインストールすると、`App Distribution`より開発者にテスターのUDIDが届くので、そのUDIDをApple Developerに登録します。
@@ -365,20 +369,21 @@ https://developer.apple.com/account/resources/devices/list
 
 https://developer.apple.com/account/resources/profiles/list
 
-### ExpoでのProvisioning Profileの設定
+#### ExpoでのProvisioning Profileの設定
 
 ダウンロードしたProvisioning ProfileはExpoのCredentialsより登録します。
 
 ![](https://storage.googleapis.com/zenn-user-upload/c908af8559d8-20241208.png)
 
 
-### 再度GitHub Actionsを実行
+#### 再度GitHub Actionsを実行
 
 再度GitHub Actionsを実行し、iOSのアプリをApp Distributionに配布します。
 成功すると「ダウンロード」ボタンがApp Distributionアプリに表示されるので、そこからアプリをインストールすることができます。
 
 ![](https://storage.googleapis.com/zenn-user-upload/b70395c155ae-20241208.png =250x)
 
+## まとめ
 
 以上で、ExpoのアプリをApp Distributionに配布する方法を紹介しました。
 無料プランでもアプリの配布が可能で、ビルド数に制限がないため、Expoのアプリを無料で配布することができます。
