@@ -13,6 +13,8 @@ https://expo.dev/pricing
 
 30ビルドは、CI/CDを導入しているとすぐに使い切ってしまうことがあるため、無料でアプリを配布する方法を探していました。そこで、FirebaseのApp Distributionを利用することで、無料でアプリを配布することができることを知りました。
 
+https://firebase.google.com/docs/app-distribution?hl=ja
+
 この記事では、ExpoのアプリをApp Distribution経由で配布する方法を紹介します。App DistributionはFirebaseの機能の一つで、アプリの配布を行うことができます。無料プランでもアプリの配布が可能で、ビルド数に制限がないため、Expoのアプリを無料で配布することができます。
 
 ## Expoの設定
