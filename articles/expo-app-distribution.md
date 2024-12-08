@@ -177,7 +177,7 @@ export const expoConfig: ExpoConfig = {
 ![](https://storage.googleapis.com/zenn-user-upload/d2897c97bb80-20241208.png)
 
 
-### actionsの設定
+### 設定ファイルの調整
 
 プロジェクトでGitHub Actionsの設定ファイルを作成します。
 
