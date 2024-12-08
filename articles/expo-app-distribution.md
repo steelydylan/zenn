@@ -147,7 +147,7 @@ https://console.firebase.google.com/
 export const expoConfig: ExpoConfig = {
   ...
   ios: {
-      bundleIdentifier: "com.example.app"
+    bundleIdentifier: "com.example.app"
   },
   android: {
     package: "com.example.app"
