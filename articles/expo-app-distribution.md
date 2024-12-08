@@ -155,8 +155,6 @@ export const expoConfig: ExpoConfig = {
 }
 ```
 
-それぞれのアプリの設定ファイルをダウンロードしておきます。
-
 ## App Distributionの設定
 
 次に、FirebaseのApp Distributionの設定を行います。Firebaseのコンソールにアクセスし、App Distributionを選択します。
