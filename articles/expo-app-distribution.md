@@ -6,6 +6,8 @@ topics: ["expo", "reactnative", "firebase", "githubactions"]
 published: true
 ---
 
+最近、React Nativeを使ったアプリ開発に挑戦しているのですが、なるべく費用を抑えるために試行錯誤しています！
+
 React Nativeでアプリを開発するときにほとんどのケースでExpoを利用すると思います。ExpoはReact Nativeの開発をサポートするためのフレームワークで、開発体験がとてもいいです。
 しかし、Expoで作成したアプリをテスト用などに配布する場合、Expoの公式サービスであるEASを利用することができますが、無料プランだとアプリのビルド数に制限があり、1ヶ月に**30ビルドまで**となっています。
 
