@@ -176,11 +176,33 @@ export const expoConfig: ExpoConfig = {
 
 ![](https://storage.googleapis.com/zenn-user-upload/d2897c97bb80-20241208.png)
 
-## actionsの設定
+
+### actionsの設定
 
 プロジェクトでGitHub Actionsの設定ファイルを作成します。
 
-僕は以下のようにAndroid用とiOS用のjobをわけています
+僕は以下のようにAndroid用とiOS用のjobをわけています。
+
+`eas build --local`コマンドをGitHub Actionsで実行するのがミソで、`--local`オプションをつけている限りは無料でビルドすることができます。
+ただし、`--local`オプションをつけると、環境変数などはExpoで設定したものではなく、ローカルの設定が使われるため、`.env`ファイルを作成する必要があります。
+さらに`eas build --local`時に`APP_VARIANT`を`development`か`production`を指定しておくことで、`app.config.js`の設定を本番用と開発用で切り替えることができるのでおすすめです。
+
+```yaml
+- name: Build on EAS (Android)
+  run: eas build --platform android --non-interactive --no-wait --local
+  env:
+    APP_VARIANT: development
+```
+
+また、`eas build`には`java`と`node`が必要なので、それらの設定も行っています。
+
+```yaml
+- name: Set up JDK
+  uses: actions/setup-java@v3
+  with:
+    java-version: 17
+    distribution: "zulu"
+```
 
 ::: details 各設定ファイル
 
