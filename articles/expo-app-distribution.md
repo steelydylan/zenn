@@ -334,7 +334,9 @@ runs:
 
 テスターを追加したあと、GitHub Actionsを実行します。
 
-アプリがApp Distributionに配布されていることを確認します。
+![](https://storage.googleapis.com/zenn-user-upload/3ff2dd92818d-20241208.png)
+
+無事にGitHub Actionsが成功すると、FirebaseのApp Distributionにアプリが配布されます。
 
 ![](https://storage.googleapis.com/zenn-user-upload/fca8ec8f2134-20241208.png)
 
