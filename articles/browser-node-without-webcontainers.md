@@ -4,7 +4,7 @@ emoji: "👨‍💻"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["react", "nodejs", "serviceworker"]
 publication_name: "progate"
-published: false
+published: true
 published_at: 2024-12-16 12:00 #公開日時の設定。
 ---
 
