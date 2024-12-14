@@ -27,6 +27,7 @@ ProgateではNode.jsの学習環境を提供しており、現在の実装はAWS
 
 ## なぜWebContainersを採用しなかったのか？
 
+すでにブラウザーでNode.jsを動かすための技術として、`WebContainers` や `Nodebox`といった技術が存在します。
 WebContainersは確かに強力な技術ですが、以下の制約がプロジェクトにとって障壁となりました：
 
 - **ブラウザ依存性:** WebContainersは現在、Chrome系ブラウザでのみ動作します。ユーザーが多様なブラウザを使用する環境では、限定的な対応は課題となります。
