@@ -2,7 +2,7 @@
 title: "WebContainersを使わない独自アプローチで実現するブラウザ内のNode.js学習環境"
 emoji: "👨‍💻"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["react", "nodejs", "serviceworker"]
+topics: ["react", "nodejs", "serviceworker", "webpack"]
 publication_name: "progate"
 published: true
 published_at: 2024-12-16 12:00 #公開日時の設定。
@@ -88,8 +88,14 @@ https://github.com/streamich/memfs
 
 ### 2. メモリやパフォーマンス最適化
 
-WASMや専用スレッドを利用し、より高速な処理を目指します。
-とくに`memfs`は、大量のファイルを扱う際にメモリ使用量が増大する問題があり、最適化が必要です。
+processごとに専用のWorkerを立ち上げるなどパフォーマンスの最適化をしたいなと考えています。
+
+また、`Node.js`のコードの実行をシミュレートするためにリアルタイムにブラウザでWebpackの内部で使われている`enhanced-resolve`を利用しています。
+この技術だと、モジュールの解決が遅いため、Rustで書かれたより高速に動作する`Rspack`というライブラリも使ってみたいと考えています。
+
+`Rspack`も`enhanced-resolve`と同じようにNode.jsのモジュールを解決するしくみがあるようです！
+
+https://rspack.dev/guide/features/module-resolution
 
 ## さいごに
 
