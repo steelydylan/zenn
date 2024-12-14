@@ -104,7 +104,7 @@ https://www.npmjs.com/package/patch-package
 
 `net`、`crypto`、`perf_hooks`といった一部のコアモジュールは、ブラウザでの再現が難しいため、未対応です。
 
-### 2. メモリやパフォーマンス最適化
+### 2. パフォーマンス最適化
 
 processごとに専用のWorkerを立ち上げるなどパフォーマンスの最適化をしたいなと考えています。
 
