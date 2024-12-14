@@ -74,6 +74,14 @@ https://github.com/streamich/memfs
 
 特に`http` モジュールは、ネットワーク要求をハンドリングする複雑なロジックが必要でした。Service Workerを用いることでリクエストの再ルーティングを実現しました。
 
+#### 時には改造が必要
+
+必要に応じてNode.jsでしか動かないようなモジュールを既存のライブラリやpolyfillを`patch-package`というライブラリを利用し、なんとかをブラウザで動くように改造しました。
+`patch-package`を使うと、`node_modules`内のパッケージを修正するためのパッチを作成し、`package.json`に記述することができます。
+そうすることで`npm install`を実行するたびに修正が上書きされることを防ぐことができます。
+
+https://www.npmjs.com/package/patch-package
+
 ### シェルコマンドの再現
 
 ブラウザ上に仮想シェル環境を構築し、`cd`、`ls`、`rm` といったコマンドを再現しました。これにより、Node.jsが内部で依存するOS的な操作の一部をエミュレート可能にしています。
