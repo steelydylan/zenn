@@ -42,6 +42,8 @@ WebContainersは確かに強力な技術ですが、以下の制約がプロジ�
 
 ## デモページ
 
+こちら実際に独自のアプローチで実現したNode.js学習基盤のデモページです。
+
 ![](https://storage.googleapis.com/zenn-user-upload/94b27f4f6748-20241214.png)
 
 以下のデモページでは、ブラウザ上で`npm install` → `npm start` の流れを体験できます。
