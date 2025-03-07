@@ -172,6 +172,8 @@ export const runMigrate = async () => {
 
 `drizzle-kit`というライブラリがあるので、これを使うと、`drizzle`のスキーマを簡単に生成できます。
 
+https://orm.drizzle.team/docs/kit-overview
+
 ```json:package.json
 {
   "scripts": {
