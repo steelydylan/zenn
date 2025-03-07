@@ -112,6 +112,12 @@ WASMのいいところはポータブルな技術なので、Macアプリだけ�
 
 `@electric-sql/pglite`を使うと、PostgreSQLのようなデータベースを使うことができます。
 
+また、今回、環境に依存する`Prisma`ではなく、`drizzle-orm`というライブラリを使って、データベースのスキーマを定義しました。`drizzle-orm`ではこの`pglite`との組み合わせが簡単にできるので、データベースの操作が簡単にできるようになりました。
+
+`Prisma`だとクライアント生成時に各プラットフォーム用のバイナリを含める必要があります。しかし、`drizzle-orm`はこの辺を気にせず使えます！
+
+https://orm.drizzle.team/
+
 ```ts:main/db.ts
 import { PGlite } from '@electric-sql/pglite'
 import { drizzle } from 'drizzle-orm/pglite'
