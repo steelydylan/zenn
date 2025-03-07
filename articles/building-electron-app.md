@@ -43,6 +43,8 @@ https://trpc.io/
 
 `tRPC`は普通のWebアプリケーションだけの用途に閉じず、いろんな環境間での通信に使えるので、Electronアプリでも使いやすいです。
 
+### mainプロセス側
+
 下のようにmainプロセスで`tRPC`のサーバーを立てて、rendererプロセスで`tRPC`のクライアントを使うことで、Electronアプリ内でAPIを使うことができます。
 
 ```ts:main.ts
@@ -68,6 +70,8 @@ process.once('loaded', async () => {
   exposeElectronTRPC()
 })
 ```
+
+### rendererプロセス側
 
 クライアント側は以下のような感じです。
 
