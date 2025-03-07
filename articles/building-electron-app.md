@@ -294,6 +294,8 @@ Macの場合、警告どころか、インストールしようとするとセ�
 
 ### Apple Developer Programに登録
 
+https://developer.apple.com/jp/programs/
+
 年間$99でApple Developer Programに登録することでAppleのコード署名を受けることができます。
 
 登録後、証明書をDeveloper -> Certificates, Identifiers & Profiles よりダウンロードできます！
