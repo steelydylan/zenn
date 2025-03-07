@@ -26,6 +26,10 @@ published: true
 
 そのため、Next.jsを使わずにVitest + React Routerで頑張ることにしました。
 
+https://ja.vite.dev/
+
+https://reactrouter.com/
+
 最終的にElectronではファイルを参照するためURLはfile://になるのですが、React Routerの場合、ハッシュタグに対応した、HashRouterを使うことで、Electronでも快適にページ遷移ができるようになりました。
 
 Electronアプリの場合はNext.jsのようなガッチリしたフレームワークを使うよりも、Vite + React Routerのような軽量なフレームワークを使う方が良いと思います。
