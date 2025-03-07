@@ -103,8 +103,14 @@ export function TrpcProvider({ children }: { children: React.ReactNode }) {
 Electronアプリで複雑なデータ管理をしたい場合どうするか悩みました。
 例えばテーブルの結合や、unique制約やその他の機能を使いたい場合、`IndexedDB`や`localStorage`では難しいです。
 そこで、WASMの力を借りて、`@electric-sql/pglite`というPostgreSQLをブラウザで使えるライブラリを使うことにしました。
+
+https://electric-sql.com/
+
 今回はブラウザーというよりもmainプロセスでこのライブラリを利用しています。
-WASMのいいところはポータブルな技術なので、Macアプリだけじゃなく、Windowsアプリでも正常に動作することを確認しています。
+WASMのいいところはポータブルな技術なので、Macアプリだけじゃなく、Windowsアプリでも正常に動作することです。
+環境差異を気にせず気軽に導入できるのがWASMのいいところです。
+
+`@electric-sql/pglite`を使うと、PostgreSQLのようなデータベースを使うことができます。
 
 ```ts:main/db.ts
 import { PGlite } from '@electric-sql/pglite'
