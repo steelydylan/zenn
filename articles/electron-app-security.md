@@ -38,7 +38,7 @@ asar extract app.asar app/
 ### ElectronのsafeStorageを使った安全なシークレット管理
 
 ElectronのsafeStorageは、OSのセキュアなキーチェーン（macOSの場合はKeychain）を利用して、アプリごとに暗号化・復号化を行うAPIです。
-この仕組みの最大の特徴は、暗号化・復号化に使われる鍵がOSのユーザーごと・アプリごとに管理されており、他のアプリやプロセスからはアクセスできない点です。
+この仕組みの最大の特徴は、暗号化・復号化に使われる鍵がOSのユーザーごと・アプリごとに管理されており、Macの場合、他のアプリやプロセスからはアクセスできない点です。
 
 #### 具体的な仕様
 
@@ -129,6 +129,10 @@ export const decryptString = (data: string) => {
   return decrypted
 }
 ```
+
+流れ的には以下の画像のようになります。
+
+![](https://storage.googleapis.com/zenn-user-upload/500803e381e1-20250510.png)
 
 ## PKCE認証フローとユニバーサルリンクのセキュリティ
 
