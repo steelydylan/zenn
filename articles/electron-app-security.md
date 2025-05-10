@@ -1,7 +1,7 @@
 ---
 title: "Electronアプリを作る上で気にすべきセキュリティ対策
 "
-emoji: "👨‍💻"
+emoji: "🔐"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["electron", "security"]
 publication_name: "progate"
