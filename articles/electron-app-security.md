@@ -132,7 +132,8 @@ export const decryptString = (data: string) => {
 
 流れ的には以下の画像のようになります。
 
-![](https://storage.googleapis.com/zenn-user-upload/500803e381e1-20250510.png)
+![](https://storage.googleapis.com/zenn-user-upload/7632b5e72ef6-20250510.png)
+
 
 ## PKCE認証フローとユニバーサルリンクのセキュリティ
 
