@@ -1,5 +1,5 @@
 ---
-title: "Electronアプリを作る上で気にすべきセキュリティ対策
+title: "ElectronでMacアプリを作る上で気にすべきセキュリティ対策
 "
 emoji: "🔐"
 type: "tech" # tech: 技術記事 / idea: アイデア
