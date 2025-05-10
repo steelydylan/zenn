@@ -135,7 +135,7 @@ export const decryptString = (data: string) => {
 ![](https://storage.googleapis.com/zenn-user-upload/7632b5e72ef6-20250510.png)
 
 
-## PKCE認証フローとユニバーサルリンクのセキュリティ
+## アプリの認可フローにおけるトークン窃取のリスク
 
 
 次に気にすべきは、アプリの認証フローです。
