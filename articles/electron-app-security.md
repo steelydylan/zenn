@@ -26,7 +26,7 @@ Electronアプリの中にある、アプリ名/Contents/Resources/app.asarを�
 
 ![](https://storage.googleapis.com/zenn-user-upload/712514e217f6-20250510.jpg)
 
-実際に回答するコマンド👇
+実際に解答するコマンド👇
 
 ```
 asar extract app.asar app/
