@@ -1,10 +1,11 @@
 ---
-title: "自作のRAGは不要？テナント毎に安全に検索できる Vertex AI Search 入門" 
+title: "もうRAGを自作しなくていい！テナントごとに安心して使える Vertex AI Search のススメ" 
 emoji: "📔"
 type: "tech" # tech: 技術記事 / idea: アイデア
 publication_name: "progate"
 topics: ["googlecloud", "vertexai", "ai", "search"]
 published: true
+published_at: 2025-06-06 09:00 #公開日時の設定。
 ---
 
 生成 AI を検索体験に組み込みたい──そう考えたとき、RAGをゼロから実装するのは意外と骨が折れます。
