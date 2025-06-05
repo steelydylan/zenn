@@ -3,7 +3,7 @@ title: "もうRAGを自作しなくていい！Vertex AI Search のススメ"
 emoji: "📔"
 type: "tech" # tech: 技術記事 / idea: アイデア
 publication_name: "progate"
-topics: ["googlecloud", "vertexai", "ai", "search"]
+topics: ["googlecloud", "vertexai", "nodejs", "ai", "search"]
 published: true
 published_at: 2025-06-06 09:00 #公開日時の設定。
 ---
