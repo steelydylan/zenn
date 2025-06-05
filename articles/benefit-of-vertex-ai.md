@@ -65,6 +65,10 @@ Vertex AI Search はプロジェクト単位でマルチテナント構成を組
 
 Vertex AI Search は Web クローリングのほか、Cloud Storage・BigQuery・Firestore・Google Drive など複数ソースのコネクタを提供しています。コンソール操作に加え、API／SDK から Data Store を作成することもできます！
 
+![](/images/source1.png)
+
+![](/images/source2.png)
+
 弊社では、Cloud SQL のデータを JSONL 形式にエクスポートし Cloud Storage に配置。各テナント用 Data Store に一括インポートしたのち、それぞれテナントごとのアプリケーションに紐づけています！
 
 以下のコードスニペットでは、Node.js を使って Data Store の作成からデータのインポート、検索エンジンのデプロイまでを行う方法になります！
