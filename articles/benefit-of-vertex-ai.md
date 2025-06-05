@@ -1,5 +1,5 @@
 ---
-title: "もうRAGを自作しなくていい！テナントごとに安心して使える Vertex AI Search のススメ" 
+title: "もうRAGを自作しなくていい！Vertex AI Search のススメ" 
 emoji: "📔"
 type: "tech" # tech: 技術記事 / idea: アイデア
 publication_name: "progate"
