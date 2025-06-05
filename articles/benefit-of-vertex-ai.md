@@ -5,7 +5,7 @@ type: "tech" # tech: 技術記事 / idea: アイデア
 publication_name: "progate"
 topics: ["googlecloud", "vertexai", "nodejs", "ai", "search"]
 published: true
-published_at: 2025-06-06 09:00 #公開日時の設定。
+published_at: 2025-06-06 08:30 #公開日時の設定。
 ---
 
 生成 AI を検索体験に組み込みたい──そう考えたとき、RAGをゼロから実装するのは意外と骨が折れます。
