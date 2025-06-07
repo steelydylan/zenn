@@ -263,9 +263,6 @@ Vertex AI Search の嬉しいポイントとして「インデックス作成自
 
 https://cloud.google.com/generative-ai-app-builder/pricing?hl=ja
 
-::: message alert
-ただし、「回答付き検索」を利用する場合は、ユーザー入力クエリ 1,000 件あたり4ドルの料金がかかるので注意が必要です！
-:::
 
 ## まとめ
 
