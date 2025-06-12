@@ -179,6 +179,7 @@ headers.set('x-locale', lang || defaultLocale);
 これにより、サーバーサイドの関数で`x-locale`ヘッダーを見ることで簡単に言語ごとの辞書が取得できるようになります。
 
 ```ts:lib/server/i18n.ts
+import { cache } from 'react';
 import { headers } from 'next/headers';
 import ja from './locales/ja.json';
 import en from './locales/en.json';
@@ -186,12 +187,12 @@ import zh from './locales/zh.json';
 
 const locales = ['ja', 'en', 'zh'];
 
-export const getLocale = async () => {
+export const getLocale = cache(async () => {
   const h = await headers();
   return h.get('x-locale') || 'en';
-};
+});
 
-export const dictionary = async () => {
+export const dictionary = cache(async () => {
   const locale = await getLocale();
   switch (locale) {
     case 'ja':
@@ -203,7 +204,7 @@ export const dictionary = async () => {
     default:
       return en;
   }
-};
+});
 ```
 
 このように、サーバーサイドではmiddlewareで付与した`x-locale`ヘッダーをサーバーサイドで受け取り、それ用のjsonファイルを返す感じになります！
