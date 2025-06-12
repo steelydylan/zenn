@@ -10,7 +10,7 @@ published_at: 2025-06-16 07:30 #公開日時の設定。
 
 ## はじめに
 
-以前、こちらの記事を書いた際は**Pages Router**が前提だったのでまだ自前でi18n対応するのは簡単でした
+以前、こちらの記事を書いた時は昔だったので**Pages Router**が前提でまだ自前でi18n対応するのは簡単でした
 
 https://zenn.dev/steelydylan/articles/nextjs-with-i18n
 
