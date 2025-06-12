@@ -14,6 +14,7 @@ published_at: 2025-06-16 07:30 #公開日時の設定。
 
 最初はnext-intlやnext-i18n-routerといった定番ライブラリを検討していたのですが、
 設定ファイルの量が意外とあったり、各ページで工夫が必要だったり...hooksが前提だったりみたいな感じで、
+めんどくさそうだなと感じて諦めました。
 
 https://next-intl.dev/
 
@@ -26,7 +27,7 @@ https://github.com/i18nexus/next-i18n-router
 https://nextjs.org/docs/app/guides/internationalization
 
 
-途中で、「これ、本当に必要なの？自分で実装した方がシンプルなんじゃないか？」と思い始めました。
+途中で、「自分で実装した方がシンプルなんじゃないか？」と思い始めました。
 
 そこで、Next.jsのApp Routerの機能だけを使って、シンプルなi18n実装をライブラリを使わずに試してみることにしました。
 
