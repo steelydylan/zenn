@@ -5,14 +5,12 @@ type: "tech" # tech: 技術記事 / idea: アイデア
 publication_name: "progate"
 topics: ["nextjs", "i18n", "react", "typescript"]
 published: true
-published_at: 2025-06-06 08:30 #公開日時の設定。
+published_at: 2025-06-16 07:30 #公開日時の設定。
 ---
 
 ## はじめに
 
-最近、Next.jsのAppRouterで作ったこちらのサイトを国際化対応したのですが、ライブラリの選定に悩みました。
-
-https://aidy.jp/
+最近、Next.jsのAppRouterで作ったサイトを国際化対応したのですが、ライブラリの選定に悩みました。
 
 最初はnext-i18nextやreact-i18nextといった定番ライブラリを検討していたのですが、
 設定ファイルの量が意外とあったり、各ページで工夫が必要だったり...みたいな感じで、
