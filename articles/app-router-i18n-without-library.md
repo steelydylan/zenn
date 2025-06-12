@@ -1,5 +1,5 @@
 ---
-title: "Next.jsのApp Routerで頑張らないi18n対応" 
+title: "Next.jsのApp Routerで頑張らない多言語対応" 
 emoji: "📔"
 type: "tech" # tech: 技術記事 / idea: アイデア
 publication_name: "progate"
