@@ -13,7 +13,14 @@ published_at: 2025-06-16 07:30 #公開日時の設定。
 最近、Next.jsのAppRouterで作ったサイトを国際化対応したのですが、ライブラリの選定に悩みました。
 
 最初はnext-i18nextやreact-i18nextといった定番ライブラリを検討していたのですが、
-設定ファイルの量が意外とあったり、各ページで工夫が必要だったり...みたいな感じで、
+設定ファイルの量が意外とあったり、各ページで工夫が必要だったり...hooksが前提だったりみたいな感じで、
+
+https://next-intl.dev/
+
+https://github.com/QuiiBz/next-international
+
+https://github.com/i18nexus/next-i18n-router
+
 
 途中で、「これ、本当に必要なのか？」と疑問に思ったんです。
 
