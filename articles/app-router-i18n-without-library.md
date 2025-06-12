@@ -24,8 +24,6 @@ https://zenn.dev/steelydylan/articles/nextjs-with-i18n
 
 https://next-intl.dev/
 
-https://github.com/QuiiBz/next-international
-
 https://github.com/i18nexus/next-i18n-router
 
 このNext.jsの公式サイトで紹介されているミニマムな方法も、サーバーコンポーネントのPageコンポーネントから頑張ってdictionaryを子供のコンポーネントに渡す必要があったり、クライアントコンポーネントでの利用が面倒だったりと、なんだか複雑な印象を受けました。
