@@ -10,7 +10,11 @@ published_at: 2025-06-16 07:30 #公開日時の設定。
 
 ## はじめに
 
-最近、Next.jsのAppRouterで作ったサイトを国際化対応したのですが、ライブラリの選定に悩みました。
+以前、こちらの記事を書いた際はPages Routerが前提だったのでまだ自前でi18n対応するのは簡単でした
+
+https://zenn.dev/steelydylan/articles/nextjs-with-i18n
+
+最近はNext.jsのAppRouterでWebアプリを作るので、作ったサイトを国際化対応したのですが、ライブラリの選定に悩みました。
 
 最初はnext-intlやnext-i18n-routerといった定番ライブラリを検討していたのですが、
 設定ファイルの量が意外とあったり、各ページで工夫が必要だったり...hooksが前提だったりみたいな感じで、
@@ -27,9 +31,7 @@ https://github.com/i18nexus/next-i18n-router
 https://nextjs.org/docs/app/guides/internationalization
 
 
-途中で、「自分で実装した方がシンプルなんじゃないか？」と思い始めました。
-
-そこで、Next.jsのApp Routerの機能だけを使って、シンプルなi18n実装をライブラリを使わずに試してみることにしました。
+途中で、「自分で実装した方がシンプルなんじゃないか？」と思い結局Pages Routerの時と同じように、ライブラリを使わずにi18n対応を実装することにしました。
 
 結果的に、少しの実装でライブラリを使わずに多言語対応が実現できたので、その手法を共有したいと思います。
 
