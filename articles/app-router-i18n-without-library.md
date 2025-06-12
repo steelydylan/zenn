@@ -21,8 +21,12 @@ https://github.com/QuiiBz/next-international
 
 https://github.com/i18nexus/next-i18n-router
 
+このNext.jsの公式サイトで紹介されているミニマムな方法も、サーバーコンポーネントのPageコンポーネントから頑張ってdictionaryを子供のコンポーネントに渡す必要があったり、クライアントコンポーネントでの利用が面倒だったりと、なんだか複雑な印象を受けました。
 
-途中で、「これ、本当に必要なのか？」と疑問に思ったんです。
+https://nextjs.org/docs/app/guides/internationalization
+
+
+途中で、「これ、本当に必要なの？自分で実装した方がシンプルなんじゃないか？」と思い始めました。
 
 そこで、Next.jsのApp Routerの機能だけを使って、シンプルなi18n実装をライブラリを使わずに試してみることにしました。
 
