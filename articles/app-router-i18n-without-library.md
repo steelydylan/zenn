@@ -195,8 +195,7 @@ export const dictionary = async () => {
 
 以下は、サーバーコンポーネントで先ほどの`dictionary`関数を使って表示する例です。簡単ですね！
 
-```tsx
-// /app/[locale]/page.tsx
+```ts:/app/[locale]/page.tsx
 import { getLocale, dictionary } from '../../server/i18n';
 
 export default async function Page() {
