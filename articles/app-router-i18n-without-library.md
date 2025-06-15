@@ -38,6 +38,7 @@ https://nextjs.org/docs/app/guides/internationalization
 ## 全体のアーキテクチャ
 
 まず、どんな構成になるかを説明します。
+以下のように言語判定のために必ずpage,tsxなどを[locale]ディレクトリの中にいれます
 
 ```
 app/
