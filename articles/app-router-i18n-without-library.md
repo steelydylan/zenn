@@ -55,9 +55,9 @@ next.config.ts       # URL正規化の設定
 例えばdocsページのURLは以下のようになります！
 
 ```
-英語: aidy.jp/docs
-日本語: aidy.jp/ja/docs
-中国語: aidy.jp/zh/docs
+英語: example.com/docs
+日本語: example.com/ja/docs
+中国語: example.com/zh/docs
 ```
 
 英語ユーザーにはそのままのURLを提供しつつ、他言語ユーザーにも分かりやすいURL構造になっています。
