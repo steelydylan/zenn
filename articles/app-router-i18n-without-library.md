@@ -283,10 +283,10 @@ export default async function RootLayout({
     return notFound();
   }
 
-  const i18n = getLanguageObject(locale);
+  const dict = await dictionary()
 
   return (
-    <I18nProvider dictionary={i18n} locale={locale}>{children}</I18nProvider>
+    <I18nProvider dictionary={dict} locale={locale}>{children}</I18nProvider>
   )
 }
 ```
