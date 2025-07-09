@@ -1,23 +1,18 @@
 ---
-title: "もうRAGを自作しなくていい！Vertex AI Search のススメ"
+title: "もうRAGを自作しなくていい！Vertex AI Search のススメ" 
 emoji: "📔"
-type: "tech"
+type: "tech" # tech: 技術記事 / idea: アイデア
 publication_name: "progate"
 topics: ["googlecloud", "vertexai", "nodejs", "ai", "search"]
 published: true
-published_at: "2025-06-06 08:30"
+published_at: 2025-06-06 08:30 #公開日時の設定。
 ---
 
 生成 AI を検索体験に組み込みたい──そう考えたとき、RAGをゼロから実装するのは意外と骨が折れます。
 埋め込みモデルの選定や大量ドキュメントのベクトル化バッチ、スケーリングするベクトル DB の運用、生成モデルへ渡すコンテキストの最適化など、工程が多岐にわたり運用負荷も高くなるためです。
 Google Cloud が提供する **Vertex AI Search** を使えば、データの取り込みからインデックス生成、質問応答までをフルマネージドで任せられるため、開発者はフロントエンド設計やドメイン知識の整理に集中できます。
 
-この記事では実際に触ってみて感じた便利さを軸に Vertex AI Search について語っていきます。
-
-
-
-
-
+この記事では実際に触ってみて感じた便利さを軸に Vertex AI Search について語っていきます。 
 
 
 ## Vertex AI Search とは？
@@ -25,7 +20,7 @@ Google Cloud が提供する **Vertex AI Search** を使えば、データの取
 Vertex AI Search は、Google Cloud が提供する構造化／非構造化データを横断して検索・要約・質問応答を行うフルマネージド型サービスです。
 アカウントあたり月 10,000 クエリまでの無料トライアルが用意されているので、小規模な PoC であれば費用ゼロから試せるのも魅力です。
 
-<https://cloud.google.com/generative-ai-app-builder/pricing?hl=ja>
+https://cloud.google.com/generative-ai-app-builder/pricing?hl=ja
 
 ## RAG を自前で実装する時と比べた時のメリット
 
@@ -35,6 +30,7 @@ pgvector + PostgreSQL でベクトル検索を構築できても、ドキュメ�
 
 特に独自で実装する場合、toB向けのマルチテナントで実装する場合のデータ隔離やセキュリティの確保も難しいです。
 Vertex AI Search ならこうした面倒を Google に丸投げできるため、開発者はアプリケーションのロジックに集中できます。
+
 
 ## 管理画面で検索結果をプレビュー
 
@@ -55,6 +51,7 @@ UIを使えば、実際に検索したい内容を検索にかけて、結果を
 
 もちろん、このウィジェットを使わずに、独自のフロントエンドを実装して検索体験をカスタマイズすることもできます。
 
+
 ## テナント分離でエンタープライズでも安心
 
 Vertex AI Search は工夫して実装することでプロジェクト単位でマルチテナント構成を組めます。
@@ -63,6 +60,7 @@ Vertex AI Search は工夫して実装することでプロジェクト単位で
 ![](/images/applications.jpg)
 
 図のようにテナントごとにData Storeを作成し、アプリケーションごとに異なるData Storeを紐づけることで、データの隔離とセキュリティを確保できます。
+
 
 ## Cloud Storage / Google Drive からのデータ取り込み
 
@@ -119,7 +117,6 @@ async function createDataStore(
   return operation.name || '';
 }
 ```
-
 :::
 
 ::: details Data Store にデータをインポートする
@@ -203,7 +200,6 @@ async function importDataStore(
   return operation.name || '';
 }
 ```
-
 :::
 
 ::: details Node.js で検索エンジンをデプロイする
@@ -254,7 +250,6 @@ async function createSearchEngine(
   return operation.name || '';
 }
 ```
-
 :::
 
 ## Vertex AI Search のインデックス料金について
@@ -266,9 +261,11 @@ Vertex AI Search の嬉しいポイントとして「インデックス作成自
 
 また、インデックスの作成やデータの更新操作も無料。課金対象になるのは「検索クエリ数」と「インデックスストレージの超過分」だけなので、コスト管理もしやすいです。
 
-<https://cloud.google.com/generative-ai-app-builder/pricing?hl=ja>
+https://cloud.google.com/generative-ai-app-builder/pricing?hl=ja
+
 
 ## まとめ
 
 このように、Vertex AI Search を使うことで検索体験を向上させつつ運用コストを削減できます！
 特に、使い方を工夫することでマルチテナント環境でのデータ隔離やセキュリティを確保しつつ、高度な検索機能を簡単に実装できる点が大きな魅力ですね！
+
