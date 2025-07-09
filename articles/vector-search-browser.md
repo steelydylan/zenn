@@ -1,8 +1,8 @@
 ---
-title: "マイグレーションもベクトル検索もブラウザだけで完結！PGlite凄すぎる..."
+title: "サーバーレスで実現！ブラウザだけでベクトル検索"
 emoji: "📔"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["pglite","drizzleorm","openai","react","typescript"]
+type: "tech"
+topics: ["pglite", "drizzleorm", "openai", "react", "typescript"]
 published: true
 ---
 
