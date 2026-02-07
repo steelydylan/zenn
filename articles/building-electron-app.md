@@ -307,7 +307,7 @@ https://developer.apple.com/jp/programs/
 年間$99でApple Developer Programに登録することでAppleのコード署名を受けることができます。
 
 登録後、証明書をDeveloper -> Certificates, Identifiers & Profiles よりダウンロードできます！
-とりあえず、`Mac Development`を選択します！もし、Mac App Storeにリリースする場合は、`Mac App Distribution`を選択しましょう！
+とりあえず、`Developer ID Application`を選択します！もし、Mac App Storeにリリースする場合は、`Mac App Distribution`を選択しましょう！
 
 ![](https://storage.googleapis.com/zenn-user-upload/dbc7ef2cde78-20250307.png)
 
