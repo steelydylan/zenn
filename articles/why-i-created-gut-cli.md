@@ -25,6 +25,16 @@ PRの説明文も書かないといけないし、stashに名前をつけ忘れ�
 
 https://github.com/gitton-dev/gut
 
+日本語でコミットメッセージやPR説明文を生成したい場合は、以下のコマンドで設定できます：
+
+```bash
+# グローバル設定（すべてのリポジトリに適用）
+$ gut config set lang ja
+
+# 特定のリポジトリだけ日本語にしたい場合
+$ gut config set lang ja --local
+```
+
 たとえば、従来の`git commit`だとこんな感じですよね。
 
 ```bash
@@ -384,6 +394,24 @@ gut auth login --provider gemini
 # 使ってみる
 gut commit
 ```
+
+### プロジェクトにテンプレートを追加
+
+`gut init`コマンドで、プロジェクトに`.gut/`フォルダとテンプレートファイルを自動生成できます：
+
+```bash
+$ gut init
+
+Created /path/to/project/.gut
+  Copied: commit.md
+  Copied: pr.md
+  Copied: branch.md
+  ...
+
+✓ 12 template(s) initialized in .gut/
+```
+
+言語設定が日本語（`gut config set lang ja`）の場合、テンプレートも自動的に日本語に翻訳されます。生成されたテンプレートはプロジェクトに合わせて自由にカスタマイズできます。
 
 ## まとめ
 
