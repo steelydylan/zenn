@@ -421,8 +421,3 @@ gutは「gitワークフローの小さな面倒をAIで解消する」という
 
 https://github.com/gitton-dev/gut
 
-## 関連
-
-GUIでgitを使いたい方は、同じ思想で作っているデスクトップアプリ「Gitton」もチェックしてみてください。
-
-https://jsers.dev/service/gitton
