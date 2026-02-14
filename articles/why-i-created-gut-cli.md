@@ -71,12 +71,28 @@ PRの説明文も、今まではテンプレートを埋めるのが手間でし
 $ gh pr create --title "Add OAuth2" --body "..."
 ```
 
-gutなら勝手にやってくれます。
+gutならコマンド一発です。
 
 ```bash
-$ gut pr --create
+$ gut pr
 
-✨ PR created: https://github.com/owner/repo/pull/123
+📝 Generated PR:
+
+Title: Add OAuth2 authentication with Google provider
+
+Description:
+──────────────────────────────────────────────────
+## Summary
+- OAuth2認証フローを実装
+- Googleプロバイダーに対応
+
+## Changes
+- src/auth.ts: OAuth2クライアントの実装
+- src/config.ts: 認証設定の追加
+──────────────────────────────────────────────────
+
+Create PR with gh CLI? (y/N) y
+✓ PR created successfully!
 ```
 
 ## なぜgutを作ったのか
@@ -106,17 +122,33 @@ feat(auth): add OAuth2 login flow with Google provider
 Proceed? (Y/n)
 ```
 
-変更内容を解析して、Conventional Commits形式のメッセージを自動生成します。プロジェクトに`.gut/commit-convention.md`を置けば、独自のルールにも対応します。
+変更内容を解析して、Conventional Commits形式のメッセージを自動生成します。プロジェクトに`.gut/commit.md`を置けば、独自のルールにも対応します。
 
 ### PR説明文の生成
 
 ```bash
-$ gut pr --create
+$ gut pr
 
-✨ PR created: https://github.com/owner/repo/pull/123
+📝 Generated PR:
+
+Title: Add user authentication feature
+
+Description:
+──────────────────────────────────────────────────
+## Summary
+- ユーザー認証機能を追加
+- セッション管理を実装
+
+## Changes
+- 新規ファイル: src/auth.ts
+- 設定追加: src/config.ts
+──────────────────────────────────────────────────
+
+Create PR with gh CLI? (y/N) y
+✓ PR created successfully!
 ```
 
-ブランチのコミット履歴とdiffから、PRのタイトルと説明文を生成。`.github/pull_request_template.md`があれば、そのテンプレートに沿って埋めてくれます。
+ブランチのコミット履歴とdiffから、PRのタイトルと説明文を生成。`.github/pull_request_template.md`があれば、そのテンプレートに沿って埋めてくれます。`--copy`オプションでクリップボードにコピーも可能です。
 
 ### コードレビュー
 
@@ -138,6 +170,21 @@ Issues:
 ```
 
 変更内容をレビューして、バグやセキュリティ上の問題、改善点を指摘します。
+
+### 変更内容からブランチを作成
+
+```bash
+$ gut checkout
+
+✨ Generated branch name:
+
+  feature/add-user-authentication
+
+Create and checkout this branch? (y/N) y
+✓ Created and checked out branch: feature/add-user-authentication
+```
+
+「まずコードを書き始めてしまった！」というとき、現在の変更内容を解析してブランチ名を自動生成します。`gut branch`がissue番号から生成するのに対し、`gut checkout`はdiffから生成するので、先にコードを書き始めた場合に便利です。
 
 ### コンフリクトの自動解決
 
@@ -297,25 +344,32 @@ export async function getApiKey(provider: Provider): Promise<string | null> {
 
 ### プロジェクト固有の設定
 
-gutはプロジェクトごとにカスタマイズ可能です。`.gut/`ディレクトリに設定ファイルを置くことで、AIの出力をプロジェクトのルールに合わせられます：
+gutはプロジェクトごとにカスタマイズ可能です。`.gut/`ディレクトリにテンプレートファイルを置くことで、AIの出力をプロジェクトのルールに合わせられます：
 
 | ファイル | 用途 |
 |---------|------|
-| `.gut/commit-convention.md` | コミットメッセージのルール |
-| `.gut/pr-template.md` | PRの説明文テンプレート |
-| `.gut/branch-convention.md` | ブランチ命名規則 |
-| `.gut/merge-strategy.md` | コンフリクト解決戦略 |
+| `.gut/commit.md` | コミットメッセージのルール |
+| `.gut/pr.md` | PRの説明文テンプレート |
+| `.gut/branch.md` | ブランチ命名規則 |
+| `.gut/merge.md` | コンフリクト解決戦略 |
+| `.gut/checkout.md` | diffからのブランチ名生成ルール |
 
 例えば、コミットメッセージに日本語を使いたい場合：
 
 ```markdown
-<!-- .gut/commit-convention.md -->
+<!-- .gut/commit.md -->
 # コミットメッセージ規約
 
 - 日本語で記述する
 - 形式: [種別] 説明
 - 種別: 機能追加、バグ修正、リファクタリング、ドキュメント
 - 例: [機能追加] ログイン機能を実装
+```
+
+また、グローバルに日本語出力を設定することも可能です：
+
+```bash
+$ gut config set lang ja
 ```
 
 ## インストールと使い方
