@@ -190,24 +190,6 @@ $ gut find "ログイン機能"
 
 「あの機能いつ実装したっけ？」という曖昧な検索をAIが解釈して、関連するコミットを見つけます。
 
-### 作業サマリー
-
-```bash
-$ gut summary --weekly --markdown
-
-# Work Summary (Feb 3 - Feb 10)
-
-## Overview
-Focused on authentication system improvements and bug fixes.
-
-## Highlights
-- Implemented OAuth2 integration
-- Fixed 3 critical security issues
-- Refactored user session management
-```
-
-日報や週報の作成に便利。コミット履歴から作業内容をまとめてくれます。
-
 ## 技術的な実装
 
 ### アーキテクチャ
