@@ -203,6 +203,42 @@ Create and checkout this branch? (y/N) y
 
 「まずコードを書き始めてしまった！」というとき、現在の変更内容を解析してブランチ名を自動生成します。`gut branch`がissue番号から生成するのに対し、`gut checkout`はdiffから生成するので、先にコードを書き始めた場合に便利です。
 
+### stashにわかりやすい名前を自動生成
+
+```bash
+$ gut stash
+
+✨ Generating stash name...
+✓ Stashed: WIP: add OAuth2 login validation
+```
+
+通常の`git stash`だと「WIP on branch-name: abc1234」みたいな機械的な名前になりますよね。後から見返して「これ何の作業だっけ...」となることありませんか？
+
+`gut stash`は変更内容を解析して、わかりやすい名前を自動生成します。もちろん、自分で名前を指定することもできます：
+
+```bash
+# 手動で名前をつける
+$ gut stash "デバッグ用の一時変更"
+```
+
+stashの操作も一通りサポートしています：
+
+```bash
+# stash一覧
+$ gut stash --list
+Stashes:
+  0 WIP: add OAuth2 login validation
+  1 WIP: refactor config loading
+
+# 適用
+$ gut stash --apply 0
+
+# pop（適用して削除）
+$ gut stash --pop
+```
+
+`.gut/stash.md`にルールを書いておけば、プロジェクトに合わせた命名規則にもできます。
+
 ### コンフリクトの自動解決
 
 ```bash
@@ -366,10 +402,11 @@ gutはプロジェクトごとにカスタマイズ可能です。`.gut/`ディ�
 | ファイル | 用途 |
 |---------|------|
 | `.gut/commit.md` | コミットメッセージのルール |
-| `.gut/pr.md`  | PRの説明文テンプレート 
+| `.gut/pr.md`  | PRの説明文テンプレート |
 | `.gut/branch.md` | ブランチ命名規則 |
 | `.gut/merge.md` | コンフリクト解決戦略 |
 | `.gut/checkout.md` | diffからのブランチ名生成ルール |
+| `.gut/stash.md` | stash名の生成ルール |
 
 ::: message
 PRの説明テンプレートについては`.github/pull-request-template.md`があればそれが優先されます
