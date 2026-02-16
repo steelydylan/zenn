@@ -261,18 +261,57 @@ All conflicts resolved!
 ```bash
 $ gut explain abc123
 
-📖 Commit Explanation
+📝 Explanation
 
 Summary: Add rate limiting to API endpoints
 
 Purpose: Prevent abuse and ensure fair usage of API resources
 
-Changes:
-- src/middleware/rateLimit.ts: New rate limiting middleware
-- src/routes/api.ts: Apply rate limiting to all endpoints
+Key Changes:
+  src/middleware/rateLimit.ts
+    New rate limiting middleware using sliding window algorithm
+  src/routes/api.ts
+    Apply rate limiting to all endpoints
+
+Impact: Prevents API abuse while maintaining good UX for normal users
 ```
 
-コミット、PR、ファイルの内容を「なぜその変更が必要だったのか」まで含めて説明してくれます。
+「このコミット何してるんだっけ？」「このPR何が変わるの？」という疑問をAIが解説してくれます。
+
+引数なしで実行すると、今の未コミットの変更を説明してくれるので、コミット前の確認にも便利です：
+
+```bash
+# 今の変更内容を説明
+$ gut explain
+
+# ステージ済みの変更だけ説明
+$ gut explain --staged
+```
+
+PRの説明もできます。レビュー前にざっと内容を把握したいときに便利ですね：
+
+```bash
+# PR番号で指定
+$ gut explain #42
+
+# URLでもOK
+$ gut explain https://github.com/owner/repo/pull/42
+```
+
+さらに、ファイルを指定するとそのファイルの内容や変更履歴を説明してくれます：
+
+```bash
+# ファイルの内容を説明
+$ gut explain src/auth.ts
+
+# ファイルの最近の変更履歴を説明
+$ gut explain src/auth.ts --history
+
+# 直近5コミット分の変更を説明
+$ gut explain src/auth.ts --history -n 5
+```
+
+新しくプロジェクトに参加したときや、久しぶりに触るコードを理解するのに重宝します！
 
 ### コミットの検索
 
