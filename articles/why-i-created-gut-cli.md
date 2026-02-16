@@ -488,33 +488,24 @@ $ gut config set lang ja
 ## インストールと使い方
 
 ```bash
-# インストール
+# 1. インストール
 npm install -g gut-cli
 
-# APIキーの設定（Geminiの場合）
+# 2. APIキーの設定（システムのキーチェーンに安全に保存されます）
 gut auth login --provider gemini
 
-# 使ってみる
-gut commit
+# 3. 使ってみる
+gut commit          # コミットメッセージを生成
+gut pr              # PR説明文を生成
+gut review          # AIコードレビュー
+
+# 4.（オプション）テンプレートをカスタマイズ
+gut init            # .gut/ に編集可能なテンプレートを作成
 ```
 
-### プロジェクトにテンプレートを追加
+対応プロバイダー：`gemini`（デフォルト）、`openai`、`anthropic`
 
-`gut init`コマンドで、プロジェクトに`.gut/`フォルダとテンプレートファイルを自動生成できます：
-
-```bash
-$ gut init
-
-Created /path/to/project/.gut
-  Copied: commit.md
-  Copied: pr.md
-  Copied: branch.md
-  ...
-
-✓ 12 template(s) initialized in .gut/
-```
-
-言語設定が日本語（`gut config set lang ja`）の場合、テンプレートも自動的に日本語に翻訳されます。生成されたテンプレートはプロジェクトに合わせて自由にカスタマイズできます。
+`gut init`で生成されるテンプレートは、言語設定が日本語（`gut config set lang ja`）の場合、自動的に日本語に翻訳されます。生成されたテンプレートはプロジェクトに合わせて自由にカスタマイズできます。
 
 ## まとめ
 
