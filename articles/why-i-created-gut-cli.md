@@ -24,7 +24,9 @@ PRの説明文も書かないといけないし、stashに名前をつけ忘れ�
 
 そこで、こういった「gitまわりの小さなめんどくさい」をAIで自動化するCLIツール「**gut**」を作りました。
 
-https://github.com/gitton-dev/gut
+https://github.com/gitton-dev/gut-cli
+
+![](https://storage.googleapis.com/zenn-user-upload/fa7b7c71ec82-20260219.gif)
 
 たとえば、従来の`git commit`だとこんな感じですよね。
 
