@@ -11,20 +11,20 @@ published: true
 `git commit -m "ここに何書こう..."` ってなることありませんか？
 これを`git commit`だけにして、変更内容はAIに書いて欲しいなと思ってCLIツールを作りに着手しました。
 
-ちゃんとしたコミットメッセージを書こうとすると意外と時間がかかります！
+Claude Codeでやれば？という話かもしれませんが、Claude Codeは汎用的なコーディングエージェントなのでファイル全体を読み込んでユーザーの許可を得てみたいな感じで
+コミットメッセージを考えて欲しいだけなのに若干待たされるのが不便でした。
 
-`feat`なのか`fix`なのか、スコープはどうするか、英語で書くか日本語で書くか...。
-結局「fix bug」みたいな雑なメッセージで済ませてしまったり。
+このCLI（gut-cli）だとこんな感じでサクサクです！
 
-ブランチ名も同じです。issueの内容を見て、`feature/user-authentication-with-oauth2-integration`みたいな名前を考えて、タイプミスしないように気をつけながら`git checkout -b`する。地味にめんどくさい。
+https://github.com/gitton-dev/gut-cli
+
+ブランチ名も同じです。GitHubのissueの内容を見て、`feature/user-authentication-with-oauth2-integration`みたいな名前を考えて、タイプミスしないように気をつけながら`git checkout -b`する。地味にめんどくさい。
 
 PRの説明文も書かないといけないし、stashに名前をつけ忘れて後で「これ何だっけ...」となることもしばしば。
 
 これらって一つひとつは大したことないんですが、積み重なると開発のフローが止まるんですよね。
 
 そこで、こういった「gitまわりの小さなめんどくさい」をAIで自動化するCLIツール「**gut**」を作りました。
-
-https://github.com/gitton-dev/gut-cli
 
 ![](https://storage.googleapis.com/zenn-user-upload/fa7b7c71ec82-20260219.gif)
 
