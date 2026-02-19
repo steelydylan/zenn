@@ -16,7 +16,8 @@ Claude Codeでやれば？という話かもしれませんが、Claude Codeは�
 
 このCLI（gut-cli）だとこんな感じでサクサクです！
 
-https://github.com/gitton-dev/gut-cli
+![](https://storage.googleapis.com/zenn-user-upload/fa7b7c71ec82-20260219.gif)
+
 
 ブランチ名も同じです。GitHubのissueの内容を見て、`feature/user-authentication-with-oauth2-integration`みたいな名前を考えて、タイプミスしないように気をつけながら`git checkout -b`する。地味にめんどくさい。
 
@@ -24,9 +25,9 @@ PRの説明文も書かないといけないし、stashに名前をつけ忘れ�
 
 これらって一つひとつは大したことないんですが、積み重なると開発のフローが止まるんですよね。
 
-そこで、こういった「gitまわりの小さなめんどくさい」をAIで自動化するCLIツール「**gut**」を作りました。
+こういった「gitまわりの小さなめんどくさい」をAIで自動化するCLIツール「**gut**」を作りました。
 
-![](https://storage.googleapis.com/zenn-user-upload/fa7b7c71ec82-20260219.gif)
+https://github.com/gitton-dev/gut-cli
 
 たとえば、従来の`git commit`だとこんな感じですよね。
 
@@ -437,10 +438,6 @@ export async function getApiKey(provider: Provider): Promise<string | null> {
   return await keytar.getPassword(SERVICE_NAME, provider)
 }
 ```
-
-::: message alert
-ただし、キーチェーンに保存されていても完全に安全というわけではありません。悪意のあるnpmパッケージがキーチェーンにアクセスしようとする可能性があります。これはgut-cliに限った話ではなく、キーチェーンを利用するあらゆるツールやライブラリに共通するリスクです。信頼できないパッケージをインストールしないよう注意してください。
-:::
 
 ### プロジェクト固有の設定
 
