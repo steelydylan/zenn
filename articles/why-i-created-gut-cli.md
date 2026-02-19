@@ -3,7 +3,7 @@ title: "gitのちょっとした手間を解決するCLI、gutを作りました
 emoji: "🔧"
 type: "tech"
 topics: ["git", "cli", "ai", "typescript", "gemini"]
-published: false
+published: true
 ---
 
 ## はじめに
