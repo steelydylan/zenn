@@ -1,5 +1,5 @@
 ---
-title: "CLIのデモ動画をテキストで書いてSVG/GIF録画できるツールを作りました"
+title: "ターミナルのデモ動画をテキストで書いてSVG/GIF録画できるツールを作りました"
 emoji: "🎬"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["cli", "terminal", "react", "typescript", "npm"]
