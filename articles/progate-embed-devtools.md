@@ -1,5 +1,5 @@
 ---
-title: "Progateのレッスンに本物の開発者ツールを丸ごと埋め込んだ話"
+title: "ProgateのレッスンにChromeの開発者ツールを丸ごと埋め込んだ話"
 emoji: "🛠️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["devtools", "chrome", "typescript", "chrome"]
