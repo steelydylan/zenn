@@ -64,9 +64,7 @@ https://github.com/liriliri/chobitsu
 
 全体の構成としては、こんな感じの3者構成になります。
 
-```
-[DevTools UI の iframe] ⇄ [親ウィンドウ（Progate本体）] ⇄ [プレビュー iframe + Chobitsu]
-```
+![DevTools UI の iframe ⇄ 親ウィンドウ（Progate本体）⇄ プレビュー iframe + Chobitsu](/images/progate-embed-devtools/architecture.png)
 
 DevToolsとChobitsuはお互いを知らないので、間にいる親ウィンドウが`postMessage`でメッセージを中継してあげます。
 
@@ -204,13 +202,6 @@ https://gn.googlesource.com/gn/
 ビルドして出来上がった成果物（`out/Default`配下の静的ファイル群）は、Progate本体とは別のオリジンから配信しています。デベロッパーツールのUIは独立した静的ファイルなので、ストレージに置いて配信するだけでOKです。
 
 Progateでは、ビルド済みの`public`フォルダを丸ごとオブジェクトストレージにアップロードして、`devtools`用のオリジンとして配信する形にしました。配信元のoriginは設定ファイルに集約しておき、フロント側ではそれを読み込んでiframeの`src`を組み立てています。
-
-```ts
-// devtools UI を提供する iframe の origin（環境ごとに切り替え）
-export function getDevtoolsOrigin(): string {
-  return getGonString('devtoolsOrigin') ?? ''
-}
-```
 
 あとは、このoriginの`index.html`に先ほどの`#?embedded=<origin>`を付けてiframeで読み込めば、デベロッパーツールが`postMessage`モードで立ち上がってくれます。
 
