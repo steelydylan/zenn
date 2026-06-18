@@ -42,6 +42,8 @@ https://zenn.dev/steelydylan/articles/react-embed-devtools
 
 そこで今回は思い切って、本家のChrome DevTools（`devtools-frontend`）をフォークして、自分たちでビルドして組み込むという方針に切り替えました。
 
+ちなみに`devtools-frontend`はBSD-3-Clauseライセンスで公開されています。著作権表示とライセンス文を残せば、改変したものを商用サービスに組み込んで配布してもOKという、かなり緩めのライセンスなんですよね。Progateのような商用の学習サービスに組み込むうえでも安心して使えるのは、地味にありがたいポイントでした。
+
 ## 仕組みのおさらい：CDPとChobitsu
 
 本題に入る前に、なぜこんなことが可能なのかを軽くおさらいしておきます。
