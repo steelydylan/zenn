@@ -48,9 +48,9 @@ https://zenn.dev/steelydylan/articles/react-embed-devtools
 
 ちなみに`devtools-frontend`はBSD-3-Clauseライセンスで公開されています。著作権表示とライセンス文を残せば、改変したものを商用サービスに組み込んで配布してもOKという、かなり緩めのライセンスなんですよね。Progateのような商用の学習サービスに組み込むうえでも安心して使えるのは、地味にありがたいポイントでした。
 
-## 仕組みのおさらい：CDPとChobitsu
+## CDPとChobitsu
 
-本題に入る前に、なぜこんなことが可能なのかを軽くおさらいしておきます。
+本題に入る前に、なぜこんなことが可能なのかを軽く説明します。
 
 ### DevToolsのプロトコルは公開されている
 
