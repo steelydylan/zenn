@@ -69,6 +69,8 @@ wasmの場合、一番下のシステムコールの命令がありません。w
 
 Emscriptenでは、この部分をJavaScriptで用意した関数が受け持ちます。WASIの場合は、libcの関数をWASIの関数に読み替える形になります。そういうlibcのひとつにwasi-libcがあって、`open()`や`write()`を呼ぶと中でWASIの関数を呼んでくれます。ただ、WASIに対応する関数が無いものは読み替えようがないので、wasi-libcには`fork()`そのものがありません。冒頭の「`fork`が無い」というのはこういうことなんです。
 
+https://github.com/WebAssembly/wasi-libc
+
 ## WASIの何がつらいのか
 
 WALIの話に入る前に、WALIの論文がWASIのどこを問題にしているのかを見ておきます。
