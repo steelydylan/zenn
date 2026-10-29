@@ -73,7 +73,7 @@ Emscriptenでは、この部分をJavaScriptで用意した関数が受け持ち
 
 WALIの話に入る前に、WALIの論文がWASIのどこを問題にしているのかを見ておきます。
 
-論文はカーネギーメロン大学のArjun Rameshさんたちによるもので、EuroSys '25に通っています。最初にarXivに出たときのタイトルが「Stop Hiding The Sharp Knives: The WebAssembly Linux Interface」で、なかなか攻めた名前なんですよね。いまは「Empowering WebAssembly with Thin Kernel Interfaces」に変わっています。
+論文はカーネギーメロン大学のArjun Rameshさんたちによるもので、EuroSys '25に通っています。最初にarXivに出たときのタイトルが「Stop Hiding The Sharp Knives: The WebAssembly Linux Interface」で、直訳すると「よく切れるナイフを隠すのはもうやめよう」です。forkやシグナルのような強力だけど危ない機能をwasmから隠すのはやめよう、という意味だと思うのですが、なかなか攻めた名前なんですよね。いまは「Empowering WebAssembly with Thin Kernel Interfaces」に変わっています。
 
 https://arxiv.org/abs/2312.03858
 
