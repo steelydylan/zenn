@@ -4,7 +4,7 @@ emoji: "🐧"
 type: "tech" # tech: 技術記事 / idea: アイデア
 publication_name: "progate"
 topics: ["webassembly", "wasi", "linux", "llvm", "wasm"]
-published: false
+published: true
 ---
 
 ## はじめに
